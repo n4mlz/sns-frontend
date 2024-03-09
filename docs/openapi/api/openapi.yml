@@ -1,0 +1,169 @@
+openapi: '3.0.3'
+info:
+  title: API for SNS
+  version: 1.0.0
+tags:
+  - name: post
+    description: 投稿・TL 関連
+  - name: user
+    description: 自分でないユーザーに対する操作
+  - name: settings
+    description: アカウントの設定
+paths:
+  /posts:
+    post:
+      tags:
+        - post
+      summary: ポストする
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: ポストの内容
+        content:
+          application/json:
+            schema:
+              type: string
+              description: ポストの本文
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post'
+        '400':
+          description: bad request
+  /posts/{postId}:
+    get:
+      tags:
+        - post
+      summary: 一つのポストを取得する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: postId
+          required: true
+          schema:
+            type: string
+            description: postId
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post'
+        '404':
+          description: not found
+    delete:
+      tags:
+        - post
+      summary: ポストを削除する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: postId
+          required: true
+          schema:
+            type: string
+            description: postId
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: not found
+  /posts/{postId}/like:
+    get:
+      tags:
+        - post
+      summary: ポストにいいねする
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: postId
+          required: true
+          schema:
+            type: string
+            description: postId
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post'
+  /posts/{postId}/unlike:
+    get:
+      tags:
+        - post
+      summary: ポストへのいいねを取り消す
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: postId
+          required: true
+          schema:
+            type: string
+            description: postId
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post'
+  /timeline:
+    get:
+      tags:
+        - post
+      summary: タイムラインを取得する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/post'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    post:
+      type: object
+      properties:
+        postId:
+          type: string
+        poster:
+          type: object
+          properties:
+            userId:
+              type: string
+            userName:
+              type: string
+            iconUrl:
+              type: string
+        likes:
+          type: integer
+        date:
+          type: string
+          format: date-time
+        content:
+          type: string
+        
