@@ -23,8 +23,11 @@ paths:
         content:
           application/json:
             schema:
-              type: string
-              description: ポストの本文
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: ポストの本文
       responses:
         '200':
           description: successful operation
@@ -71,39 +74,45 @@ paths:
       responses:
         '204':
           description: no content
-  /posts/{postId}/like:
-    get:
+  /posts/like:
+    put:
       tags:
         - post
       summary: ポストにいいねする
       description: Authorization ヘッダーを必要とします
       security:
         - bearerAuth: []
-      parameters:
-        - in: path
-          name: postId
-          required: true
-          schema:
-            type: string
-            description: postId
+      requestBody:
+        description: いいねしたいポスト
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                postId:
+                  type: string
+                  description: いいねしたいポストの id
       responses:
         '204':
           description: no content
-  /posts/{postId}/unlike:
-    get:
+  /posts/unlike:
+    put:
       tags:
         - post
       summary: ポストへのいいねを取り消す
       description: Authorization ヘッダーを必要とします
       security:
         - bearerAuth: []
-      parameters:
-        - in: path
-          name: postId
-          required: true
-          schema:
-            type: string
-            description: postId
+      requestBody:
+        description: いいねを取り消したいポスト
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                postId:
+                  type: string
+                  description: いいねを取り消したいポストの id
       responses:
         '204':
           description: no content
@@ -216,42 +225,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/post'
-  /user/{userId}/follow:
-    get:
-      tags:
-        - user
-      summary: ユーザーをフォローする
-      description: Authorization ヘッダーを必要とします
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: path
-          name: userId
-          required: true
-          schema:
-            type: string
-            description: userId
-      responses:
-        '204':
-          description: no content
-  /user/{userId}/unfollow:
-    get:
-      tags:
-        - user
-      summary: ユーザーのフォローを外す
-      description: Authorization ヘッダーを必要とします
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: path
-          name: userId
-          required: true
-          schema:
-            type: string
-            description: userId
-      responses:
-        '204':
-          description: no content
   /user/{userId}/follower:
     get:
       tags:
@@ -276,6 +249,48 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+  /user/follow:
+    put:
+      tags:
+        - user
+      summary: ユーザーをフォローする
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: フォローしたいユーザー
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  description: フォローしたいユーザーのユーザー名
+      responses:
+        '204':
+          description: no content
+  /user/unfollow:
+    put:
+      tags:
+        - user
+      summary: ユーザーのフォローを外す
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: フォロー解除したいユーザー
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  description: フォロー解除したいユーザーのユーザー名
+      responses:
+        '204':
+          description: no content
   /settings/profile:
     put:
       tags:
@@ -354,6 +369,8 @@ components:
               type: string
             userName:
               type: string
+            iconUrl:
+              type: string
         likes:
           type: integer
         date:
@@ -369,5 +386,9 @@ components:
         userName:
           type: string
         biography:
+          type: string
+        iconUrl:
+          type: string
+        bgImageUrl:
           type: string
         
