@@ -10,7 +10,7 @@ tags:
   - name: settings
     description: アカウントの設定
 paths:
-  /posts:
+  /api/posts:
     post:
       tags:
         - post
@@ -35,7 +35,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/post'
-  /posts/{postId}:
+  /api/posts/{postId}:
     get:
       tags:
         - post
@@ -74,7 +74,7 @@ paths:
       responses:
         '204':
           description: no content
-  /posts/like:
+  /api/posts/like:
     put:
       tags:
         - post
@@ -95,7 +95,7 @@ paths:
       responses:
         '204':
           description: no content
-  /posts/unlike:
+  /api/posts/unlike:
     put:
       tags:
         - post
@@ -116,7 +116,7 @@ paths:
       responses:
         '204':
           description: no content
-  /timeline:
+  /api/timeline:
     get:
       tags:
         - post
@@ -133,7 +133,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/post'
-  /user/{userId}:
+  /api/user/{userId}:
     get:
       tags:
         - user
@@ -155,7 +155,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
-  /user/{userId}/icon:
+  /api/user/{userId}/icon:
     get:
       tags:
         - user
@@ -178,7 +178,7 @@ paths:
               schema:
                 type: string
                 format: binary
-  /user/{userId}/bgimage:
+  /api/user/{userId}/bgImage:
     get:
       tags:
         - user
@@ -201,7 +201,7 @@ paths:
               schema:
                 type: string
                 format: binary
-  /user/{userId}/posts:
+  /api/user/{userId}/posts:
     get:
       tags:
         - user
@@ -225,7 +225,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/post'
-  /user/{userId}/follower:
+  /api/user/{userId}/follower:
     get:
       tags:
         - user
@@ -249,7 +249,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
-  /user/follow:
+  /api/user/follow:
     put:
       tags:
         - user
@@ -270,7 +270,7 @@ paths:
       responses:
         '204':
           description: no content
-  /user/unfollow:
+  /api/user/unfollow:
     put:
       tags:
         - user
@@ -291,7 +291,7 @@ paths:
       responses:
         '204':
           description: no content
-  /settings/profile:
+  /api/settings/profile:
     put:
       tags:
         - settings
@@ -312,7 +312,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
-  /settings/profile/icon:
+  /api/settings/profile/icon:
     put:
       tags:
         - settings
@@ -330,7 +330,7 @@ paths:
       responses:
         '204':
           description: no content
-  /settings/profile/bgImage:
+  /api/settings/profile/bgImage:
     put:
       tags:
         - settings
@@ -348,8 +348,6 @@ paths:
       responses:
         '204':
           description: no content
-
-
 components:
   securitySchemes:
     bearerAuth:
