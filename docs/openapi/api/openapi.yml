@@ -74,6 +74,30 @@ paths:
       responses:
         '204':
           description: no content
+  /api/posts/{postId}/likes:
+    get:
+      tags:
+        - post
+      summary: ポストにいいねした人を取得する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: postId
+          required: true
+          schema:
+            type: string
+            description: postId
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/user'
   /api/posts/like:
     put:
       tags:
@@ -133,7 +157,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/post'
-  /api/user/{userId}:
+  /api/user/{userName}:
     get:
       tags:
         - user
@@ -143,11 +167,11 @@ paths:
         - bearerAuth: []
       parameters:
         - in: path
-          name: userId
+          name: userName
           required: true
           schema:
             type: string
-            description: userId
+            description: userName
       responses:
         '200':
           description: successful operation
@@ -155,7 +179,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
-  /api/user/{userId}/icon:
+  /api/user/{userName}/icon:
     get:
       tags:
         - user
@@ -165,11 +189,11 @@ paths:
         - bearerAuth: []
       parameters:
         - in: path
-          name: userId
+          name: userName
           required: true
           schema:
             type: string
-            description: userId
+            description: userName
       responses:
         '200':
           description: successful operation
@@ -178,7 +202,7 @@ paths:
               schema:
                 type: string
                 format: binary
-  /api/user/{userId}/bgImage:
+  /api/user/{userName}/bgImage:
     get:
       tags:
         - user
@@ -188,11 +212,11 @@ paths:
         - bearerAuth: []
       parameters:
         - in: path
-          name: userId
+          name: userName
           required: true
           schema:
             type: string
-            description: userId
+            description: userName
       responses:
         '200':
           description: successful operation
@@ -201,7 +225,7 @@ paths:
               schema:
                 type: string
                 format: binary
-  /api/user/{userId}/posts:
+  /api/user/{userName}/posts:
     get:
       tags:
         - user
@@ -211,11 +235,11 @@ paths:
         - bearerAuth: []
       parameters:
         - in: path
-          name: userId
+          name: userName
           required: true
           schema:
             type: string
-            description: userId
+            description: userName
       responses:
         '200':
           description: successful operation
@@ -225,7 +249,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/post'
-  /api/user/{userId}/follower:
+  /api/user/{userName}/follower:
     get:
       tags:
         - user
@@ -235,11 +259,11 @@ paths:
         - bearerAuth: []
       parameters:
         - in: path
-          name: userId
+          name: userName
           required: true
           schema:
             type: string
-            description: userId
+            description: userName
       responses:
         '200':
           description: successful operation
@@ -264,7 +288,7 @@ paths:
             schema:
               type: object
               properties:
-                userId:
+                userName:
                   type: string
                   description: フォローしたいユーザーのユーザー名
       responses:
@@ -285,7 +309,7 @@ paths:
             schema:
               type: object
               properties:
-                userId:
+                userName:
                   type: string
                   description: フォロー解除したいユーザーのユーザー名
       responses:
@@ -304,14 +328,28 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/user'
+              type: object
+              properties:
+                userName:
+                  type: string
+                displayName:
+                  type: string
+                biography:
+                  type: string
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/user'
+                type: object
+                properties:
+                  userName:
+                    type: string
+                  displayName:
+                    type: string
+                  biography:
+                    type: string
   /api/settings/profile/icon:
     put:
       tags:
@@ -363,15 +401,15 @@ components:
         poster:
           type: object
           properties:
-            userId:
-              type: string
             userName:
+              type: string
+            displayName:
               type: string
             iconUrl:
               type: string
         likes:
           type: integer
-        date:
+        createdAt:
           type: string
           format: date-time
         content:
@@ -379,9 +417,9 @@ components:
     user:
       type: object
       properties:
-        userId:
-          type: string
         userName:
+          type: string
+        displayName:
           type: string
         biography:
           type: string
@@ -389,4 +427,6 @@ components:
           type: string
         bgImageUrl:
           type: string
-        
+        createdAt:
+          type: string
+          format: date-time
