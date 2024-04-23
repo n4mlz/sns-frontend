@@ -21,7 +21,9 @@
       "@/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"],
       "@utils/*": ["./src/utils/*"],
+      "@constants/*": ["./src/constants/*"],
       "@styles/*": ["./src/styles/*"],
       "@public/*": ["./public/*"],
       "@images/*": ["./public/images/*"]
