@@ -1,0 +1,29 @@
+---
+env:
+  node: true
+  es2022: true
+  browser: true
+extends:
+  - "next/core-web-vitals"
+  - "eslint:recommended"
+  - "plugin:import/typescript"
+  - "prettier"
+parserOptions:
+  ecmaVersion: "latest"
+  sourceType: "module"
+  project: "./tsconfig.json"
+plugins:
+  - "@typescript-eslint"
+  - "import"
+rules:
+  import/order:
+    - 2
+    - newlines-between: always
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+      warnOnUnassignedImports: true
+overrides:
+  - files: ["*.ts"]
+    parser: "@typescript-eslint/parser"
+ignorePatterns: ["*.config.js"]
