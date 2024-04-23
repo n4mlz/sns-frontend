@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import "normalize.css";
 import "@styles/global.css";
+import { AuthProvider } from "@/components/contexts/AuthProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,8 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${notojp.variable}`}>{children}</body>
+    <html lang="ja">
+      <body className={`${inter.variable} ${notojp.variable}`}>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
