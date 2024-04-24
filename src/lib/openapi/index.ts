@@ -7,11 +7,11 @@ import { publicEnv } from "@/constants/env";
 const authInterceptor: Middleware = {
   async onRequest(req, _options) {
     const auth = getAuth(firebaseApp);
-    const token = await auth.currentUser?.getIdToken();
-    if (!token) {
+    const idToken = await auth.currentUser?.getIdToken();
+    if (!idToken) {
       return req;
     }
-    req.headers.set("Authorization", `Bearer ${token}`);
+    req.headers.set("Authorization", `Bearer ${idToken}`);
     return req;
   },
 };

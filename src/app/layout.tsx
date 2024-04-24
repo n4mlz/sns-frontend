@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_JP } from "next/font/google";
 import "normalize.css";
 import "@styles/global.css";
 import { AuthProvider } from "@/components/contexts/AuthProvider";
+import SWRConfigProvider from "@/components/contexts/SWRConfigProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${inter.variable} ${notojp.variable}`}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <SWRConfigProvider>{children}</SWRConfigProvider>
+        </AuthProvider>
       </body>
     </html>
   );
