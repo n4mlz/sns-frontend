@@ -454,86 +454,27 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    post:
+    userName:
       type: object
       properties:
-        postId:
+        userName:
           type: string
-        poster:
-          type: object
-          properties:
-            userName:
-              type: string
-            displayName:
-              type: string
-        likes:
-          type: integer
-        liked:
-          type: boolean
-        comments:
-          type: integer
-        content:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-    postDetail:
+    userDisplay:
       type: object
       properties:
-        postId:
+        userName:
           type: string
-        poster:
-          type: object
-          properties:
-            userName:
-              type: string
-            displayName:
-              type: string
-        likes:
-          type: integer
-        liked:
-          type: boolean
-        comments:
-          type: integer
-        content:
+        displayName:
           type: string
-        createdAt:
+    profile:
+      type: object
+      properties:
+        userName:
           type: string
-          format: date-time
-        conversations:
-          type: array
-          items:
-            type: object
-            properties:
-              user:
-                type: object
-                properties:
-                  userName:
-                    type: string
-                  displayName:
-                    type: string
-              replies:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    user:
-                      type: object
-                      properties:
-                        userName:
-                          type: string
-                        displayName:
-                          type: string
-                    content:
-                      type: string
-                    createdAt:
-                      type: string
-                      format: date-time
-              content:
-                type: string
-              createdAt:
-                type: string
-                format: date-time
+        displayName:
+          type: string
+        biography:
+          type: string
     user:
       type: object
       properties:
@@ -548,3 +489,93 @@ components:
           format: date-time
         followingStatus:
           type: string
+    postId:
+      type: object
+      properties:
+        postId:
+          type: string
+    postContent:
+      type: object
+      properties:
+        content:
+          type: string
+    post:
+      type: object
+      properties:
+        postId:
+          type: string
+        poster:
+          $ref: '#/components/schemas/user'
+        content:
+          type: string
+        likes:
+          type: integer
+        liked:
+          type: boolean
+        comments:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+    postDetail:
+      type: object
+      properties:
+        postId:
+          type: string
+        poster:
+          $ref: '#/components/schemas/user'
+        content:
+          type: string
+        likes:
+          type: integer
+        liked:
+          type: boolean
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/comment'
+        createdAt:
+          type: string
+          format: date-time
+    createComment:
+      type: object
+      properties:
+        postId:
+          type: string
+        content:
+          type: string
+    comment:
+      type: object
+      properties:
+        commentId:
+          type: string
+        commenter:
+          $ref: '#/components/schemas/user'
+        content:
+          type: string
+        replies:
+          type: array
+          items:
+            $ref: '#/components/schemas/reply'
+        createdAt:
+          type: string
+          format: date-time
+    createReply:
+      type: object
+      properties:
+        commentId:
+          type: string
+        content:
+          type: string
+    reply:
+      type: object
+      properties:
+        replyId:
+          type: string
+        replier:
+          $ref: '#/components/schemas/user'
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
