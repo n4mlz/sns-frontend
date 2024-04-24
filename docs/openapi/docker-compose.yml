@@ -13,7 +13,7 @@ services:
     ports:
       - "8002:8080"
     volumes:
-      - ./api/openapi.yaml:/openapi.yaml
+      - ./openapi.yaml:/openapi.yaml
     environment:
       SWAGGER_JSON: /openapi.yaml
 
@@ -24,4 +24,4 @@ services:
       - "8003:4010"
     command: mock -h 0.0.0.0 /openapi.yaml
     volumes:
-      - ./api/openapi.yaml:/openapi.yaml
+      - ./openapi.yaml:/openapi.yaml

@@ -14,6 +14,9 @@ dependencies:
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1
+  openapi-fetch:
+    specifier: ^0.9.4
+    version: 0.9.4
   react:
     specifier: ^18
     version: 18.2.0
@@ -37,11 +40,14 @@ devDependencies:
   eslint-config-next:
     specifier: 14.2.2
     version: 14.2.2(eslint@8.57.0)(typescript@5.4.5)
+  openapi-typescript:
+    specifier: ^6.7.5
+    version: 6.7.5
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
   typescript:
-    specifier: ^5
+    specifier: ^5.4.5
     version: 5.4.5
 
 packages:
@@ -98,7 +104,6 @@ packages:
   /@fastify/busboy@2.1.1:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
-    dev: false
 
   /@firebase/analytics-compat@0.2.8(@firebase/app-compat@0.2.31)(@firebase/app@0.10.1):
     resolution: {integrity: sha512-scvzDPIsP9HcLWM77YQD7F3yLQksGvPUzyfqUrPo9XxIx26txJvGMJAS8O8BHa6jIvsjUenaTZ5oXEtKqNZQ9Q==}
@@ -886,6 +891,11 @@ packages:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
+    dev: true
+
+  /ansi-colors@4.1.3:
+    resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
+    engines: {node: '>=6'}
     dev: true
 
   /ansi-regex@5.0.1:
@@ -2475,6 +2485,28 @@ packages:
       wrappy: 1.0.2
     dev: true
 
+  /openapi-fetch@0.9.4:
+    resolution: {integrity: sha512-Bmn1PFEKdwgkBk51hNXJotfDs1ESxyhgJU5nh55zMbMdN+hYIREtWwoPQN21oNrJfRLnD9CjK0Eg11CM91uUqg==}
+    dependencies:
+      openapi-typescript-helpers: 0.0.8
+    dev: false
+
+  /openapi-typescript-helpers@0.0.8:
+    resolution: {integrity: sha512-1eNjQtbfNi5Z/kFhagDIaIRj6qqDzhjNJKz8cmMW0CVdGwT6e1GLbAfgI0d28VTJa1A8jz82jm/4dG8qNoNS8g==}
+    dev: false
+
+  /openapi-typescript@6.7.5:
+    resolution: {integrity: sha512-ZD6dgSZi0u1QCP55g8/2yS5hNJfIpgqsSGHLxxdOjvY7eIrXzj271FJEQw33VwsZ6RCtO/NOuhxa7GBWmEudyA==}
+    hasBin: true
+    dependencies:
+      ansi-colors: 4.1.3
+      fast-glob: 3.3.2
+      js-yaml: 4.1.0
+      supports-color: 9.4.0
+      undici: 5.28.4
+      yargs-parser: 21.1.1
+    dev: true
+
   /optionator@0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
     engines: {node: '>= 0.8.0'}
@@ -2923,6 +2955,11 @@ packages:
       has-flag: 4.0.0
     dev: true
 
+  /supports-color@9.4.0:
+    resolution: {integrity: sha512-VL+lNrEoIXww1coLPOmiEmK/0sGigko5COxI09KzHc2VJXJsQ37UaQ+8quuxjDeA7+KnLGTWRyOXSLLR2Wb4jw==}
+    engines: {node: '>=12'}
+    dev: true
+
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
@@ -3045,7 +3082,6 @@ packages:
     engines: {node: '>=14.0'}
     dependencies:
       '@fastify/busboy': 2.1.1
-    dev: false
 
   /uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -3157,7 +3193,6 @@ packages:
   /yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
-    dev: false
 
   /yargs@17.7.2:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
