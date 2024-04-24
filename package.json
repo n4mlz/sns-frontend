@@ -10,7 +10,11 @@
     "generate-schema": "openapi-typescript ./docs/openapi/openapi.yaml -o ./src/lib/openapi/schema.d.ts"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "firebase": "^10.11.0",
+    "framer-motion": "^11.1.7",
     "next": "14.2.2",
     "normalize.css": "^8.0.1",
     "openapi-fetch": "^0.9.4",
