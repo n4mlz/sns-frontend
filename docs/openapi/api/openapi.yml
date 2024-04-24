@@ -25,11 +25,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                content:
-                  type: string
-                  description: ポストの本文
+              $ref: '#/components/schemas/postContent'
       responses:
         '200':
           description: successful operation
@@ -58,7 +54,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/post'
+                $ref: '#/components/schemas/postDetail'
     delete:
       tags:
         - post
@@ -113,14 +109,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                postId:
-                  type: string
-                  description: いいねしたいポストの id
+              $ref: '#/components/schemas/postId'
       responses:
-        '204':
-          description: no content
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postId'
   /api/posts/unlike:
     put:
       tags:
@@ -134,15 +130,93 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                postId:
-                  type: string
-                  description: いいねを取り消したいポストの id
+              $ref: '#/components/schemas/postId'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postId'
+  /api/posts/comments:
+    post:
+      tags:
+        - post
+      summary: コメントする
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: コメントの内容
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createComment'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+  /api/posts/comments/{commentId}:
+    delete:
+      tags:
+        - post
+      summary: コメントを削除する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: commentId
+          required: true
+          schema:
+            type: string
+            description: commentId
       responses:
         '204':
           description: no content
-  /api/timeline:
+  /api/posts/replies:
+    post:
+      tags:
+        - post
+      summary: リプライする
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: リプライの内容
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createReply'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reply'
+  /api/posts/replies/{replyId}:
+    delete:
+      tags:
+        - post
+      summary: リプライを削除する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: replyId
+          required: true
+          schema:
+            type: string
+            description: replyId
+      responses:
+        '204':
+          description: no content
+  /api/posts/timeline:
     get:
       tags:
         - post
@@ -181,52 +255,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
-  /api/users/{userName}/icon:
-    get:
-      tags:
-        - user
-      summary: ユーザーのアイコンを取得する
-      description: Authorization ヘッダーを必要とします
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: path
-          name: userName
-          required: true
-          schema:
-            type: string
-            description: userName
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/octet-stream:
-              schema:
-                type: string
-                format: binary
-  /api/users/{userName}/bgImage:
-    get:
-      tags:
-        - user
-      summary: ユーザーの背景画像を取得する
-      description: Authorization ヘッダーを必要とします
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: path
-          name: userName
-          required: true
-          schema:
-            type: string
-            description: userName
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/octet-stream:
-              schema:
-                type: string
-                format: binary
+
+# 軽量化のため以下のエンドポイントは使わず、Cloudflare R2 のバケットを直接見に行く
+  
+  # /api/users/{userName}/icon
+  # /api/users/{userName}/bgImage
+
   /api/users/{userName}/posts:
     get:
       tags:
@@ -288,21 +322,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                userName:
-                  type: string
-                  description: フォローしたいユーザーのユーザー名
+              $ref: '#/components/schemas/userName'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  followingUserName:
-                    type: string
+                $ref: '#/components/schemas/userName'
   /api/follows/unfollow:
     put:
       tags:
@@ -316,21 +343,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                userName:
-                  type: string
-                  description: フォロー解除したいユーザーのユーザー名
+              $ref: '#/components/schemas/userName'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  unfollowingUserName:
-                    type: string
+                $ref: '#/components/schemas/userName'
   /api/follows/requests:
     get:
       tags:
@@ -361,21 +381,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                userName:
-                  type: string
-                  description: フォローリクエストを拒否したいユーザーのユーザー名
+              $ref: '#/components/schemas/userName'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  rejectedUserName:
-                    type: string
+                $ref: '#/components/schemas/userName'
   /api/settings/profile:
     put:
       tags:
@@ -389,28 +402,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                userName:
-                  type: string
-                displayName:
-                  type: string
-                biography:
-                  type: string
+              $ref: '#/components/schemas/profile'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  userName:
-                    type: string
-                  displayName:
-                    type: string
-                  biography:
-                    type: string
+                $ref: '#/components/schemas/profile'
   /api/settings/profile/icon:
     put:
       tags:
