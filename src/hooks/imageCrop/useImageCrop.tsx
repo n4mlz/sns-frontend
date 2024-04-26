@@ -12,6 +12,10 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
   useDisclosure,
 } from "@chakra-ui/react";
 import getCroppedImg from "@hooks/imageCrop/getCroppedImg";
@@ -64,12 +68,29 @@ const useImageCrop = (width: number, height: number) => {
           </Box>
         </ModalBody>
         <ModalFooter>
+          <Slider
+            aria-label="slider-ex-1"
+            defaultValue={1}
+            value={zoom}
+            onChange={setZoom}
+            min={0.1}
+            max={3}
+            step={0.01}
+            marginLeft={2}
+            marginRight={4}>
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
           <Button
             onClick={() => {
               onClose();
               cropImage();
-            }}>
-            Crop
+            }}
+            color="white"
+            backgroundColor="blue.400">
+            保存
           </Button>
         </ModalFooter>
       </ModalContent>

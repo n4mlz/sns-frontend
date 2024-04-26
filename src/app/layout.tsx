@@ -33,7 +33,9 @@ export default function RootLayout({
         <AuthProvider>
           <SWRConfigProvider>
             <ChakraProvider>
-              <Container maxW="450px">{children}</Container>
+              <Container maxW="450px" padding={0}>
+                {children}
+              </Container>
             </ChakraProvider>
           </SWRConfigProvider>
         </AuthProvider>
