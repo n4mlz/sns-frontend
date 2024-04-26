@@ -44,14 +44,14 @@ const useImageCrop = (width: number, height: number) => {
   };
 
   const modalCropper = (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader margin={1} />
         <ModalCloseButton />
         <ModalBody>
           {/* TODO: モーダルの中にCropperを配置するとなぜかCropperの中の画像がずれる問題を解決する */}
-          <Box w={400} h={300} position={"relative"}>
+          <Box w={336} h={240} position={"relative"}>
             <Cropper
               image={inputImage}
               crop={crop}

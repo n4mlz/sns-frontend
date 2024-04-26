@@ -375,6 +375,20 @@ export interface paths {
   };
   "/api/settings/profile": {
     /**
+     * プロフィールを取得する
+     * @description Authorization ヘッダーを必要とします
+     */
+    get: {
+      responses: {
+        /** @description successful operation */
+        200: {
+          content: {
+            "application/json": components["schemas"]["profile"];
+          };
+        };
+      };
+    };
+    /**
      * プロフィールを設定する
      * @description Authorization ヘッダーを必要とします
      */

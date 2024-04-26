@@ -1,6 +1,7 @@
 export const publicEnv = {
   BASE_URL: process.env["NEXT_PUBLIC_BASE_URL"],
   API_URL: process.env["NEXT_PUBLIC_API_URL"],
+  IMAGE_URL: process.env["NEXT_PUBLIC_IMAGE_URL"],
 
   FIREBASE_API_KEY: process.env["NEXT_PUBLIC_FIREBASE_API_KEY"],
   FIREBASE_AUTH_DOMAIN: process.env["NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"],
