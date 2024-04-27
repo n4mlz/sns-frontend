@@ -13,26 +13,15 @@ import client from "@/lib/openapi";
 import domainConsts from "@/constants/domain";
 
 const schema = z.object({
-  userName: z
-    .string()
-    .min(
-      domainConsts.MIN_USERNAME_LENGTH,
-      `ユーザー名は${domainConsts.MIN_USERNAME_LENGTH}文字以上で入力してください。`
-    )
-    .max(
-      domainConsts.MAX_USERNAME_LENGTH,
-      `ユーザー名は${domainConsts.MAX_USERNAME_LENGTH}文字以下で入力してください。`
-    )
-    .regex(/^[a-zA-Z0-9_]+$/, "ユーザー名は半角英数字とアンダースコア(_)のみ使用できます。"),
   displayName: z
     .string()
     .min(
       domainConsts.MIN_DISPLAY_NAME_LENGTH,
-      `表示名は${domainConsts.MIN_DISPLAY_NAME_LENGTH}文字以上で入力してください。`
+      `名前は${domainConsts.MIN_DISPLAY_NAME_LENGTH}文字以上で入力してください。`
     )
     .max(
       domainConsts.MAX_DISPLAY_NAME_LENGTH,
-      `表示名は${domainConsts.MAX_DISPLAY_NAME_LENGTH}文字以下で入力してください。`
+      `名前は${domainConsts.MAX_DISPLAY_NAME_LENGTH}文字以下で入力してください。`
     ),
   biography: z
     .string()
@@ -73,7 +62,7 @@ const SettingsPage = () => {
 
   const onSubmit: SubmitHandler<FormValues> = (form) => {
     client.PUT("/api/settings/profile", {
-      body: { userName: form.userName, displayName: form.displayName, biography: form.biography },
+      body: { displayName: form.displayName, biography: form.biography },
     });
 
     if (croppedIconBlob) {
@@ -125,16 +114,7 @@ const SettingsPage = () => {
             </Skeleton>
           </Box>
           <ControlledInput
-            label="ユーザー名"
-            errors={errors}
-            isRequired
-            isLoaded={authContext.currentUser != undefined && !isLoading}
-            isUserName
-            {...register("userName")}
-            defaultValue={data && data.userName ? data.userName : null}
-          />
-          <ControlledInput
-            label="表示名"
+            label="名前"
             errors={errors}
             isRequired
             isLoaded={authContext.currentUser != undefined && !isLoading}

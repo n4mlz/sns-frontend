@@ -30,7 +30,7 @@ const postUserBgImageUrl = async (blob: Blob) => {
   const body = new FormData();
   body.append("image", blob);
 
-  return fetch(new URL("/api/settings/profile/bgimage", publicEnv.API_URL).href, {
+  return fetch(new URL("/api/settings/profile/bgImage", publicEnv.API_URL).href, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${idToken}`,
