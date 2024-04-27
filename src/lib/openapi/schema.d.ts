@@ -375,6 +375,20 @@ export interface paths {
   };
   "/api/settings/profile": {
     /**
+     * プロフィールを取得する
+     * @description Authorization ヘッダーを必要とします
+     */
+    get: {
+      responses: {
+        /** @description successful operation */
+        200: {
+          content: {
+            "application/json": components["schemas"]["profile"];
+          };
+        };
+      };
+    };
+    /**
      * プロフィールを設定する
      * @description Authorization ヘッダーを必要とします
      */
@@ -404,7 +418,7 @@ export interface paths {
       /** @description アイコン画像 */
       requestBody?: {
         content: {
-          "application/octet-stream": string;
+          "multipart/form-data": string;
         };
       };
       responses: {
@@ -424,7 +438,7 @@ export interface paths {
       /** @description 背景画像 */
       requestBody?: {
         content: {
-          "application/octet-stream": string;
+          "multipart/form-data": string;
         };
       };
       responses: {
