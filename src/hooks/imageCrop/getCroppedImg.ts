@@ -9,13 +9,13 @@ const createImage = (url: string): Promise<HTMLImageElement> =>
     image.src = url;
   });
 
-const getCroppedImg = async (imageSrc: string, pixelCrop: Area): Promise<string> => {
+const getCroppedImgBlob = async (imageSrc: string, pixelCrop: Area): Promise<Blob> => {
   const image = await createImage(imageSrc);
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
   if (!ctx) {
-    return "";
+    return new Blob();
   }
 
   canvas.width = image.width;
@@ -30,11 +30,12 @@ const getCroppedImg = async (imageSrc: string, pixelCrop: Area): Promise<string>
 
   ctx.putImageData(data, 0, 0);
 
-  return new Promise((resolve, _) => {
-    canvas.toBlob((file) => {
-      if (file !== null) resolve(URL.createObjectURL(file));
-    }, "image/jpeg");
+  return new Promise((resolve) => {
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      resolve(blob);
+    });
   });
 };
 
-export default getCroppedImg;
+export default getCroppedImgBlob;

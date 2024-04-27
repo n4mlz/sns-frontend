@@ -18,7 +18,7 @@ import {
   SliderTrack,
   useDisclosure,
 } from "@chakra-ui/react";
-import getCroppedImg from "@hooks/imageCrop/getCroppedImg";
+import getCroppedImgBlob from "@hooks/imageCrop/getCroppedImg";
 
 const useImageCrop = (width: number, height: number) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,7 +28,8 @@ const useImageCrop = (width: number, height: number) => {
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
 
   const [inputImage, setInputImage] = useState("");
-  const [croppedImage, setCroppedImage] = useState("");
+  const [croppedImageBlob, setCroppedImageBlob] = useState<Blob>();
+  const [croppedImageUrl, setCroppedImageUrl] = useState<string>("");
 
   const onCropComplete = (_: Area, croppedAreaPixels: Area) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -43,8 +44,9 @@ const useImageCrop = (width: number, height: number) => {
 
   const cropImage = async () => {
     if (!croppedAreaPixels) return;
-    const croppedImage = await getCroppedImg(inputImage, croppedAreaPixels);
-    setCroppedImage(croppedImage);
+    const croppedImageBlob = await getCroppedImgBlob(inputImage, croppedAreaPixels);
+    setCroppedImageBlob(croppedImageBlob);
+    setCroppedImageUrl(URL.createObjectURL(croppedImageBlob));
   };
 
   const modalCropper = (
@@ -97,7 +99,7 @@ const useImageCrop = (width: number, height: number) => {
     </Modal>
   );
 
-  return { onFileChange, modalCropper, croppedImage };
+  return { onFileChange, modalCropper, croppedImageBlob, croppedImageUrl };
 };
 
 export default useImageCrop;

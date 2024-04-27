@@ -418,7 +418,7 @@ export interface paths {
       /** @description アイコン画像 */
       requestBody?: {
         content: {
-          "application/octet-stream": string;
+          "multipart/form-data": string;
         };
       };
       responses: {
@@ -438,7 +438,7 @@ export interface paths {
       /** @description 背景画像 */
       requestBody?: {
         content: {
-          "application/octet-stream": string;
+          "multipart/form-data": string;
         };
       };
       responses: {

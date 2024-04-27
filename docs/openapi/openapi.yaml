@@ -435,7 +435,7 @@ paths:
       requestBody:
         description: アイコン画像
         content:
-          application/octet-stream:
+          multipart/form-data:
             schema:
               type: string
               format: binary
@@ -453,7 +453,7 @@ paths:
       requestBody:
         description: 背景画像
         content:
-          application/octet-stream:
+          multipart/form-data:
             schema:
               type: string
               format: binary
