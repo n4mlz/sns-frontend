@@ -1,38 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Container, Flex, Box, Button, Input, Image, Skeleton } from "@chakra-ui/react";
+import { Container, Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
+import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
-import { useAuthContext } from "@/components/contexts/AuthProvider";
-import { postUserIconUrl, postUserBgImageUrl, userIconUrl, userBgImageUrl } from "@/lib/image";
 import client from "@/lib/openapi";
 import domainConsts from "@/constants/domain";
+import { postUserIconUrl, postUserBgImageUrl, userIconUrl, userBgImageUrl } from "@/lib/image";
 
 const schema = z.object({
-  userName: z
-    .string()
-    .min(
-      domainConsts.MIN_USERNAME_LENGTH,
-      `ユーザー名は${domainConsts.MIN_USERNAME_LENGTH}文字以上で入力してください。`
-    )
-    .max(
-      domainConsts.MAX_USERNAME_LENGTH,
-      `ユーザー名は${domainConsts.MAX_USERNAME_LENGTH}文字以下で入力してください。`
-    )
-    .regex(/^[a-zA-Z0-9_]+$/, "ユーザー名は半角英数字とアンダースコア(_)のみ使用できます。"),
   displayName: z
     .string()
     .min(
       domainConsts.MIN_DISPLAY_NAME_LENGTH,
-      `表示名は${domainConsts.MIN_DISPLAY_NAME_LENGTH}文字以上で入力してください。`
+      `名前は${domainConsts.MIN_DISPLAY_NAME_LENGTH}文字以上で入力してください。`
     )
     .max(
       domainConsts.MAX_DISPLAY_NAME_LENGTH,
-      `表示名は${domainConsts.MAX_DISPLAY_NAME_LENGTH}文字以下で入力してください。`
+      `名前は${domainConsts.MAX_DISPLAY_NAME_LENGTH}文字以下で入力してください。`
     ),
   biography: z
     .string()
@@ -46,9 +37,12 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const SettingsPage = () => {
+const ProfileSettingsPage = () => {
+  const router = useRouter();
+  const toast = useToast();
   const authContext = useAuthContext();
   const { data, error, isLoading } = useSWR(authContext.currentUser ? "/api/settings/profile" : null);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
 
   const {
     onFileChange: onIconFileChange,
@@ -71,19 +65,40 @@ const SettingsPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (form) => {
-    client.PUT("/api/settings/profile", {
-      body: { userName: form.userName, displayName: form.displayName, biography: form.biography },
+  const onSubmit: SubmitHandler<FormValues> = async (form) => {
+    setIsUploading(true);
+    let err1, err2, err3;
+    const res = await client.PUT("/api/settings/profile", {
+      body: { displayName: form.displayName, biography: form.biography },
     });
+    err1 = !res.response.ok;
 
     if (croppedIconBlob) {
-      postUserIconUrl(croppedIconBlob);
+      const res = await postUserIconUrl(croppedIconBlob);
+      err2 = !res.ok;
     }
     if (croppedBgImageBlob) {
-      postUserBgImageUrl(croppedBgImageBlob);
+      const res = await postUserBgImageUrl(croppedBgImageBlob);
+      err3 = !res.ok;
     }
 
-    // TODO: fetch が成功したらトーストを表示してリダイレクトする
+    setIsUploading(false);
+    if (err1 || err2 || err3) {
+      toast({
+        title: "エラーが発生しました。",
+        description: "入力内容に誤りがあるか、サーバーに問題が発生した可能性があります。",
+        status: "error",
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "保存しました !",
+        status: "success",
+        isClosable: true,
+      });
+      // TODO: 適切な場所にリダイレクトさせる
+      // router.push("/");
+    }
   };
 
   return (
@@ -125,16 +140,7 @@ const SettingsPage = () => {
             </Skeleton>
           </Box>
           <ControlledInput
-            label="ユーザー名"
-            errors={errors}
-            isRequired
-            isLoaded={authContext.currentUser != undefined && !isLoading}
-            isUserName
-            {...register("userName")}
-            defaultValue={data && data.userName ? data.userName : null}
-          />
-          <ControlledInput
-            label="表示名"
+            label="名前"
             errors={errors}
             isRequired
             isLoaded={authContext.currentUser != undefined && !isLoading}
@@ -149,7 +155,12 @@ const SettingsPage = () => {
             {...register("biography")}
             defaultValue={data && data.biography ? data.biography : null}
           />
-          <Button onClick={handleSubmit(onSubmit)} marginY={3} color="white" backgroundColor="blue.400">
+          <Button
+            onClick={handleSubmit(onSubmit)}
+            isLoading={isUploading}
+            marginY={3}
+            color="white"
+            backgroundColor="blue.400">
             保存
           </Button>
         </Flex>
@@ -158,4 +169,4 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+export default ProfileSettingsPage;

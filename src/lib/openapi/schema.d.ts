@@ -396,14 +396,36 @@ export interface paths {
       /** @description プロフィールの内容 */
       requestBody?: {
         content: {
-          "application/json": components["schemas"]["profile"];
+          "application/json": components["schemas"]["userSettings"];
         };
       };
       responses: {
         /** @description successful operation */
         200: {
           content: {
-            "application/json": components["schemas"]["profile"];
+            "application/json": components["schemas"]["userSettings"];
+          };
+        };
+      };
+    };
+  };
+  "/api/settings/profile/userName": {
+    /**
+     * ユーザー名を変更する
+     * @description Authorization ヘッダーを必要とします
+     */
+    put: {
+      /** @description 新しいユーザー名 */
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["userName"];
+        };
+      };
+      responses: {
+        /** @description successful operation */
+        200: {
+          content: {
+            "application/json": components["schemas"]["userName"];
           };
         };
       };
@@ -461,6 +483,10 @@ export interface components {
     userDisplay: {
       userName?: string;
       displayName?: string;
+    };
+    userSettings: {
+      displayName?: string;
+      biography?: string;
     };
     profile: {
       userName?: string;

@@ -416,14 +416,35 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/profile'
+              $ref: '#/components/schemas/userSettings'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/profile'
+                $ref: '#/components/schemas/userSettings'
+  /api/settings/profile/userName:
+    put:
+      tags:
+        - settings
+      summary: ユーザー名を変更する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: 新しいユーザー名
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userName'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userName'
   /api/settings/profile/icon:
     put:
       tags:
@@ -478,6 +499,13 @@ components:
         userName:
           type: string
         displayName:
+          type: string
+    userSettings:
+      type: object
+      properties:
+        displayName:
+          type: string
+        biography:
           type: string
     profile:
       type: object
