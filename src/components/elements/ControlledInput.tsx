@@ -4,6 +4,7 @@ import {
   InputProps,
   InputGroup,
   InputLeftElement,
+  InputRightElement,
   forwardRef,
   FormControl,
   FormLabel,
@@ -12,8 +13,10 @@ import {
   FormLabelProps,
   FormErrorMessageProps,
   Skeleton,
+  Tooltip,
+  Spinner,
 } from "@chakra-ui/react";
-import { AtSignIcon } from "@chakra-ui/icons";
+import { AtSignIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
 
 export type ControlledInputProps = {
   label: string;
@@ -26,6 +29,8 @@ export type ControlledInputProps = {
   formErrorMessageProps?: FormErrorMessageProps;
   isLoaded?: boolean;
   isUserName?: boolean;
+  isLoadingAvailable?: boolean;
+  isAvailableUserName?: boolean;
 } & Omit<InputProps, "isRequired">;
 
 export const ControlledInput = forwardRef<ControlledInputProps, "input">(
@@ -40,6 +45,8 @@ export const ControlledInput = forwardRef<ControlledInputProps, "input">(
       formErrorMessageProps,
       isLoaded,
       isUserName,
+      isLoadingAvailable,
+      isAvailableUserName,
       ...rest
     }: Omit<ControlledInputProps, "ref">,
     ref
@@ -57,6 +64,26 @@ export const ControlledInput = forwardRef<ControlledInputProps, "input">(
                   <AtSignIcon color="gray.300" />
                 </InputLeftElement>
                 <Input name={name} {...rest} ref={ref} />
+
+                {isLoadingAvailable ? (
+                  <InputRightElement>
+                    <Tooltip label="ユーザー名が使用可能か検証しています...">
+                      <Spinner size="sm" />
+                    </Tooltip>
+                  </InputRightElement>
+                ) : isAvailableUserName ? (
+                  <InputRightElement>
+                    <Tooltip label="このユーザー名は使用できます。">
+                      <CheckCircleIcon color="green.500" />
+                    </Tooltip>
+                  </InputRightElement>
+                ) : (
+                  <InputRightElement>
+                    <Tooltip label="このユーザー名は使用できません。">
+                      <NotAllowedIcon color="red.500" />
+                    </Tooltip>
+                  </InputRightElement>
+                )}
               </InputGroup>
             ) : (
               <Input name={name} {...rest} ref={ref} />

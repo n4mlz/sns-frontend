@@ -5,12 +5,12 @@ import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Container, Flex, Box, Button, Input, Image, Skeleton } from "@chakra-ui/react";
+import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
-import { useAuthContext } from "@/components/contexts/AuthProvider";
-import { postUserIconUrl, postUserBgImageUrl, userIconUrl, userBgImageUrl } from "@/lib/image";
 import client from "@/lib/openapi";
 import domainConsts from "@/constants/domain";
+import { postUserIconUrl, postUserBgImageUrl, userIconUrl, userBgImageUrl } from "@/lib/image";
 
 const schema = z.object({
   displayName: z
@@ -35,7 +35,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const SettingsPage = () => {
+const ProfileSettingsPage = () => {
   const authContext = useAuthContext();
   const { data, error, isLoading } = useSWR(authContext.currentUser ? "/api/settings/profile" : null);
 
@@ -138,4 +138,4 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+export default ProfileSettingsPage;
