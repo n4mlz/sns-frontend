@@ -33,7 +33,6 @@ const userNameSettingsPage = () => {
   const router = useRouter();
   const toast = useToast();
   const authContext = useAuthContext();
-
   const { data, isLoading } = useSWR(authContext.currentUser ? "/api/settings/profile" : null);
 
   const {
@@ -60,7 +59,8 @@ const userNameSettingsPage = () => {
         status: "success",
         isClosable: true,
       });
-      router.push("/");
+      // TODO: 適切な場所にリダイレクトさせる
+      // router.push("/");
     } else {
       toast({
         title: "エラーが発生しました。",

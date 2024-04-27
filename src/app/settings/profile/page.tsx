@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Container, Flex, Box, Button, Input, Image, Skeleton } from "@chakra-ui/react";
+import { Container, Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
@@ -36,8 +38,11 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const ProfileSettingsPage = () => {
+  const router = useRouter();
+  const toast = useToast();
   const authContext = useAuthContext();
   const { data, error, isLoading } = useSWR(authContext.currentUser ? "/api/settings/profile" : null);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
 
   const {
     onFileChange: onIconFileChange,
@@ -60,19 +65,40 @@ const ProfileSettingsPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (form) => {
-    client.PUT("/api/settings/profile", {
+  const onSubmit: SubmitHandler<FormValues> = async (form) => {
+    setIsUploading(true);
+    let err1, err2, err3;
+    const res = await client.PUT("/api/settings/profile", {
       body: { displayName: form.displayName, biography: form.biography },
     });
+    err1 = !res.response.ok;
 
     if (croppedIconBlob) {
-      postUserIconUrl(croppedIconBlob);
+      const res = await postUserIconUrl(croppedIconBlob);
+      err2 = !res.ok;
     }
     if (croppedBgImageBlob) {
-      postUserBgImageUrl(croppedBgImageBlob);
+      const res = await postUserBgImageUrl(croppedBgImageBlob);
+      err3 = !res.ok;
     }
 
-    // TODO: fetch が成功したらトーストを表示してリダイレクトする
+    setIsUploading(false);
+    if (err1 || err2 || err3) {
+      toast({
+        title: "エラーが発生しました。",
+        description: "入力内容に誤りがあるか、サーバーに問題が発生した可能性があります。",
+        status: "error",
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "保存しました !",
+        status: "success",
+        isClosable: true,
+      });
+      // TODO: 適切な場所にリダイレクトさせる
+      // router.push("/");
+    }
   };
 
   return (
@@ -129,7 +155,12 @@ const ProfileSettingsPage = () => {
             {...register("biography")}
             defaultValue={data && data.biography ? data.biography : null}
           />
-          <Button onClick={handleSubmit(onSubmit)} marginY={3} color="white" backgroundColor="blue.400">
+          <Button
+            onClick={handleSubmit(onSubmit)}
+            isLoading={isUploading}
+            marginY={3}
+            color="white"
+            backgroundColor="blue.400">
             保存
           </Button>
         </Flex>
