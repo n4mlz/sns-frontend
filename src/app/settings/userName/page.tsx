@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Container, Flex, Button } from "@chakra-ui/react";
+import { Container, Flex, Button, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import client from "@/lib/openapi";
@@ -29,7 +30,10 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const userNameSettingsPage = () => {
+  const router = useRouter();
+  const toast = useToast();
   const authContext = useAuthContext();
+
   const { data, isLoading } = useSWR(authContext.currentUser ? "/api/settings/profile" : null);
 
   const {
@@ -42,10 +46,29 @@ const userNameSettingsPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (form) => {
-    client.PUT("/api/settings/profile/userName", {
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+
+  const onSubmit: SubmitHandler<FormValues> = async (form) => {
+    setIsUploading(true);
+    const res = await client.PUT("/api/settings/profile/userName", {
       body: { userName: form.userName },
     });
+    setIsUploading(false);
+    if (res.response.ok) {
+      toast({
+        title: "保存しました !",
+        status: "success",
+        isClosable: true,
+      });
+      router.push("/");
+    } else {
+      toast({
+        title: "エラーが発生しました。",
+        description: "入力内容に誤りがあるか、サーバーに問題が発生した可能性があります。",
+        status: "error",
+        isClosable: true,
+      });
+    }
   };
 
   const [isAvailableUserName, setIsAvailableUserName] = useState<boolean>(false);
@@ -57,11 +80,7 @@ const userNameSettingsPage = () => {
     if (!userName.match(domainConsts.USERNAME_REGEX)) return false;
     if (data && userName === data.userName) return true;
     const res = await client.GET("/api/users/{userName}", { params: { path: { userName } } });
-    if (res.data && res.data.userName) {
-      return false;
-    } else {
-      return true;
-    }
+    return !res.response.ok;
   };
 
   useEffect(() => {
@@ -78,7 +97,7 @@ const userNameSettingsPage = () => {
         lastLoad = now;
       }
     })();
-  }, [watch("userName")]);
+  }, [watch("userName"), isLoading]);
 
   return (
     <Container as="form" padding={0}>
@@ -94,7 +113,12 @@ const userNameSettingsPage = () => {
           {...register("userName")}
           defaultValue={data && data.userName ? data.userName : null}
         />
-        <Button onClick={handleSubmit(onSubmit)} marginY={3} color="white" backgroundColor="blue.400">
+        <Button
+          onClick={handleSubmit(onSubmit)}
+          isLoading={isUploading}
+          marginY={3}
+          color="white"
+          backgroundColor="blue.400">
           保存
         </Button>
       </Flex>
