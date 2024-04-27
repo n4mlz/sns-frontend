@@ -82,6 +82,8 @@ const SettingsPage = () => {
     if (croppedBgImageBlob) {
       postUserBgImageUrl(croppedBgImageBlob);
     }
+
+    // TODO: fetch が成功したらトーストを表示してリダイレクトする
   };
 
   return (
