@@ -10,6 +10,7 @@ import { Container, Flex, Button, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import client from "@/lib/openapi";
+import { components } from "@/lib/openapi/schema";
 import domainConsts from "@/constants/domain";
 import { sleep } from "@/utils/time";
 
@@ -33,7 +34,9 @@ const userNameSettingsPage = () => {
   const router = useRouter();
   const toast = useToast();
   const authContext = useAuthContext();
-  const { data, isLoading } = useSWR(authContext.currentUser ? "/api/settings/profile" : null);
+  const { data, isLoading } = useSWR<components["schemas"]["profile"]>(
+    authContext.currentUser ? "/api/settings/profile" : null
+  );
 
   const {
     register,
@@ -111,7 +114,7 @@ const userNameSettingsPage = () => {
           isLoadingAvailable={isLoadingAvailable}
           isAvailableUserName={isAvailableUserName}
           {...register("userName")}
-          defaultValue={data && data.userName ? data.userName : null}
+          defaultValue={data && data.userName ? data.userName : undefined}
         />
         <Button
           onClick={handleSubmit(onSubmit)}
