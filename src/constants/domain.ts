@@ -13,6 +13,12 @@ const domainConsts = {
 
   BG_IMAGE_WIDTH: 960,
   BG_IMAGE_HEIGHT: 320,
+
+  MUTUAL: "mutual",
+  FOLLOWING: "following",
+  FOLLOWED: "followed",
+  NONE: "none",
+  OWN: "own",
 };
 
 export default domainConsts;
