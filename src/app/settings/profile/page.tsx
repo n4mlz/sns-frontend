@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Container, Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledInput } from "@/components/elements/ControlledInput";
+import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
@@ -127,7 +128,7 @@ const ProfileSettingsPage = () => {
           w="88px"
           h="88px"
           position="absolute"
-          top="-44px"
+          top="-38px"
           left="10px"
           border="4px solid white"
           borderRadius="44px"
@@ -160,7 +161,7 @@ const ProfileSettingsPage = () => {
           {...register("displayName")}
           defaultValue={data && data.displayName ? data.displayName : undefined}
         />
-        <ControlledInput
+        <ControlledTextarea
           label="自己紹介"
           errors={errors}
           isRequired
