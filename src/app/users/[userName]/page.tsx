@@ -2,8 +2,8 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import useSWR, { mutate } from "swr";
-import { Flex, Box, Heading, Button, Text, Skeleton, SkeletonText, Image } from "@chakra-ui/react";
+import useSWR from "swr";
+import { Flex, Box, Center, Heading, Button, Text, Skeleton, SkeletonText, Spinner, Image } from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Posts from "@/components/ui/posts";
@@ -22,7 +22,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
     isLoading: isLoadingUser,
     mutate: userMutate,
     error: userError,
-  } = useSWR<components["schemas"]["user"]>(
+  } = useSWR<components["schemas"]["userDetail"]>(
     authContext.currentUser ? path.join("/api/users", params.userName).toString() : null
   );
 
@@ -30,19 +30,26 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
     data: postsData,
     isLoading: isLoadingPosts,
     mutate: postsMutate,
-    error: postsError,
   } = useSWR<components["schemas"]["post"][]>(
     authContext.currentUser ? path.join("/api/users", params.userName, "/posts") : null
   );
 
   const follow = (afterStatus: string) => {
     client.PUT("/api/follows/follow", { body: { userName: params.userName } });
-    userMutate({ ...userData, followingStatus: afterStatus }, false);
+    if (afterStatus == domainConsts.MUTUAL) {
+      userMutate({ ...userData, followingStatus: afterStatus, mutuals: userData?.mutuals! + 1 }, false);
+    } else {
+      userMutate({ ...userData, followingStatus: afterStatus }, false);
+    }
   };
 
   const unfollow = (afterStatus: string) => {
     client.PUT("/api/follows/unfollow", { body: { userName: params.userName } });
-    userMutate({ ...userData, followingStatus: afterStatus }, false);
+    if (afterStatus == domainConsts.FOLLOWED) {
+      userMutate({ ...userData, followingStatus: afterStatus, mutuals: userData?.mutuals! - 1 }, false);
+    } else {
+      userMutate({ ...userData, followingStatus: afterStatus }, false);
+    }
   };
 
   return (
@@ -137,21 +144,32 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
             <Text>{userData?.biography}</Text>
           </SkeletonText>
           {authContext.currentUser != undefined && !isLoadingUser ? (
-            <Flex direction="row" gap="6px" alignItems="center">
-              <CalendarIcon color="gray.500" />
-              <Text color="gray.500">
-                {new Date(userData?.createdAt!).toLocaleDateString("en-us", { year: "numeric", month: "short" })}
-              </Text>
-            </Flex>
+            <>
+              <Flex direction="column" gap="8px">
+                <Flex direction="row" gap="6px" alignItems="center">
+                  <CalendarIcon color="gray.500" />
+                  <Text color="gray.500">
+                    {new Date(userData?.createdAt!).toLocaleDateString("en-us", { year: "numeric", month: "short" })}
+                  </Text>
+                </Flex>
+                <Flex direction="row" gap="6px" alignItems="center">
+                  <Text fontWeight={700}>{userData?.mutuals}</Text>
+                  <Text fontWeight={700}>相互フォロー</Text>
+                </Flex>
+              </Flex>
+            </>
           ) : null}
         </Flex>
       </Box>
       <Box>
-        {postsData && postsData.length ? (
+        {isLoadingPosts ? (
+          <Center borderTop="2px" borderColor="gray.200">
+            <Spinner thickness="2px" color="gray.300" margin="40px" />
+          </Center>
+        ) : postsData && postsData.length ? (
           <Posts posts={postsData} postsCallback={(posts) => postsMutate(posts, false)} />
         ) : null}
       </Box>
-      <Button onClick={() => client.POST("/api/posts", { body: { content: "Hello, World!" } })}>投稿する</Button>
     </Box>
   );
 };
