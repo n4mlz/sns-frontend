@@ -152,7 +152,11 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
                     {new Date(userData?.createdAt!).toLocaleDateString("en-us", { year: "numeric", month: "short" })}
                   </Text>
                 </Flex>
-                <Flex direction="row" gap="6px" alignItems="center">
+                <Flex
+                  direction="row"
+                  gap="6px"
+                  alignItems="center"
+                  onClick={() => router.push(path.join("/users", userData?.userName!, "/mutuals"))}>
                   <Text fontWeight={700}>{userData?.mutuals}</Text>
                   <Text fontWeight={700}>相互フォロー</Text>
                 </Flex>
