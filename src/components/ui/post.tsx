@@ -25,7 +25,7 @@ const Post = ({ post, postCallback }: Props) => {
   };
 
   return (
-    <Flex direction="row" gap="8px" padding="12px" borderY="2px" borderColor="gray.200">
+    <Flex direction="row" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
       <Box
         w="45px"
         h="45px"

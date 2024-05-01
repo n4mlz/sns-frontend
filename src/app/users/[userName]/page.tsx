@@ -55,7 +55,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   return (
     <Box padding={0}>
       <PageBackButton />
-      <Box paddingBottom="8px">
+      <Box paddingBottom="8px" borderBottom="2px" borderColor="gray.300">
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoadingUser}>
             {!userData || !userData.userName || userError || isLoadingUser ? (
@@ -171,7 +171,10 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
         ) : postsData && postsData.length ? (
-          <Posts posts={postsData} postsCallback={(posts) => postsMutate(posts, false)} />
+          <Posts
+            posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
+            postsCallback={(posts) => postsMutate(posts, false)}
+          />
         ) : null}
       </Box>
     </Box>
