@@ -6,8 +6,9 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Container, Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
+import { Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import Header from "@/components/elements/header";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
@@ -106,79 +107,82 @@ const ProfileSettingsPage = () => {
   };
 
   return (
-    <Container as="form" padding={0}>
-      <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
-        <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
-          <label>
-            {croppedBgImageUrl ? (
-              <Image src={croppedBgImageUrl} w="100%" alt="" aspectRatio={3} />
-            ) : !data || !data.userName || error || isLoading ? (
-              <Box w="100%" aspectRatio={3} />
-            ) : (
-              <Image src={userBgImageUrl(data.userName)} w="100%" aspectRatio={3} alt="" />
-            )}
-            <Input type="file" accept="image/*" display="none" onChange={onBgImageFileChange} />
-            {bgImageModalCropper}
-          </label>
-          <Input value={croppedBgImageUrl} display="none" {...register("wipBgImageUrl")} />
-        </Skeleton>
-      </Box>
-      <Box position="relative" marginBottom="44px">
-        <Box
-          w="88px"
-          h="88px"
-          position="absolute"
-          top="-38px"
-          left="10px"
-          border="4px solid white"
-          borderRadius="44px"
-          backgroundColor="gray.200"
-          overflow="hidden">
+    <>
+      <Header title="プロフィールの設定" />
+      <Box as="form" padding={0}>
+        <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
             <label>
-              {croppedIconUrl ? (
-                <Image src={croppedIconUrl} w="80px" h="80px" alt="" />
+              {croppedBgImageUrl ? (
+                <Image src={croppedBgImageUrl} w="100%" alt="" aspectRatio={3} />
               ) : !data || !data.userName || error || isLoading ? (
-                <Box w="80px" h="80px" />
+                <Box w="100%" aspectRatio={3} />
               ) : (
-                // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
-                // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
-                <Image src={userIconUrl(data.userName)} w="80px" h="80px" alt="" />
+                <Image src={userBgImageUrl(data.userName)} w="100%" aspectRatio={3} alt="" />
               )}
-              <Input type="file" accept="image/*" display="none" onChange={onIconFileChange} />
-              {iconModalCropper}
+              <Input type="file" accept="image/*" display="none" onChange={onBgImageFileChange} />
+              {bgImageModalCropper}
             </label>
-            <Input value={croppedIconUrl} display="none" {...register("wipIconUrl")} />
+            <Input value={croppedBgImageUrl} display="none" {...register("wipBgImageUrl")} />
           </Skeleton>
         </Box>
+        <Box position="relative" marginBottom="44px">
+          <Box
+            w="88px"
+            h="88px"
+            position="absolute"
+            top="-38px"
+            left="10px"
+            border="4px solid white"
+            borderRadius="44px"
+            backgroundColor="gray.200"
+            overflow="hidden">
+            <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
+              <label>
+                {croppedIconUrl ? (
+                  <Image src={croppedIconUrl} w="80px" h="80px" alt="" />
+                ) : !data || !data.userName || error || isLoading ? (
+                  <Box w="80px" h="80px" />
+                ) : (
+                  // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
+                  // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
+                  <Image src={userIconUrl(data.userName)} w="80px" h="80px" alt="" />
+                )}
+                <Input type="file" accept="image/*" display="none" onChange={onIconFileChange} />
+                {iconModalCropper}
+              </label>
+              <Input value={croppedIconUrl} display="none" {...register("wipIconUrl")} />
+            </Skeleton>
+          </Box>
+        </Box>
+        <Flex direction="column" gap={3} paddingX={6} paddingY={3}>
+          <ControlledInput
+            label="名前"
+            errors={errors}
+            isRequired
+            isLoaded={authContext.currentUser != undefined && !isLoading}
+            {...register("displayName")}
+            defaultValue={data && data.displayName ? data.displayName : undefined}
+          />
+          <ControlledTextarea
+            label="自己紹介"
+            errors={errors}
+            isRequired
+            isLoaded={authContext.currentUser != undefined && !isLoading}
+            {...register("biography")}
+            defaultValue={data && data.biography ? data.biography : undefined}
+          />
+          <Button
+            onClick={handleSubmit(onSubmit)}
+            isLoading={isUploading}
+            marginY={3}
+            color="white"
+            backgroundColor="blue.400">
+            保存
+          </Button>
+        </Flex>
       </Box>
-      <Flex direction="column" gap={3} paddingX={6} paddingY={3}>
-        <ControlledInput
-          label="名前"
-          errors={errors}
-          isRequired
-          isLoaded={authContext.currentUser != undefined && !isLoading}
-          {...register("displayName")}
-          defaultValue={data && data.displayName ? data.displayName : undefined}
-        />
-        <ControlledTextarea
-          label="自己紹介"
-          errors={errors}
-          isRequired
-          isLoaded={authContext.currentUser != undefined && !isLoading}
-          {...register("biography")}
-          defaultValue={data && data.biography ? data.biography : undefined}
-        />
-        <Button
-          onClick={handleSubmit(onSubmit)}
-          isLoading={isUploading}
-          marginY={3}
-          color="white"
-          backgroundColor="blue.400">
-          保存
-        </Button>
-      </Flex>
-    </Container>
+    </>
   );
 };
 

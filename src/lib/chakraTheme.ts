@@ -1,5 +1,5 @@
 export default {
   colors: {
-    fg: "gray.700",
+    fg: "gray.600",
   },
 };
