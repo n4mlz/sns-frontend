@@ -48,7 +48,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   return (
     <Box padding={0}>
       <PageBackButton />
-      <Box>
+      <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoadingUser}>
             {!userData || !userData.userName || userError || isLoadingUser ? (
@@ -66,7 +66,8 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
               position="absolute"
               top="-44px"
               left="10px"
-              border="4px solid white"
+              border="4px"
+              borderColor="white"
               borderRadius="44px"
               backgroundColor="gray.200"
               overflow="hidden">
@@ -150,6 +151,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           <Posts posts={postsData} postsCallback={(posts) => postsMutate(posts, false)} />
         ) : null}
       </Box>
+      <Button onClick={() => client.POST("/api/posts", { body: { content: "Hello, World!" } })}>投稿する</Button>
     </Box>
   );
 };

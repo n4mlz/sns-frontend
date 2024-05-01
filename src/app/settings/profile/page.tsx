@@ -133,7 +133,8 @@ const ProfileSettingsPage = () => {
             position="absolute"
             top="-38px"
             left="10px"
-            border="4px solid white"
+            border="4px"
+            borderColor="white"
             borderRadius="44px"
             backgroundColor="gray.200"
             overflow="hidden">
