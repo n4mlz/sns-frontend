@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Container, Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
+import { Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import Header from "@/components/elements/header";
 import { ControlledInput } from "@/components/elements/ControlledInput";
+import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
 import client from "@/lib/openapi";
+import { components } from "@/lib/openapi/schema";
 import domainConsts from "@/constants/domain";
 import { postUserIconUrl, postUserBgImageUrl, userIconUrl, userBgImageUrl } from "@/lib/image";
 
@@ -41,7 +44,9 @@ const ProfileSettingsPage = () => {
   const router = useRouter();
   const toast = useToast();
   const authContext = useAuthContext();
-  const { data, error, isLoading } = useSWR(authContext.currentUser ? "/api/settings/profile" : null);
+  const { data, error, isLoading } = useSWR<components["schemas"]["profile"]>(
+    authContext.currentUser ? "/api/settings/profile" : null
+  );
   const [isUploading, setIsUploading] = useState<boolean>(false);
 
   const {
@@ -102,8 +107,9 @@ const ProfileSettingsPage = () => {
   };
 
   return (
-    <div>
-      <Container as="form" padding={0}>
+    <>
+      <Header title="プロフィールの設定" />
+      <Box as="form" padding={0}>
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
             <label>
@@ -120,18 +126,28 @@ const ProfileSettingsPage = () => {
             <Input value={croppedBgImageUrl} display="none" {...register("wipBgImageUrl")} />
           </Skeleton>
         </Box>
-        <Flex direction="column" gap={3} paddingX={6} paddingY={3}>
-          <Box w={90} h={90} borderRadius={45} backgroundColor="gray.200" overflow="hidden">
+        <Box position="relative" marginBottom="44px">
+          <Box
+            w="88px"
+            h="88px"
+            position="absolute"
+            top="-38px"
+            left="10px"
+            border="4px"
+            borderColor="white"
+            borderRadius="44px"
+            backgroundColor="gray.200"
+            overflow="hidden">
             <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
               <label>
                 {croppedIconUrl ? (
-                  <Image src={croppedIconUrl} w={90} h={90} alt="" />
+                  <Image src={croppedIconUrl} w="80px" h="80px" alt="" />
                 ) : !data || !data.userName || error || isLoading ? (
-                  <Box w={90} h={90} />
+                  <Box w="80px" h="80px" />
                 ) : (
                   // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
                   // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
-                  <Image src={userIconUrl(data.userName)} w={90} h={90} alt="" />
+                  <Image src={userIconUrl(data.userName)} w="80px" h="80px" alt="" />
                 )}
                 <Input type="file" accept="image/*" display="none" onChange={onIconFileChange} />
                 {iconModalCropper}
@@ -139,21 +155,23 @@ const ProfileSettingsPage = () => {
               <Input value={croppedIconUrl} display="none" {...register("wipIconUrl")} />
             </Skeleton>
           </Box>
+        </Box>
+        <Flex direction="column" gap={3} paddingX={6} paddingY={3}>
           <ControlledInput
             label="名前"
             errors={errors}
             isRequired
             isLoaded={authContext.currentUser != undefined && !isLoading}
             {...register("displayName")}
-            defaultValue={data && data.displayName ? data.displayName : null}
+            defaultValue={data && data.displayName ? data.displayName : undefined}
           />
-          <ControlledInput
+          <ControlledTextarea
             label="自己紹介"
             errors={errors}
             isRequired
             isLoaded={authContext.currentUser != undefined && !isLoading}
             {...register("biography")}
-            defaultValue={data && data.biography ? data.biography : null}
+            defaultValue={data && data.biography ? data.biography : undefined}
           />
           <Button
             onClick={handleSubmit(onSubmit)}
@@ -164,8 +182,8 @@ const ProfileSettingsPage = () => {
             保存
           </Button>
         </Flex>
-      </Container>
-    </div>
+      </Box>
+    </>
   );
 };
 

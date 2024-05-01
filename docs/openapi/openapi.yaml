@@ -254,7 +254,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/user'
+                $ref: '#/components/schemas/userDetail'
 
 # 軽量化のため以下のエンドポイントは使わず、Cloudflare R2 のバケットを直接見に行く
   
@@ -528,6 +528,22 @@ components:
         createdAt:
           type: string
           format: date-time
+        followingStatus:
+          type: string
+    userDetail:
+      type: object
+      properties:
+        userName:
+          type: string
+        displayName:
+          type: string
+        biography:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        mutuals:
+          type: integer
         followingStatus:
           type: string
     postId:

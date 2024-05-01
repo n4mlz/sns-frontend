@@ -5,6 +5,7 @@ import Cropper, { Area } from "react-easy-crop";
 import {
   Box,
   Button,
+  Center,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -50,24 +51,26 @@ const useImageCrop = (width: number, height: number) => {
   };
 
   const modalCropper = (
-    <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
+    <Modal isOpen={isOpen} onClose={onClose} size={{ base: "sm", md: "md", lg: "lg" }}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader margin={1} />
         <ModalCloseButton />
         <ModalBody>
           {/* TODO: モーダルの中にCropperを配置するとなぜかCropperの中の画像がずれる問題を解決する */}
-          <Box w={336} h={240} position={"relative"}>
-            <Cropper
-              image={inputImage}
-              crop={crop}
-              zoom={zoom}
-              aspect={width / height}
-              onCropChange={setCrop}
-              onCropComplete={onCropComplete}
-              onZoomChange={setZoom}
-            />
-          </Box>
+          <Center>
+            <Box w={{ base: 336, md: 400, lg: 464 }} h={{ base: 240, md: 286, lg: 331 }} position={"relative"}>
+              <Cropper
+                image={inputImage}
+                crop={crop}
+                zoom={zoom}
+                aspect={width / height}
+                onCropChange={setCrop}
+                onCropComplete={onCropComplete}
+                onZoomChange={setZoom}
+              />
+            </Box>
+          </Center>
         </ModalBody>
         <ModalFooter>
           <Slider

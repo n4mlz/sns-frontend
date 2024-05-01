@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
+import { Container } from "@chakra-ui/react";
 import { AuthProvider } from "@/components/contexts/AuthProvider";
 import SWRConfigProvider from "@/components/contexts/SWRConfigProvider";
-import { ChakraProvider, Container } from "@chakra-ui/react";
+import ChakraConfigProvider from "@/components/contexts/ChakraConfigProvider";
 import "normalize.css";
 import "@styles/global.css";
 
@@ -32,11 +33,11 @@ export default function RootLayout({
       <body className={`${inter.variable} ${notojp.variable}`}>
         <AuthProvider>
           <SWRConfigProvider>
-            <ChakraProvider>
-              <Container maxW="450px" padding={0}>
+            <ChakraConfigProvider>
+              <Container maxW="600px" padding={0}>
                 {children}
               </Container>
-            </ChakraProvider>
+            </ChakraConfigProvider>
           </SWRConfigProvider>
         </AuthProvider>
       </body>

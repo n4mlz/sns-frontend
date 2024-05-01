@@ -243,7 +243,7 @@ export interface paths {
         /** @description successful operation */
         200: {
           content: {
-            "application/json": components["schemas"]["user"];
+            "application/json": components["schemas"]["userDetail"];
           };
         };
       };
@@ -499,6 +499,15 @@ export interface components {
       biography?: string;
       /** Format: date-time */
       createdAt?: string;
+      followingStatus?: string;
+    };
+    userDetail: {
+      userName?: string;
+      displayName?: string;
+      biography?: string;
+      /** Format: date-time */
+      createdAt?: string;
+      mutuals?: number;
       followingStatus?: string;
     };
     postId: {

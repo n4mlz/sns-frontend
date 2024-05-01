@@ -67,19 +67,19 @@ export const ControlledInput = forwardRef<ControlledInputProps, "input">(
 
                 {isLoadingAvailable ? (
                   <InputRightElement>
-                    <Tooltip label="ユーザー名が使用可能か検証しています...">
+                    <Tooltip label="ユーザー名が使用可能か検証しています..." bg="gray.500">
                       <Spinner size="sm" />
                     </Tooltip>
                   </InputRightElement>
                 ) : isAvailableUserName ? (
                   <InputRightElement>
-                    <Tooltip label="このユーザー名は使用できます。">
+                    <Tooltip label="このユーザー名は使用できます。" bg="gray.500">
                       <CheckCircleIcon color="green.500" />
                     </Tooltip>
                   </InputRightElement>
                 ) : (
                   <InputRightElement>
-                    <Tooltip label="このユーザー名は使用できません。">
+                    <Tooltip label="このユーザー名は使用できません。" bg="gray.500">
                       <NotAllowedIcon color="red.500" />
                     </Tooltip>
                   </InputRightElement>
