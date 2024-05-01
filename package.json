@@ -17,7 +17,6 @@
     "@hookform/resolvers": "^3.3.4",
     "date-fns": "^3.6.0",
     "firebase": "^10.11.0",
-    "framer-motion": "^11.1.7",
     "next": "14.2.2",
     "normalize.css": "^8.0.1",
     "openapi-fetch": "^0.9.4",
@@ -25,6 +24,7 @@
     "react-dom": "^18",
     "react-easy-crop": "^5.0.6",
     "react-hook-form": "^7.51.3",
+    "react-icons": "^5.2.0",
     "swr": "^2.2.5",
     "zod": "^3.23.4"
   },

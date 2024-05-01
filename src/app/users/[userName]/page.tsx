@@ -2,7 +2,7 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { Flex, Box, Heading, Button, Text, Skeleton, SkeletonText, Image } from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
@@ -29,6 +29,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   const {
     data: postsData,
     isLoading: isLoadingPosts,
+    mutate: postsMutate,
     error: postsError,
   } = useSWR<components["schemas"]["post"][]>(
     authContext.currentUser ? path.join("/api/users", params.userName, "/posts") : null
@@ -110,7 +111,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
             </Button>
           )}
         </Flex>
-        <Flex direction="column" gap={1} paddingX={6} paddingY={1.5}>
+        <Flex direction="column" gap={1} paddingX={5} paddingY={1.5}>
           <Box>
             {authContext.currentUser != undefined && !isLoadingUser ? (
               !userData || !userData.userName || userError ? (
@@ -144,8 +145,11 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           ) : null}
         </Flex>
       </Box>
-      <Button onClick={() => client.POST("/api/posts", { body: { content: "hello, world!" } })}>post</Button>
-      <Box>{postsData ? <Posts posts={postsData} /> : null}</Box>
+      <Box>
+        {postsData && postsData.length ? (
+          <Posts posts={postsData} postsCallback={(posts) => postsMutate(posts, false)} />
+        ) : null}
+      </Box>
     </Box>
   );
 };

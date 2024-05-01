@@ -18,7 +18,7 @@ const Header = ({ title }: Props) => {
           h="35px"
           justifyContent="center"
           alignItems="center"
-          margin="15px"
+          marginX="15px"
           backgroundColor="gray.700"
           borderRadius="full"
           opacity="0.8"
