@@ -101,8 +101,7 @@ const ProfileSettingsPage = () => {
         status: "success",
         isClosable: true,
       });
-      // TODO: 適切な場所にリダイレクトさせる
-      // router.push("/");
+      router.back();
     }
   };
 

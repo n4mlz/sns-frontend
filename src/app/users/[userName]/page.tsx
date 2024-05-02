@@ -12,6 +12,7 @@ import { components } from "@/lib/openapi/schema";
 import { userBgImageUrl, userIconUrl } from "@/lib/image";
 import domainConsts from "@/constants/domain";
 import PageBackButton from "@/components/elements/pageBackButton";
+import PostButton from "@/components/elements/postButton";
 
 const UserPage = ({ params }: { params: { userName: string } }) => {
   const router = useRouter();
@@ -55,6 +56,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   return (
     <Box padding={0}>
       <PageBackButton />
+      <PostButton />
       <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoadingUser}>

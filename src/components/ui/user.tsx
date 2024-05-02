@@ -97,7 +97,11 @@ const User = ({ user, userCallback, enableReject }: Props) => {
             </Button>
           )}
         </Flex>
-        <Text onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
+        <Text
+          overflowWrap="anywhere"
+          wordBreak="normal"
+          whiteSpace="break-spaces"
+          onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
           {adjustBio(user.biography ? user.biography : "")}
         </Text>
       </Flex>
