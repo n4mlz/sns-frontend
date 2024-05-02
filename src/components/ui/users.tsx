@@ -5,9 +5,10 @@ import User from "@components/ui/user";
 type UsersProps = {
   users: components["schemas"]["user"][];
   usersCallback?: (users: components["schemas"]["user"][]) => void;
+  enableReject?: boolean;
 };
 
-const Users = ({ users, usersCallback }: UsersProps) => {
+const Users = ({ users, usersCallback, enableReject }: UsersProps) => {
   const userCallback = (index: number) => {
     return (user: components["schemas"]["user"]) => {
       const newUsers = [...users];
@@ -19,7 +20,7 @@ const Users = ({ users, usersCallback }: UsersProps) => {
   return (
     <Flex direction="column">
       {users.map((user, index) => (
-        <User user={user} userCallback={userCallback(index)} />
+        <User user={user} userCallback={userCallback(index)} enableReject={enableReject} />
       ))}
     </Flex>
   );

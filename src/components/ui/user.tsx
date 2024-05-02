@@ -2,16 +2,21 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import { Flex, Box, Text, Button, Image } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, IconButton, Image } from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
 import domainConsts from "@/constants/domain";
 import { adjustBio } from "@/utils/stringOperation";
 
-type Props = { user: components["schemas"]["user"]; userCallback?: (user: components["schemas"]["user"]) => void };
+type Props = {
+  user: components["schemas"]["user"];
+  userCallback?: (user: components["schemas"]["user"]) => void;
+  enableReject?: boolean;
+};
 
-const User = ({ user, userCallback }: Props) => {
+const User = ({ user, userCallback, enableReject }: Props) => {
   const router = useRouter();
 
   const follow = (afterStatus: string) => {
@@ -22,6 +27,11 @@ const User = ({ user, userCallback }: Props) => {
   const unfollow = (afterStatus: string) => {
     client.PUT("/api/follows/unfollow", { body: { userName: user.userName } });
     userCallback?.({ ...user, followingStatus: afterStatus });
+  };
+
+  const reject = () => {
+    client.PUT("/api/follows/reject", { body: { userName: user.userName } });
+    userCallback?.({ ...user, followingStatus: domainConsts.NONE });
   };
 
   return (
@@ -54,14 +64,31 @@ const User = ({ user, userCallback }: Props) => {
               リクエスト中
             </Button>
           )}
-          {user.followingStatus == domainConsts.FOLLOWED && (
-            <Button borderRadius="full" marginX="4px" onClick={() => follow(domainConsts.MUTUAL)}>
-              リクエストを承認する
-            </Button>
-          )}
+          {user.followingStatus == domainConsts.FOLLOWED &&
+            (enableReject ? (
+              <Flex direction="row" gap="4px" alignItems="center">
+                <Button borderRadius="full" marginX="4px" onClick={() => follow(domainConsts.MUTUAL)}>
+                  リクエストを承認する
+                </Button>
+                <IconButton
+                  isRound={true}
+                  variant="outline"
+                  colorScheme="red"
+                  size="sm"
+                  fontSize="12px"
+                  aria-label="reject"
+                  icon={<CloseIcon />}
+                  onClick={reject}
+                />
+              </Flex>
+            ) : (
+              <Button borderRadius="full" marginX="4px" onClick={() => follow(domainConsts.MUTUAL)}>
+                リクエストを承認する
+              </Button>
+            ))}
           {user.followingStatus == domainConsts.NONE && (
             <Button borderRadius="full" marginX="4px" onClick={() => follow(domainConsts.FOLLOWING)}>
-              リクエストする
+              リクエスト
             </Button>
           )}
           {user.followingStatus == domainConsts.OWN && (

@@ -106,7 +106,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           )}
           {userData?.followingStatus == domainConsts.NONE && (
             <Button borderRadius="full" marginX="10px" marginTop="10px" onClick={() => follow(domainConsts.FOLLOWING)}>
-              リクエストする
+              リクエスト
             </Button>
           )}
           {userData?.followingStatus == domainConsts.OWN && (
