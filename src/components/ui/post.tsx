@@ -42,7 +42,9 @@ const Post = ({ post, postCallback }: Props) => {
             <Text color="gray.500">{`@${post.poster?.userName}`}</Text>
             <Text color="gray.500">{`· ${getFormattedDate(post.createdAt!)}`}</Text>
           </Flex>
-          <Text>{post.content}</Text>
+          <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
+            {post.content}
+          </Text>
         </Flex>
         <Flex direction="row" gap="16px">
           <Flex direction="row" gap="6px" alignItems="center" color="gray.500">

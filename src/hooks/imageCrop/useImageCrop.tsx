@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Center,
+  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -54,7 +55,9 @@ const useImageCrop = (width: number, height: number) => {
     <Modal isOpen={isOpen} onClose={onClose} size={{ base: "sm", md: "md", lg: "lg" }}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader margin={1} />
+        <ModalHeader margin={1}>
+          <Heading size="md">画像をトリミング</Heading>
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           {/* TODO: モーダルの中にCropperを配置するとなぜかCropperの中の画像がずれる問題を解決する */}
