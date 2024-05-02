@@ -55,7 +55,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   return (
     <Box padding={0}>
       <PageBackButton />
-      <Box paddingBottom="8px" borderBottom="2px" borderColor="gray.300">
+      <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoadingUser}>
             {!userData || !userData.userName || userError || isLoadingUser ? (
@@ -106,7 +106,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           )}
           {userData?.followingStatus == domainConsts.NONE && (
             <Button borderRadius="full" marginX="10px" marginTop="10px" onClick={() => follow(domainConsts.FOLLOWING)}>
-              リクエストする
+              リクエスト
             </Button>
           )}
           {userData?.followingStatus == domainConsts.OWN && (
@@ -171,10 +171,12 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
         ) : postsData && postsData.length ? (
-          <Posts
-            posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
-            postsCallback={(posts) => postsMutate(posts, false)}
-          />
+          <Box borderTop="2px" borderColor="gray.300">
+            <Posts
+              posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
+              postsCallback={(posts) => postsMutate(posts, false)}
+            />
+          </Box>
         ) : null}
       </Box>
     </Box>
