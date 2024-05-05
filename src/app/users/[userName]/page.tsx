@@ -53,10 +53,14 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
     }
   };
 
+  const postSubmitCallback = (post: components["schemas"]["post"]) => {
+    postsMutate([post, ...(postsData ? postsData : [])], false);
+  };
+
   return (
     <Box padding={0}>
       <PageBackButton />
-      <PostButton />
+      <PostButton submitCallback={postSubmitCallback} />
       <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoadingUser}>

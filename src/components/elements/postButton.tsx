@@ -3,9 +3,14 @@
 import usePostModal from "@/hooks/postModal";
 import { Box, Flex } from "@chakra-ui/react";
 import { LuSend } from "react-icons/lu";
+import { components } from "@/lib/openapi/schema";
 
-const PostButton = () => {
-  const { onOpen, postModal } = usePostModal();
+type Props = {
+  submitCallback?: (comment: components["schemas"]["post"]) => any;
+};
+
+const PostButton = ({ submitCallback }: Props) => {
+  const { onOpen, postModal } = usePostModal(submitCallback);
 
   return (
     <Flex w="100%" maxW="600px" justifyContent="flex-end" position="fixed" bottom="35px">
