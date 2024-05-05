@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn, signOut } from "@/lib/firebase";
-import { useEffect, useState } from "react";
+import Timeline from "@app/_components/timeline";
 
 const Home = () => {
   const authContext = useAuthContext();
@@ -31,12 +32,7 @@ const Home = () => {
           <button onClick={() => signIn()}>sign in</button>
         </div>
       )}
-      {pageType === "timeline" && (
-        <div>
-          <p>timeline</p>
-          <button onClick={() => signOut()}>sign out</button>
-        </div>
-      )}
+      {pageType === "timeline" && <Timeline />}
     </div>
   );
 };
