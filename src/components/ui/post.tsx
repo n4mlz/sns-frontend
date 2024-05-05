@@ -47,7 +47,12 @@ const Post = ({ post, postCallback }: Props) => {
           </Text>
         </Flex>
         <Flex direction="row" gap="16px">
-          <Flex direction="row" gap="6px" alignItems="center" color="gray.500">
+          <Flex
+            direction="row"
+            gap="6px"
+            alignItems="center"
+            color="gray.500"
+            onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
             <Tooltip label="コメントする" bg="gray.500" openDelay={1000}>
               <Box>
                 <FaRegCommentAlt />

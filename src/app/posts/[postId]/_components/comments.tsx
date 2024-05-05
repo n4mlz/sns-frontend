@@ -27,25 +27,26 @@ const Comments = ({ postId, comments, commentsCallback }: Props) => {
   const { onOpen, commentModal } = useCommentModal(postId, commentSubmitCallback);
 
   return (
-    <Box>
-      <Flex direction="column">
-        {comments.map((comment, index) => (
-          <Comment comment={comment} commentCallback={commentCallback(index)} />
-        ))}
-      </Flex>
+    <>
       {commentModal}
-      <Button
-        onClick={onOpen}
-        marginX="4px"
-        marginY="8px"
-        color="blue.500"
-        backgroundColor="white"
-        border="1px"
-        borderColor="blue.500"
-        borderRadius="full">
-        コメントする
-      </Button>
-    </Box>
+      <Box>
+        <Flex direction="column">
+          {comments.map((comment, index) => (
+            <Comment comment={comment} commentCallback={commentCallback(index)} />
+          ))}
+        </Flex>
+        <Button
+          onClick={onOpen}
+          margin="8px"
+          color="blue.500"
+          backgroundColor="white"
+          border="1px"
+          borderColor="blue.500"
+          borderRadius="full">
+          コメントする
+        </Button>
+      </Box>
+    </>
   );
 };
 
