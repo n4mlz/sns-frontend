@@ -12,7 +12,7 @@ const Header = ({ title }: Props) => {
   const router = useRouter();
   return (
     <Box position="relative" h="60px">
-      <Flex as="header" direction="row" alignItems="center" position="fixed" h="60px">
+      <Flex as="header" direction="row" w="100%" h="60px" alignItems="center" position="fixed" backgroundColor="white">
         <Flex
           w="35px"
           h="35px"

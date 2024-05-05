@@ -9,7 +9,7 @@ const sleep = async (msec: number) => {
   });
 };
 
-const getFormattedDate = (date: Date | string) => {
+const getAboutDate = (date: Date | string) => {
   if (typeof date === "string") {
     date = new Date(date);
   }
@@ -31,4 +31,14 @@ const getFormattedDate = (date: Date | string) => {
   return time.replace("約", "");
 };
 
-export { sleep, getFormattedDate };
+const getFormattedDate = (date: Date | string) => {
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+
+  date = format(date, "yyyy年MM月dd日 hh:mm");
+
+  return date;
+};
+
+export { sleep, getAboutDate, getFormattedDate };

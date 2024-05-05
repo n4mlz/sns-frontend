@@ -2,13 +2,13 @@ import { Flex } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
 import User from "@components/ui/user";
 
-type UsersProps = {
+type Props = {
   users: components["schemas"]["user"][];
   usersCallback?: (users: components["schemas"]["user"][]) => void;
   enableReject?: boolean;
 };
 
-const Users = ({ users, usersCallback, enableReject }: UsersProps) => {
+const Users = ({ users, usersCallback, enableReject }: Props) => {
   const userCallback = (index: number) => {
     return (user: components["schemas"]["user"]) => {
       const newUsers = [...users];
