@@ -7,7 +7,7 @@ import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
-import { getFormattedDate } from "@/utils/time";
+import { getAboutDate } from "@/utils/time";
 
 type Props = { post: components["schemas"]["post"]; postCallback?: (post: components["schemas"]["post"]) => void };
 
@@ -40,7 +40,7 @@ const Post = ({ post, postCallback }: Props) => {
           <Flex direction="row" gap="4px">
             <Text fontWeight={700}>{post.poster?.displayName}</Text>
             <Text color="gray.500">{`@${post.poster?.userName}`}</Text>
-            <Text color="gray.500">{`· ${getFormattedDate(post.createdAt!)}`}</Text>
+            <Text color="gray.500">{`· ${getAboutDate(post.createdAt!)}`}</Text>
           </Flex>
           <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
             {post.content}
@@ -66,7 +66,7 @@ const Post = ({ post, postCallback }: Props) => {
             </Flex>
           ) : (
             <Flex direction="row" gap="6px" alignItems="center" color="gray.500" onClick={like}>
-              <Tooltip label="いいね !" bg="gray.500" openDelay={500}>
+              <Tooltip label="いいね !" bg="gray.500" openDelay={1000}>
                 <Box>
                   <FaRegHeart />
                 </Box>

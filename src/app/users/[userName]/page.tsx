@@ -145,7 +145,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           <SkeletonText isLoaded={authContext.currentUser != undefined && !isLoadingUser} noOfLines={3} marginY="4px">
             <Text>{userData?.biography}</Text>
           </SkeletonText>
-          {authContext.currentUser != undefined && !isLoadingUser ? (
+          {authContext.currentUser != undefined && !isLoadingUser && (
             <>
               <Flex direction="column" gap="8px">
                 <Flex direction="row" gap="6px" alignItems="center">
@@ -164,7 +164,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
                 </Flex>
               </Flex>
             </>
-          ) : null}
+          )}
         </Flex>
       </Box>
       <Box>
@@ -172,14 +172,17 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           <Center borderTop="2px" borderColor="gray.200">
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
-        ) : postsData && postsData.length ? (
-          <Box borderTop="2px" borderColor="gray.300">
-            <Posts
-              posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
-              postsCallback={(posts) => postsMutate(posts, false)}
-            />
-          </Box>
-        ) : null}
+        ) : (
+          postsData &&
+          postsData.length && (
+            <Box borderTop="2px" borderColor="gray.300">
+              <Posts
+                posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
+                postsCallback={(posts) => postsMutate(posts, false)}
+              />
+            </Box>
+          )
+        )}
       </Box>
     </Box>
   );
