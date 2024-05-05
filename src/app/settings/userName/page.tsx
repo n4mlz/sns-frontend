@@ -1,5 +1,6 @@
 "use client";
 
+import path from "path";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -63,8 +64,7 @@ const userNameSettingsPage = () => {
         status: "success",
         isClosable: true,
       });
-      // TODO: 適切な場所にリダイレクトさせる
-      // router.push("/");
+      router.push(path.join("/users", form.userName));
     } else {
       toast({
         title: "エラーが発生しました。",

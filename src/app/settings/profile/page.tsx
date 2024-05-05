@@ -1,5 +1,6 @@
 "use client";
 
+import path from "path";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -101,7 +102,7 @@ const ProfileSettingsPage = () => {
         status: "success",
         isClosable: true,
       });
-      router.back();
+      router.push(path.join("/users", data?.userName ? data.userName : ""));
     }
   };
 

@@ -17,7 +17,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
   const router = useRouter();
   const authContext = useAuthContext();
 
-  const { data, isLoading, mutate, error } = useSWR<components["schemas"]["postDetail"]>(
+  const { data, isLoading, mutate } = useSWR<components["schemas"]["postDetail"]>(
     authContext.currentUser ? path.join("/api/posts", params.postId).toString() : null
   );
 
