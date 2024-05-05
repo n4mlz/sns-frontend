@@ -5,7 +5,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { components } from "@/lib/openapi/schema";
 import {
   Box,
   Button,
@@ -25,10 +24,11 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 import client from "@/lib/openapi";
+import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
 import domainConsts from "@/constants/domain";
-import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 
 const schema = z.object({
   content: z
@@ -39,7 +39,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) => any) => {
+const useCommentModal = (postId: string, submitCallback?: (comment: components["schemas"]["comment"]) => any) => {
   const disclosure = useDisclosure();
   const toast = useToast();
   const authContext = useAuthContext();
@@ -70,19 +70,19 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
 
   const onSubmit: SubmitHandler<FormValues> = async (form) => {
     setIsPosting(true);
-    const res = await client.POST("/api/posts", { body: { content: form.content } });
+    const res = await client.POST("/api/posts/comments", { body: { postId: postId, content: form.content } });
     setIsPosting(false);
     if (res.response.ok) {
       submitCallback && submitCallback({ ...res.data });
       disclosure.onClose();
       toast({
-        title: "投稿しました !",
+        title: "コメントしました !",
         status: "success",
         isClosable: true,
       });
     } else {
       toast({
-        title: "投稿に失敗しました",
+        title: "コメントに失敗しました",
         description: "入力内容に誤りがあるか、サーバーに問題が発生した可能性があります。",
         status: "error",
         isClosable: true,
@@ -96,12 +96,12 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
     setIsOk(schema.safeParse({ content: currentContent }).success);
   }, [watch("content"), isLoading]);
 
-  const postModal = (
+  const commentModal = (
     <Modal isOpen={disclosure.isOpen} onClose={disclosure.onClose} size={{ base: "sm", md: "md", lg: "lg" }}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader margin={1}>
-          <Heading size="md">投稿する</Heading>
+          <Heading size="md">コメントを追加</Heading>
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -118,7 +118,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
             <Box flex={1}>
               <ControlledTextarea
                 variant="unstyled"
-                placeholder="いまどうしてる？"
+                placeholder="コメントする"
                 padding={0}
                 isLoaded
                 label=""
@@ -145,7 +145,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
               isLoading={isPosting}
               onClick={handleSubmit(onSubmit)}
               _disabled={{ backgroundColor: "blue.200" }}>
-              投稿する
+              コメント
             </Button>
           </Flex>
         </ModalFooter>
@@ -154,10 +154,10 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
   );
 
   return {
-    postModal,
+    commentModal,
     ...disclosure,
     onOpen,
   };
 };
 
-export default usePostModal;
+export default useCommentModal;
