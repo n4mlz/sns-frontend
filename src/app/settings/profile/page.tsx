@@ -9,7 +9,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import Header from "@/components/elements/header";
+import BackButtonHeader from "@/components/ui/backButtonHeader";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
@@ -108,7 +108,7 @@ const ProfileSettingsPage = () => {
 
   return (
     <>
-      <Header title="プロフィールの設定" />
+      <BackButtonHeader title="プロフィールの設定" />
       <Box as="form" padding={0}>
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>

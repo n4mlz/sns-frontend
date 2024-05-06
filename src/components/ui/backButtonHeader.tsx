@@ -8,11 +8,20 @@ type Props = {
   title: string;
 };
 
-const Header = ({ title }: Props) => {
+const BackButtonHeader = ({ title }: Props) => {
   const router = useRouter();
+
   return (
-    <Box position="relative" h="60px">
-      <Flex as="header" direction="row" w="100%" h="60px" alignItems="center" position="fixed" backgroundColor="white">
+    <Box h="60px">
+      <Flex
+        as="header"
+        direction="row"
+        w="100%"
+        maxW="600px"
+        h="60px"
+        alignItems="center"
+        position="fixed"
+        backgroundColor="white">
         <Flex
           w="35px"
           h="35px"
@@ -33,4 +42,4 @@ const Header = ({ title }: Props) => {
   );
 };
 
-export default Header;
+export default BackButtonHeader;

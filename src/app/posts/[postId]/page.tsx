@@ -6,7 +6,7 @@ import useSWR from "swr";
 import { Box, Center, Flex, Image, Skeleton, SkeletonText, Spinner, Text, Tooltip } from "@chakra-ui/react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import Header from "@/components/elements/header";
+import BackButtonHeader from "@/components/ui/backButtonHeader";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
@@ -33,7 +33,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
 
   return (
     <>
-      <Header title="ポスト" />
+      <BackButtonHeader title="ポスト" />
       <Box>
         <Flex direction="column" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
           <Flex direction="row" gap="8px">

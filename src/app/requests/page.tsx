@@ -5,7 +5,7 @@ import { Box, Center, Spinner } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
-import Header from "@/components/elements/header";
+import BackButtonHeader from "@/components/ui/backButtonHeader";
 
 const RequestsPage = () => {
   const authContext = useAuthContext();
@@ -16,7 +16,7 @@ const RequestsPage = () => {
 
   return (
     <>
-      <Header title="リクエスト" />
+      <BackButtonHeader title="リクエスト" />
       {!authContext.currentUser || isLoading ? (
         <Center>
           <Spinner thickness="2px" color="gray.300" margin="40px" />
