@@ -4,7 +4,7 @@ import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Box, Button, Flex, Heading, useColorMode } from "@chakra-ui/react";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa6";
 import { MdLogout, MdOutlineDarkMode, MdOutlineLightMode, MdOutlineSettings } from "react-icons/md";
 import { LuSend } from "react-icons/lu";
 import { useAuthContext } from "@components/contexts/AuthProvider";
@@ -37,10 +37,10 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
   };
 
   const mainMenu = (
-    <Flex direction="column" gap="24px">
+    <Flex direction="column" gap="32px">
       <Flex
         direction="row"
-        gap="8px"
+        gap="16px"
         alignItems="center"
         onClick={() => router.push(path.join("/users", data?.userName ? data.userName : ""))}>
         <FaRegUser size="22px" />
@@ -48,7 +48,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
           プロフィール
         </Heading>
       </Flex>
-      <Flex direction="row" gap="8px" alignItems="center" onClick={() => router.push("/settings")}>
+      <Flex direction="row" gap="16px" alignItems="center" onClick={() => router.push("/settings")}>
         <MdOutlineSettings size="22px" />
         <Heading as="h2" size="md">
           設定
@@ -56,7 +56,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
       </Flex>
       <Box>
         <Button color="white" backgroundColor="blue.400" borderRadius="full" paddingX="20px">
-          <Flex direction="row" gap="8px" alignItems="center" onClick={openPostModal}>
+          <Flex direction="row" gap="16px" alignItems="center" onClick={openPostModal}>
             <LuSend size="18px" />
             <Heading as="h2" size="sm">
               ポストする
