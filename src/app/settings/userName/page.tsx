@@ -9,7 +9,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Flex, Box, Button, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import Header from "@/components/elements/header";
+import BackButtonHeader from "@/components/ui/backButtonHeader";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
@@ -105,7 +105,7 @@ const userNameSettingsPage = () => {
 
   return (
     <>
-      <Header title="ユーザー名の設定" />
+      <BackButtonHeader title="ユーザー名の設定" />
       <Box as="form" padding={0}>
         <Flex direction="column" gap={3} paddingX={6} paddingY={3}>
           <ControlledInput
