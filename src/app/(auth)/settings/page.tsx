@@ -30,7 +30,4 @@ const SettingsPage = () => {
   );
 };
 
-// userName LuAtSign
-// profile FaRegCircleUser
-
 export default SettingsPage;

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -14,6 +15,7 @@ import { signOut } from "@/lib/firebase";
 const useSignOutDialog = () => {
   const disclosure = useDisclosure();
   const cancelRef = useRef(null);
+  const router = useRouter();
 
   const onClose = () => {
     disclosure.onClose();
@@ -36,7 +38,13 @@ const useSignOutDialog = () => {
             <Button ref={cancelRef} onClick={disclosure.onClose}>
               キャンセル
             </Button>
-            <Button colorScheme="red" onClick={onClose} ml={3}>
+            <Button
+              colorScheme="red"
+              onClick={() => {
+                onClose();
+                router.push("/");
+              }}
+              ml={3}>
               ログアウト
             </Button>
           </AlertDialogFooter>

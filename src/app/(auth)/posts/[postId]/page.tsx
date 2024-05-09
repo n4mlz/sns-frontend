@@ -11,7 +11,7 @@ import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
 import { getFormattedDate } from "@/utils/time";
-import Comments from "@app/posts/[postId]/_components/comments";
+import Comments from "@/app/(auth)/posts/[postId]/_components/comments";
 
 const PostPage = ({ params }: { params: { postId: string } }) => {
   const router = useRouter();

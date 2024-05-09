@@ -1,7 +1,7 @@
 import { Flex, Box, Button } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
 import useReplyModal from "@/hooks/replyModal";
-import Reply from "@app/posts/[postId]/_components/reply";
+import Reply from "@/app/(auth)/posts/[postId]/_components/reply";
 
 type Props = {
   commentId: string;

@@ -6,7 +6,7 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
 import { getAboutDate } from "@/utils/time";
-import Replies from "@app/posts/[postId]/_components/replies";
+import Replies from "@/app/(auth)/posts/[postId]/_components/replies";
 
 type Props = {
   comment: components["schemas"]["comment"];

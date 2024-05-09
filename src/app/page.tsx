@@ -1,40 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import { signIn, signOut } from "@/lib/firebase";
-import Timeline from "@app/_components/timeline";
+import { signIn } from "@/lib/firebase";
 
-const Home = () => {
+const Welcome = () => {
   const authContext = useAuthContext();
-  const [pageType, setPageType] = useState<"login" | "timeline" | undefined>(undefined);
+  const router = useRouter();
 
   useEffect(() => {
     if (authContext.currentUser) {
-      setPageType("timeline");
-    } else if (authContext.currentUser === null) {
-      setPageType("login");
-    } else {
-      setPageType(undefined);
+      router.push("/home");
     }
   }, [authContext.currentUser]);
 
   return (
     <div>
-      {pageType === undefined && (
+      {authContext.currentUser === undefined ? (
         <div>
           <p>loading...</p>
         </div>
-      )}
-      {pageType === "login" && (
+      ) : (
         <div>
           <p>please sign in.</p>
           <button onClick={() => signIn()}>sign in</button>
         </div>
       )}
-      {pageType === "timeline" && <Timeline />}
     </div>
   );
 };
 
-export default Home;
+export default Welcome;
