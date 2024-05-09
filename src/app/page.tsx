@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Button, Center, Flex, Heading, Spinner } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn } from "@/lib/firebase";
 
@@ -18,14 +19,18 @@ const Welcome = () => {
   return (
     <div>
       {authContext.currentUser === undefined ? (
-        <div>
-          <p>loading...</p>
-        </div>
+        <Center>
+          <Spinner thickness="2px" color="gray.300" margin="40px" />
+        </Center>
       ) : (
-        <div>
-          <p>please sign in.</p>
-          <button onClick={() => signIn()}>sign in</button>
-        </div>
+        <Flex direction="column" gap="20px" paddingY="100px" justifyContent="center" alignItems="center">
+          <Heading as="h2" size="md">
+            はじめよう。
+          </Heading>
+          <Button color="white" backgroundColor="blue.400" onClick={() => signIn(() => router.push("/home"))}>
+            Google でサインイン
+          </Button>
+        </Flex>
       )}
     </div>
   );

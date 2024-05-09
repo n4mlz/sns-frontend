@@ -19,7 +19,7 @@ const useSignOutDialog = () => {
 
   const onClose = () => {
     disclosure.onClose();
-    signOut();
+    signOut(() => router.push("/"));
   };
 
   const signOutDialog = (
@@ -38,13 +38,7 @@ const useSignOutDialog = () => {
             <Button ref={cancelRef} onClick={disclosure.onClose}>
               キャンセル
             </Button>
-            <Button
-              colorScheme="red"
-              onClick={() => {
-                onClose();
-                router.push("/");
-              }}
-              ml={3}>
+            <Button colorScheme="red" onClick={() => onClose()} ml={3}>
               ログアウト
             </Button>
           </AlertDialogFooter>

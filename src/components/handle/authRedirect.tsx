@@ -60,7 +60,7 @@ const AuthRedirect = () => {
                   backgroundColor="blue.400"
                   onClick={() => {
                     onClose();
-                    signIn();
+                    signIn(() => router.push("/home"));
                   }}
                   ml={3}>
                   Google でログイン
