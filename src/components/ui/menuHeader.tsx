@@ -20,7 +20,7 @@ const MenuHeader = () => {
         alignItems="center"
         position="fixed"
         backgroundColor="white">
-        <HamburgerIcon w="35px" h="35px" marginX="15px" onClick={onOpen} />
+        <HamburgerIcon cursor="pointer" w="35px" h="35px" marginX="15px" onClick={onOpen} />
       </Flex>
     </Box>
   );

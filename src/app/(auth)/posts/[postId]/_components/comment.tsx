@@ -24,6 +24,7 @@ const Comment = ({ comment, commentCallback }: Props) => {
     <Flex direction="column" gap="16px" padding="12px" borderBottom="2px" borderColor="gray.200">
       <Flex direction="row" gap="8px">
         <Box
+          cursor="pointer"
           w="45px"
           h="45px"
           borderRadius="full"

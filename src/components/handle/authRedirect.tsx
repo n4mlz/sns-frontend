@@ -29,7 +29,7 @@ const AuthRedirect = () => {
   );
 
   useEffect(() => {
-    if (authContext.currentUser == null) {
+    if (authContext.currentUser === null) {
       setDialog("userNull");
       onOpen();
     }

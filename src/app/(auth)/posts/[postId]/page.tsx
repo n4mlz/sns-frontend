@@ -38,6 +38,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
         <Flex direction="column" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
           <Flex direction="row" gap="8px">
             <Box
+              cursor="pointer"
               w="45px"
               h="45px"
               borderRadius="full"
@@ -50,6 +51,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
             </Box>
             <Flex direction="column" gap="4px" flex="1">
               <Flex
+                cursor="pointer"
                 direction="column"
                 flex="1"
                 onClick={() => router.push(path.join("/users", data?.poster?.userName ? data.poster.userName : ""))}>
@@ -80,11 +82,12 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
               {data?.liked ? (
                 <Flex direction="row" gap="8px" alignItems="center">
                   <Tooltip label="いいねを取り消す" bg="gray.500" openDelay={1000}>
-                    <Box color="red.500" onClick={unlike}>
+                    <Box cursor="pointer" color="red.500" onClick={unlike}>
                       <FaHeart />
                     </Box>
                   </Tooltip>
                   <Text
+                    cursor="pointer"
                     onClick={() =>
                       router.push(path.join("/posts", params.postId, "/likes"))
                     }>{`${data?.likes}人からのいいね`}</Text>
@@ -92,11 +95,12 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
               ) : (
                 <Flex direction="row" gap="8px" alignItems="center">
                   <Tooltip label="いいね !" bg="gray.500" openDelay={1000}>
-                    <Box color="gray.500" onClick={like}>
+                    <Box cursor="pointer" color="gray.500" onClick={like}>
                       <FaRegHeart />
                     </Box>
                   </Tooltip>
                   <Text
+                    cursor="pointer"
                     onClick={() =>
                       router.push(path.join("/posts", params.postId, "/likes"))
                     }>{`${data?.likes}人からのいいね`}</Text>

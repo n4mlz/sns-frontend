@@ -9,6 +9,7 @@ const PageBackButton = () => {
   return (
     <Box position="relative">
       <Flex
+        cursor="pointer"
         position="fixed"
         w="35px"
         h="35px"
