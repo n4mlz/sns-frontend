@@ -1,3 +1,5 @@
+"use client";
+
 import useSWR from "swr";
 import { Box, Center, Spinner } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";

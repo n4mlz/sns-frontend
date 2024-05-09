@@ -37,6 +37,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
   return (
     <Flex direction="row" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
       <Box
+        cursor="pointer"
         w="45px"
         h="45px"
         borderRadius="full"
@@ -48,6 +49,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
       <Flex direction="column" gap="4px" flex="1">
         <Flex direction="row" justifyContent="space-between">
           <Flex
+            cursor="pointer"
             direction="column"
             flex="1"
             onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
@@ -98,6 +100,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
           )}
         </Flex>
         <Text
+          cursor="pointer"
           overflowWrap="anywhere"
           wordBreak="normal"
           whiteSpace="break-spaces"

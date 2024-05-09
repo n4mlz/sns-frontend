@@ -23,7 +23,7 @@ const PostButton = ({ submitCallback }: Props) => {
         backgroundColor="blue.400"
         borderRadius="full">
         {postModal}
-        <Box position="absolute" top="16px" left="13.5px">
+        <Box cursor="pointer" position="absolute" top="16px" left="13.5px">
           <LuSend size="30px" color="white" onClick={onOpen} />
         </Box>
       </Box>

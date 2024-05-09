@@ -159,6 +159,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
                   </Text>
                 </Flex>
                 <Flex
+                  cursor="pointer"
                   direction="row"
                   gap="6px"
                   alignItems="center"

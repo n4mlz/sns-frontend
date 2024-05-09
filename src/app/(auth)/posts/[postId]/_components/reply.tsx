@@ -16,6 +16,7 @@ const Reply = ({ reply, replyCallback }: Props) => {
   return (
     <Flex direction="row" gap="8px">
       <Box
+        cursor="pointer"
         w="45px"
         h="45px"
         borderRadius="full"

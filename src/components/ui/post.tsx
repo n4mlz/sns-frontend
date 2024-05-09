@@ -27,6 +27,7 @@ const Post = ({ post, postCallback }: Props) => {
   return (
     <Flex direction="row" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
       <Box
+        cursor="pointer"
         w="45px"
         h="45px"
         borderRadius="full"
@@ -36,7 +37,10 @@ const Post = ({ post, postCallback }: Props) => {
         <Image src={userIconUrl(post.poster?.userName!)} w="45px" h="45px" alt="" />
       </Box>
       <Flex direction="column" gap="4px" flex="1">
-        <Flex direction="column" onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
+        <Flex
+          cursor="pointer"
+          direction="column"
+          onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
           <Flex direction="row" gap="4px">
             <Text fontWeight={700}>{post.poster?.displayName}</Text>
             <Text color="gray.500">{`@${post.poster?.userName}`}</Text>
@@ -48,6 +52,7 @@ const Post = ({ post, postCallback }: Props) => {
         </Flex>
         <Flex direction="row" gap="16px">
           <Flex
+            cursor="pointer"
             direction="row"
             gap="6px"
             alignItems="center"
@@ -61,7 +66,7 @@ const Post = ({ post, postCallback }: Props) => {
             <Text>{post.comments}</Text>
           </Flex>
           {post.liked ? (
-            <Flex direction="row" gap="6px" alignItems="center" color="red.500" onClick={unlike}>
+            <Flex cursor="pointer" direction="row" gap="6px" alignItems="center" color="red.500" onClick={unlike}>
               <Tooltip label="いいねを取り消す" bg="gray.500" openDelay={1000}>
                 <Box>
                   <FaHeart />
@@ -70,7 +75,7 @@ const Post = ({ post, postCallback }: Props) => {
               <Text>{post.likes}</Text>
             </Flex>
           ) : (
-            <Flex direction="row" gap="6px" alignItems="center" color="gray.500" onClick={like}>
+            <Flex cursor="pointer" direction="row" gap="6px" alignItems="center" color="gray.500" onClick={like}>
               <Tooltip label="いいね !" bg="gray.500" openDelay={1000}>
                 <Box>
                   <FaRegHeart />

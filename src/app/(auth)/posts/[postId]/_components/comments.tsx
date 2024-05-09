@@ -5,7 +5,7 @@ import { Flex, Box, Button, Skeleton, Image } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 import useCommentModal from "@/hooks/commentModal";
-import Comment from "@app/posts/[postId]/_components/comment";
+import Comment from "@/app/(auth)/posts/[postId]/_components/comment";
 import { userIconUrl } from "@/lib/image";
 
 type Props = {

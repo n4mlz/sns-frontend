@@ -14,15 +14,19 @@ const firebaseConfig = {
 
 const firebaseApp = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-const signIn = () => {
+const signIn = async (afterAuth?: () => any) => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth(firebaseApp);
-  return signInWithPopup(auth, provider);
+  const credential = await signInWithPopup(auth, provider);
+  afterAuth && afterAuth();
+  return credential;
 };
 
-const signOut = () => {
+const signOut = async (afterAuth?: () => any) => {
   const auth = getAuth(firebaseApp);
-  return firebaseSignOut(auth);
+  const credential = await firebaseSignOut(auth);
+  afterAuth && afterAuth();
+  return credential;
 };
 
 export { firebaseApp, signIn, signOut };

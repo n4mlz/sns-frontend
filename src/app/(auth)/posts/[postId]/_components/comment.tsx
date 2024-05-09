@@ -6,7 +6,7 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
 import { getAboutDate } from "@/utils/time";
-import Replies from "@app/posts/[postId]/_components/replies";
+import Replies from "@/app/(auth)/posts/[postId]/_components/replies";
 
 type Props = {
   comment: components["schemas"]["comment"];
@@ -24,6 +24,7 @@ const Comment = ({ comment, commentCallback }: Props) => {
     <Flex direction="column" gap="16px" padding="12px" borderBottom="2px" borderColor="gray.200">
       <Flex direction="row" gap="8px">
         <Box
+          cursor="pointer"
           w="45px"
           h="45px"
           borderRadius="full"

@@ -39,6 +39,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
   const mainMenu = (
     <Flex direction="column" gap="32px">
       <Flex
+        cursor="pointer"
         direction="row"
         gap="16px"
         alignItems="center"
@@ -48,7 +49,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
           プロフィール
         </Heading>
       </Flex>
-      <Flex direction="row" gap="16px" alignItems="center" onClick={() => router.push("/settings")}>
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => router.push("/settings")}>
         <MdOutlineSettings size="22px" />
         <Heading as="h2" size="md">
           設定
@@ -56,7 +57,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
       </Flex>
       <Box>
         <Button color="white" backgroundColor="blue.400" borderRadius="full" paddingX="20px">
-          <Flex direction="row" gap="16px" alignItems="center" onClick={openPostModal}>
+          <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={openPostModal}>
             <LuSend size="18px" />
             <Heading as="h2" size="sm">
               ポストする
@@ -68,7 +69,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
   );
 
   const subMenu = (
-    <Flex direction="row" gap="16px">
+    <Flex cursor="pointer" direction="row" gap="16px">
       {colorMode === "light" ? (
         <MdOutlineDarkMode size="30px" onClick={toggleColorMode} />
       ) : (
