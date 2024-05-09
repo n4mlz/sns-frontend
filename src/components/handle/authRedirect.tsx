@@ -45,7 +45,11 @@ const AuthRedirect = () => {
   return (
     <>
       {dialog === "userNull" && (
-        <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+          size={{ base: "sm", md: "md", lg: "lg" }}>
           <AlertDialogOverlay>
             <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
@@ -71,7 +75,11 @@ const AuthRedirect = () => {
         </AlertDialog>
       )}
       {dialog === "userNameNull" && (
-        <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+          size={{ base: "sm", md: "md", lg: "lg" }}>
           <AlertDialogOverlay>
             <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
