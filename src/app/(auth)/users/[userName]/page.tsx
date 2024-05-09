@@ -177,15 +177,20 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           <Center borderTop="2px" borderColor="gray.200">
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
+        ) : postsData && postsData.length ? (
+          <Box borderTop="2px" borderColor="gray.300">
+            <Posts
+              posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
+              postsCallback={(posts) => postsMutate(posts, false)}
+            />
+          </Box>
         ) : (
-          postsData &&
-          postsData.length && (
-            <Box borderTop="2px" borderColor="gray.300">
-              <Posts
-                posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
-                postsCallback={(posts) => postsMutate(posts, false)}
-              />
-            </Box>
+          postsData !== undefined && (
+            <Center paddingY="100px">
+              <Text fontWeight="500" color="gray.400">
+                表示するポストがありません
+              </Text>
+            </Center>
           )
         )}
       </Box>
