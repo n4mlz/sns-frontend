@@ -32,5 +32,10 @@ export default {
         focusBorderColor: "primary.300",
       },
     },
+    Textarea: {
+      defaultProps: {
+        focusBorderColor: "primary.300",
+      },
+    },
   },
 };
