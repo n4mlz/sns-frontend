@@ -3,7 +3,7 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Box, Button, Flex, Heading, useColorMode } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Heading, useColorMode } from "@chakra-ui/react";
 import { FaRegUser } from "react-icons/fa6";
 import { MdLogout, MdOutlineDarkMode, MdOutlineLightMode, MdOutlineSettings } from "react-icons/md";
 import { LuSend } from "react-icons/lu";
@@ -24,7 +24,12 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
   const postModal = usePostModal();
   const signOutDialog = useSignOutDialog();
 
-  const { data } = useSWR<components["schemas"]["profile"]>(authContext.currentUser ? "/api/settings/profile" : null);
+  const { data: profileData } = useSWR<components["schemas"]["profile"]>(
+    authContext.currentUser ? "/api/settings/profile" : null
+  );
+  const { data: requestsData } = useSWR<components["schemas"]["user"][]>(
+    authContext.currentUser ? "/api/follows/requests" : null
+  );
 
   const openPostModal = () => {
     postModalOpenCallback && postModalOpenCallback();
@@ -43,7 +48,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
         direction="row"
         gap="16px"
         alignItems="center"
-        onClick={() => router.push(path.join("/users", data?.userName ? data.userName : ""))}>
+        onClick={() => router.push(path.join("/users", profileData?.userName ? profileData.userName : ""))}>
         <FaRegUser size="22px" />
         <Heading as="h2" size="md">
           プロフィール
@@ -53,6 +58,24 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
         <MdOutlineSettings size="22px" />
         <Heading as="h2" size="md">
           設定
+        </Heading>
+      </Flex>
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => router.push("/requests")}>
+        <Box
+          minW="24px"
+          h="24px"
+          borderRadius="full"
+          backgroundColor={requestsData && requestsData.length > 0 ? "primary.300" : "primary.200"}
+          color="white"
+          padding="4px">
+          <Center>
+            <Heading as="h2" size="sm" color="white">
+              {requestsData?.length ? requestsData.length : 0}
+            </Heading>
+          </Center>
+        </Box>
+        <Heading as="h2" size="md">
+          リクエスト
         </Heading>
       </Flex>
       <Box>

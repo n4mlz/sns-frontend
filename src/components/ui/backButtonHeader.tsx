@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
 type Props = {
@@ -21,7 +21,7 @@ const BackButtonHeader = ({ title }: Props) => {
         h="60px"
         alignItems="center"
         position="fixed"
-        backgroundColor="base">
+        backgroundColor={useColorModeValue("white", "gray.800")}>
         <Flex
           cursor="pointer"
           w="35px"

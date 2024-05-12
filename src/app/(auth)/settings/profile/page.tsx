@@ -168,7 +168,6 @@ const ProfileSettingsPage = () => {
           <ControlledTextarea
             label="自己紹介"
             errors={errors}
-            isRequired
             isLoaded={authContext.currentUser != undefined && !isLoading}
             {...register("biography")}
             defaultValue={data && data.biography ? data.biography : undefined}
