@@ -124,7 +124,7 @@ const userNameSettingsPage = () => {
             isLoading={isUploading}
             marginY={3}
             color="white"
-            backgroundColor="blue.400">
+            backgroundColor="primary.300">
             保存
           </Button>
         </Flex>

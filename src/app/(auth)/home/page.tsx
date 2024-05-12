@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import { Box, Center, Spinner, Text } from "@chakra-ui/react";
+import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 import Posts from "@/components/ui/posts";
@@ -24,11 +24,11 @@ const Timeline = () => {
       <MenuHeader />
       <PostButton submitCallback={postSubmitCallback} />
       {isLoading ? (
-        <Center borderTop="2px" borderColor="gray.200">
+        <Center borderTop="2px" borderColor={useColorModeValue("gray.200", "gray.500")}>
           <Spinner thickness="2px" color="gray.300" margin="40px" />
         </Center>
       ) : data && data.length ? (
-        <Box borderTop="2px" borderColor="gray.300">
+        <Box borderTop="2px" borderColor={useColorModeValue("gray.300", "gray.500")}>
           <Posts posts={data} postsCallback={(posts) => mutate(posts, false)} />
         </Box>
       ) : (

@@ -56,7 +56,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
         </Heading>
       </Flex>
       <Box>
-        <Button color="white" backgroundColor="blue.400" borderRadius="full" paddingX="20px">
+        <Button color="white" backgroundColor="primary.300" borderRadius="full" paddingX="20px">
           <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={openPostModal}>
             <LuSend size="18px" />
             <Heading as="h2" size="sm">

@@ -15,6 +15,7 @@ import {
   Skeleton,
   Tooltip,
   Spinner,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { AtSignIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
 
@@ -67,19 +68,21 @@ export const ControlledInput = forwardRef<ControlledInputProps, "input">(
 
                 {isLoadingAvailable ? (
                   <InputRightElement>
-                    <Tooltip label="ユーザー名が使用可能か検証しています..." bg="gray.500">
+                    <Tooltip
+                      label="ユーザー名が使用可能か検証しています..."
+                      bg={useColorModeValue("gray.500", "white")}>
                       <Spinner size="sm" />
                     </Tooltip>
                   </InputRightElement>
                 ) : isAvailableUserName ? (
                   <InputRightElement>
-                    <Tooltip label="このユーザー名は使用できます。" bg="gray.500">
+                    <Tooltip label="このユーザー名は使用できます。" bg={useColorModeValue("gray.500", "white")}>
                       <CheckCircleIcon color="green.500" />
                     </Tooltip>
                   </InputRightElement>
                 ) : (
                   <InputRightElement>
-                    <Tooltip label="このユーザー名は使用できません。" bg="gray.500">
+                    <Tooltip label="このユーザー名は使用できません。" bg={useColorModeValue("gray.500", "white")}>
                       <NotAllowedIcon color="red.500" />
                     </Tooltip>
                   </InputRightElement>

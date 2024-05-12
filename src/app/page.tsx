@@ -27,7 +27,7 @@ const Welcome = () => {
           <Heading as="h2" size="md">
             はじめよう。
           </Heading>
-          <Button color="white" backgroundColor="blue.400" onClick={() => signIn(() => router.push("/home"))}>
+          <Button color="white" backgroundColor="primary.300" onClick={() => signIn(() => router.push("/home"))}>
             Google でサインイン
           </Button>
         </Flex>

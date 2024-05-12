@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import { Flex, Box, Button, Skeleton, Image } from "@chakra-ui/react";
+import { Flex, Box, Button, Skeleton, Image, useColorModeValue } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 import useCommentModal from "@/hooks/commentModal";
@@ -54,10 +54,10 @@ const Comments = ({ postId, comments, commentsCallback }: Props) => {
             onClick={onOpen}
             margin="8px"
             size="sm"
-            color="blue.500"
-            backgroundColor="white"
+            color="primary.400"
+            backgroundColor={useColorModeValue("white", "gray.800")}
             border="1px"
-            borderColor="blue.500"
+            borderColor="primary.400"
             borderRadius="full">
             コメントする
           </Button>

@@ -3,7 +3,19 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Flex, Box, Center, Heading, Button, Text, Skeleton, SkeletonText, Spinner, Image } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Center,
+  Heading,
+  Button,
+  Text,
+  Skeleton,
+  SkeletonText,
+  Spinner,
+  Image,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Posts from "@/components/ui/posts";
@@ -80,7 +92,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
               top="-44px"
               left="10px"
               border="4px"
-              borderColor="white"
+              borderColor={useColorModeValue("white", "gray.800")}
               borderRadius="44px"
               backgroundColor="gray.200"
               overflow="hidden">
@@ -174,11 +186,11 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
       </Box>
       <Box>
         {isLoadingPosts ? (
-          <Center borderTop="2px" borderColor="gray.200">
+          <Center borderTop="2px" borderColor={useColorModeValue("gray.200", "gray.500")}>
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
         ) : postsData && postsData.length ? (
-          <Box borderTop="2px" borderColor="gray.300">
+          <Box borderTop="2px" borderColor={useColorModeValue("gray.300", "gray.500")}>
             <Posts
               posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
               postsCallback={(posts) => postsMutate(posts, false)}

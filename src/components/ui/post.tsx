@@ -2,7 +2,7 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import { Flex, Box, Text, Tooltip, Image } from "@chakra-ui/react";
+import { Flex, Box, Text, Tooltip, Image, useColorModeValue } from "@chakra-ui/react";
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
@@ -25,7 +25,12 @@ const Post = ({ post, postCallback }: Props) => {
   };
 
   return (
-    <Flex direction="row" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
+    <Flex
+      direction="row"
+      gap="8px"
+      padding="12px"
+      borderBottom="2px"
+      borderColor={useColorModeValue("gray.200", "gray.500")}>
       <Box
         cursor="pointer"
         w="45px"
@@ -58,7 +63,7 @@ const Post = ({ post, postCallback }: Props) => {
             alignItems="center"
             color="gray.500"
             onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
-            <Tooltip label="コメントする" bg="gray.500" openDelay={1000}>
+            <Tooltip label="コメントする" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
               <Box>
                 <FaRegCommentAlt />
               </Box>
@@ -67,7 +72,7 @@ const Post = ({ post, postCallback }: Props) => {
           </Flex>
           {post.liked ? (
             <Flex cursor="pointer" direction="row" gap="6px" alignItems="center" color="red.500" onClick={unlike}>
-              <Tooltip label="いいねを取り消す" bg="gray.500" openDelay={1000}>
+              <Tooltip label="いいねを取り消す" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
                 <Box>
                   <FaHeart />
                 </Box>
@@ -76,7 +81,7 @@ const Post = ({ post, postCallback }: Props) => {
             </Flex>
           ) : (
             <Flex cursor="pointer" direction="row" gap="6px" alignItems="center" color="gray.500" onClick={like}>
-              <Tooltip label="いいね !" bg="gray.500" openDelay={1000}>
+              <Tooltip label="いいね !" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
                 <Box>
                   <FaRegHeart />
                 </Box>

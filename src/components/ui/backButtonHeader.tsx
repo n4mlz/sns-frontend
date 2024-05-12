@@ -21,7 +21,7 @@ const BackButtonHeader = ({ title }: Props) => {
         h="60px"
         alignItems="center"
         position="fixed"
-        backgroundColor="white">
+        backgroundColor="base">
         <Flex
           cursor="pointer"
           w="35px"
