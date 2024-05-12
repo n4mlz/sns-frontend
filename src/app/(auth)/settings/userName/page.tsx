@@ -27,7 +27,7 @@ const schema = z.object({
       domainConsts.MAX_USERNAME_LENGTH,
       `ユーザー名は${domainConsts.MAX_USERNAME_LENGTH}文字以下で入力してください。`
     )
-    .regex(domainConsts.USERNAME_REGEX, "ユーザー名は半角英数字とハイフンのみ使用できます。"),
+    .regex(domainConsts.USERNAME_REGEX, "ユーザー名は半角英数字とアンダースコアのみ使用できます。"),
 });
 
 type FormValues = z.infer<typeof schema>;
