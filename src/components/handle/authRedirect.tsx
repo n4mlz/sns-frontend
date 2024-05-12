@@ -61,7 +61,7 @@ const AuthRedirect = () => {
               <AlertDialogFooter>
                 <Button
                   color="white"
-                  backgroundColor="blue.400"
+                  backgroundColor="primary.300"
                   onClick={() => {
                     onClose();
                     signIn(() => router.push("/home"));
@@ -91,7 +91,7 @@ const AuthRedirect = () => {
               <AlertDialogFooter>
                 <Button
                   color="white"
-                  backgroundColor="blue.400"
+                  backgroundColor="primary.300"
                   onClick={() => {
                     onClose();
                     router.push("/settings/userName");

@@ -3,7 +3,18 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Box, Center, Flex, Image, Skeleton, SkeletonText, Spinner, Text, Tooltip } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  Image,
+  Skeleton,
+  SkeletonText,
+  Spinner,
+  Text,
+  Tooltip,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
@@ -35,7 +46,12 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
     <>
       <BackButtonHeader title="ポスト" />
       <Box>
-        <Flex direction="column" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
+        <Flex
+          direction="column"
+          gap="8px"
+          padding="12px"
+          borderBottom="2px"
+          borderColor={useColorModeValue("gray.200", "gray.500")}>
           <Flex direction="row" gap="8px">
             <Box
               cursor="pointer"
@@ -81,7 +97,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
               </Text>
               {data?.liked ? (
                 <Flex direction="row" gap="8px" alignItems="center">
-                  <Tooltip label="いいねを取り消す" bg="gray.500" openDelay={1000}>
+                  <Tooltip label="いいねを取り消す" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
                     <Box cursor="pointer" color="red.500" onClick={unlike}>
                       <FaHeart />
                     </Box>
@@ -94,7 +110,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
                 </Flex>
               ) : (
                 <Flex direction="row" gap="8px" alignItems="center">
-                  <Tooltip label="いいね !" bg="gray.500" openDelay={1000}>
+                  <Tooltip label="いいね !" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
                     <Box cursor="pointer" color="gray.500" onClick={like}>
                       <FaRegHeart />
                     </Box>

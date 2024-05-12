@@ -97,7 +97,7 @@ const useImageCrop = (width: number, height: number) => {
               cropImage();
             }}
             color="white"
-            backgroundColor="blue.400">
+            backgroundColor="primary.300">
             保存
           </Button>
         </ModalFooter>

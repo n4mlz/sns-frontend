@@ -20,7 +20,7 @@ const PostButton = ({ submitCallback }: Props) => {
         w="60px"
         h="60px"
         marginRight="35px"
-        backgroundColor="blue.400"
+        backgroundColor="primary.300"
         borderRadius="full">
         {postModal}
         <Box cursor="pointer" position="absolute" top="16px" left="13.5px">

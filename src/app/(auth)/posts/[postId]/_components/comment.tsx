@@ -2,7 +2,7 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
 import { userIconUrl } from "@/lib/image";
 import { getAboutDate } from "@/utils/time";
@@ -21,7 +21,12 @@ const Comment = ({ comment, commentCallback }: Props) => {
   };
 
   return (
-    <Flex direction="column" gap="16px" padding="12px" borderBottom="2px" borderColor="gray.200">
+    <Flex
+      direction="column"
+      gap="16px"
+      padding="12px"
+      borderBottom="2px"
+      borderColor={useColorModeValue("gray.200", "gray.500")}>
       <Flex direction="row" gap="8px">
         <Box
           cursor="pointer"

@@ -131,7 +131,7 @@ const useReplyModal = (commentId: string, submitCallback?: (reply: components["s
         <ModalFooter>
           <Flex direction="row" gap="10px" alignItems="center">
             {progress < 95 ? (
-              <CircularProgress size="25px" thickness="15px" color="blue.400" value={progress} />
+              <CircularProgress size="25px" thickness="15px" color="primary.300" value={progress} />
             ) : progress < 100 ? (
               <CircularProgress size="25px" thickness="15px" color="yellow.400" value={progress} />
             ) : (
@@ -139,12 +139,11 @@ const useReplyModal = (commentId: string, submitCallback?: (reply: components["s
             )}
             <Button
               color="white"
-              backgroundColor="blue.400"
+              backgroundColor="primary.300"
               borderRadius="full"
               isDisabled={!isOk}
               isLoading={isPosting}
-              onClick={handleSubmit(onSubmit)}
-              _disabled={{ backgroundColor: "blue.200" }}>
+              onClick={handleSubmit(onSubmit)}>
               返信
             </Button>
           </Flex>

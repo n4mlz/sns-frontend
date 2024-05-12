@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Flex, Box, Button, Input, Image, Skeleton, useToast } from "@chakra-ui/react";
+import { Flex, Box, Button, Input, Image, Skeleton, useToast, useColorModeValue } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
 import { ControlledInput } from "@/components/elements/ControlledInput";
@@ -134,7 +134,7 @@ const ProfileSettingsPage = () => {
             top="-38px"
             left="10px"
             border="4px"
-            borderColor="white"
+            borderColor={useColorModeValue("white", "gray.800")}
             borderRadius="44px"
             backgroundColor="gray.200"
             overflow="hidden">
@@ -168,7 +168,6 @@ const ProfileSettingsPage = () => {
           <ControlledTextarea
             label="自己紹介"
             errors={errors}
-            isRequired
             isLoaded={authContext.currentUser != undefined && !isLoading}
             {...register("biography")}
             defaultValue={data && data.biography ? data.biography : undefined}
@@ -178,7 +177,7 @@ const ProfileSettingsPage = () => {
             isLoading={isUploading}
             marginY={3}
             color="white"
-            backgroundColor="blue.400">
+            backgroundColor="primary.300">
             保存
           </Button>
         </Flex>

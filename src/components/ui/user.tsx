@@ -2,7 +2,7 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import { Flex, Box, Text, Button, IconButton, Image } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, IconButton, Image, useColorModeValue } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
@@ -35,7 +35,12 @@ const User = ({ user, userCallback, enableReject }: Props) => {
   };
 
   return (
-    <Flex direction="row" gap="8px" padding="12px" borderBottom="2px" borderColor="gray.200">
+    <Flex
+      direction="row"
+      gap="8px"
+      padding="12px"
+      borderBottom="2px"
+      borderColor={useColorModeValue("gray.200", "gray.500")}>
       <Box
         cursor="pointer"
         w="45px"

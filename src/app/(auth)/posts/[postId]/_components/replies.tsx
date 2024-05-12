@@ -1,4 +1,4 @@
-import { Flex, Box, Button } from "@chakra-ui/react";
+import { Flex, Box, Button, useColorModeValue } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
 import useReplyModal from "@/hooks/replyModal";
 import Reply from "@/app/(auth)/posts/[postId]/_components/reply";
@@ -40,10 +40,10 @@ const Replies = ({ commentId, replies, repliesCallback }: Props) => {
             onClick={onOpen}
             marginX="4px"
             size="sm"
-            color="blue.500"
-            backgroundColor="white"
+            color="primary.400"
+            backgroundColor={useColorModeValue("white", "gray.800")}
             border="1px"
-            borderColor="blue.500"
+            borderColor="primary.400"
             borderRadius="full">
             返信を追加
           </Button>
