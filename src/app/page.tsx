@@ -2,13 +2,29 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Center, Flex, Heading, Spinner } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Heading, Image, Spinner, useColorModeValue } from "@chakra-ui/react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/css";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn } from "@/lib/firebase";
+import { slides } from "@/utils/images";
 
 const Welcome = () => {
   const authContext = useAuthContext();
   const router = useRouter();
+
+  const splideOptions = {
+    autoplay: true,
+    interval: 3000,
+    rewind: true,
+    pagination: false,
+    pauseOnHover: true,
+    perPage: 3,
+    perMove: 1,
+    gap: "10px",
+    padding: "20px",
+    arrows: false,
+  };
 
   useEffect(() => {
     if (authContext.currentUser) {
@@ -24,12 +40,26 @@ const Welcome = () => {
         </Center>
       ) : (
         <Flex direction="column" gap="20px" paddingY="100px" justifyContent="center" alignItems="center">
-          <Heading as="h2" size="md">
-            はじめよう。
-          </Heading>
+          <Flex direction="column" gap="10px" justifyContent="center" alignItems="center">
+            <Heading as="h2" size="sm">
+              静かな世界で愚痴をこぼしたい人へ。
+            </Heading>
+            <Heading as="h2" size="sm">
+              鍵垢しか存在しないクローズドなSNS
+            </Heading>
+          </Flex>
           <Button color="white" backgroundColor="primary.300" onClick={() => signIn(() => router.push("/home"))}>
             Google でサインイン
           </Button>
+          <Splide options={splideOptions}>
+            {slides.map((slide, index) => (
+              <SplideSlide key={index}>
+                <Box border={useColorModeValue("0px", "1px")} borderColor="gray.500" borderRadius="3px">
+                  <Image src={slide.src} alt="" borderRadius="2px" />
+                </Box>
+              </SplideSlide>
+            ))}
+          </Splide>
         </Flex>
       )}
     </div>
