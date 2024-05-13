@@ -38,7 +38,7 @@ const useSignOutDialog = () => {
             <Button ref={cancelRef} onClick={disclosure.onClose}>
               キャンセル
             </Button>
-            <Button color="white" backgroundColor="red.400" onClick={() => onClose()} ml={3}>
+            <Button color="white" backgroundColor="red.500" onClick={() => onClose()} ml={3}>
               ログアウト
             </Button>
           </AlertDialogFooter>

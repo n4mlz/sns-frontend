@@ -18,7 +18,7 @@ const Welcome = () => {
 
   return (
     <div>
-      {authContext.currentUser === undefined ? (
+      {authContext.currentUser !== null ? (
         <Center>
           <Spinner thickness="2px" color="gray.300" margin="40px" />
         </Center>

@@ -186,13 +186,13 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
       </Box>
       <Box>
         {isLoadingPosts ? (
-          <Center borderTop="2px" borderColor={useColorModeValue("gray.200", "gray.500")}>
+          <Center borderTop="2px" borderColor={useColorModeValue("gray.200", "gray.700")}>
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
         ) : postsData && postsData.length ? (
-          <Box borderTop="2px" borderColor={useColorModeValue("gray.300", "gray.500")}>
+          <Box borderTop="2px" borderColor={useColorModeValue("gray.300", "gray.700")}>
             <Posts
-              posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!)))}
+              posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!) ? 1 : -1))}
               postsCallback={(posts) => postsMutate(posts, false)}
             />
           </Box>

@@ -24,11 +24,11 @@ const Timeline = () => {
       <MenuHeader />
       <PostButton submitCallback={postSubmitCallback} />
       {isLoading ? (
-        <Center borderTop="2px" borderColor={useColorModeValue("gray.200", "gray.500")}>
+        <Center borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
           <Spinner thickness="2px" color="gray.300" margin="40px" />
         </Center>
       ) : data && data.length ? (
-        <Box borderTop="2px" borderColor={useColorModeValue("gray.300", "gray.500")}>
+        <Box borderTop="1px" borderColor={useColorModeValue("gray.300", "gray.700")}>
           <Posts posts={data} postsCallback={(posts) => mutate(posts, false)} />
         </Box>
       ) : (

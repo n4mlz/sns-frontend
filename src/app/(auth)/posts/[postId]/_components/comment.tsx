@@ -25,8 +25,8 @@ const Comment = ({ comment, commentCallback }: Props) => {
       direction="column"
       gap="16px"
       padding="12px"
-      borderBottom="2px"
-      borderColor={useColorModeValue("gray.200", "gray.500")}>
+      borderBottom="1px"
+      borderColor={useColorModeValue("gray.200", "gray.700")}>
       <Flex direction="row" gap="8px">
         <Box
           cursor="pointer"

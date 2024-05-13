@@ -29,8 +29,8 @@ const Post = ({ post, postCallback }: Props) => {
       direction="row"
       gap="8px"
       padding="12px"
-      borderBottom="2px"
-      borderColor={useColorModeValue("gray.200", "gray.500")}>
+      borderBottom="1px"
+      borderColor={useColorModeValue("gray.200", "gray.700")}>
       <Box
         cursor="pointer"
         w="45px"
