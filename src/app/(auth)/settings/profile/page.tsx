@@ -114,11 +114,11 @@ const ProfileSettingsPage = () => {
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
             <label>
               {croppedBgImageUrl ? (
-                <Image src={croppedBgImageUrl} w="100%" alt="" aspectRatio={3} />
+                <Image src={croppedBgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />
               ) : !data || !data.userName || error || isLoading ? (
-                <Box w="100%" aspectRatio={3} />
+                <Box w="100%" aspectRatio={3} cursor="pointer" />
               ) : (
-                <Image src={userBgImageUrl(data.userName)} w="100%" aspectRatio={3} alt="" />
+                <Image src={userBgImageUrl(data.userName)} w="100%" alt="" aspectRatio={3} cursor="pointer" />
               )}
               <Input type="file" accept="image/*" display="none" onChange={onBgImageFileChange} />
               {bgImageModalCropper}
@@ -137,17 +137,18 @@ const ProfileSettingsPage = () => {
             borderColor={useColorModeValue("white", "gray.800")}
             borderRadius="44px"
             backgroundColor="gray.200"
-            overflow="hidden">
+            overflow="hidden"
+            cursor="pointer">
             <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
               <label>
                 {croppedIconUrl ? (
-                  <Image src={croppedIconUrl} w="80px" h="80px" alt="" />
+                  <Image src={croppedIconUrl} w="80px" h="80px" alt="" cursor="pointer" />
                 ) : !data || !data.userName || error || isLoading ? (
-                  <Box w="80px" h="80px" />
+                  <Box w="80px" h="80px" cursor="pointer" />
                 ) : (
                   // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
                   // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
-                  <Image src={userIconUrl(data.userName)} w="80px" h="80px" alt="" />
+                  <Image src={userIconUrl(data.userName)} w="80px" h="80px" alt="" cursor="pointer" />
                 )}
                 <Input type="file" accept="image/*" display="none" onChange={onIconFileChange} />
                 {iconModalCropper}
