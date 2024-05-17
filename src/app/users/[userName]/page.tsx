@@ -1,6 +1,7 @@
 "use client";
 
 import path from "path";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import {
@@ -24,19 +25,19 @@ import { components } from "@/lib/openapi/schema";
 import domainConsts from "@/constants/domain";
 import PageBackButton from "@/components/elements/pageBackButton";
 import PostButton from "@/components/elements/postButton";
+import useSetUpAlert from "@/hooks/setUpAlert";
 
 const UserPage = ({ params }: { params: { userName: string } }) => {
   const router = useRouter();
   const authContext = useAuthContext();
+  const { onOpen, setUpAlert } = useSetUpAlert();
 
   const {
     data: userData,
     isLoading: isLoadingUser,
     mutate: userMutate,
     error: userError,
-  } = useSWR<components["schemas"]["userDetail"]>(
-    authContext.currentUser ? path.join("/api/users", params.userName).toString() : null
-  );
+  } = useSWR<components["schemas"]["userDetail"]>(path.join("/api/users", params.userName).toString());
 
   const {
     data: postsData,
@@ -47,6 +48,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   );
 
   const follow = (afterStatus: string) => {
+    onOpen();
     client.PUT("/api/follows/follow", { body: { userName: params.userName } });
     if (afterStatus == domainConsts.MUTUAL) {
       userMutate({ ...userData, followingStatus: afterStatus, mutuals: userData?.mutuals! + 1 }, false);
@@ -56,6 +58,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   };
 
   const unfollow = (afterStatus: string) => {
+    onOpen();
     client.PUT("/api/follows/unfollow", { body: { userName: params.userName } });
     if (afterStatus == domainConsts.FOLLOWED) {
       userMutate({ ...userData, followingStatus: afterStatus, mutuals: userData?.mutuals! - 1 }, false);
@@ -68,13 +71,18 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
     postsMutate([post, ...(postsData ? postsData : [])], false);
   };
 
+  useEffect(() => {
+    userMutate();
+  }, [authContext.currentUser]);
+
   return (
     <Box padding={0}>
+      {setUpAlert}
       <PageBackButton />
       <PostButton submitCallback={postSubmitCallback} />
       <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
-          <Skeleton isLoaded={authContext.currentUser != undefined && !isLoadingUser}>
+          <Skeleton isLoaded={!isLoadingUser}>
             {!userData || !userData.userName || userError || isLoadingUser ? (
               <Box w="100%" aspectRatio={3} />
             ) : (
@@ -95,7 +103,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
               borderRadius="44px"
               backgroundColor="gray.200"
               overflow="hidden">
-              <Skeleton isLoaded={authContext.currentUser != undefined && !isLoadingUser}>
+              <Skeleton isLoaded={!isLoadingUser}>
                 {!userData || !userData.userName || userError || isLoadingUser ? (
                   <Box w="80px" h="80px" />
                 ) : (
@@ -138,7 +146,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
         </Flex>
         <Flex direction="column" gap={1} paddingX={5} paddingY={1.5}>
           <Box>
-            {authContext.currentUser != undefined && !isLoadingUser ? (
+            {!isLoadingUser ? (
               !userData || !userData.userName || userError ? (
                 <>
                   <Heading fontSize="24px">存在しないユーザー</Heading>
@@ -157,10 +165,10 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
               </>
             )}
           </Box>
-          <SkeletonText isLoaded={authContext.currentUser != undefined && !isLoadingUser} noOfLines={3} marginY="4px">
+          <SkeletonText isLoaded={!isLoadingUser} noOfLines={3} marginY="4px">
             <Text>{userData?.biography}</Text>
           </SkeletonText>
-          {authContext.currentUser != undefined && !isLoadingUser && (
+          {!isLoadingUser && (
             <>
               <Flex direction="column" gap="8px">
                 <Flex direction="row" gap="6px" alignItems="center">

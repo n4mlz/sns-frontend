@@ -5,7 +5,7 @@ import { Flex, Box, Button, Skeleton, Image, useColorModeValue } from "@chakra-u
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 import useCommentModal from "@/hooks/commentModal";
-import Comment from "@/app/(auth)/posts/[postId]/_components/comment";
+import Comment from "@/app/posts/[postId]/_components/comment";
 
 type Props = {
   postId: string;

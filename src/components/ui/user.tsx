@@ -6,6 +6,7 @@ import { Flex, Box, Text, Button, IconButton, Image, useColorModeValue } from "@
 import { CloseIcon } from "@chakra-ui/icons";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
+import useSetUpAlert from "@/hooks/setUpAlert";
 import domainConsts from "@/constants/domain";
 import { adjustBio } from "@/utils/stringOperation";
 
@@ -17,18 +18,22 @@ type Props = {
 
 const User = ({ user, userCallback, enableReject }: Props) => {
   const router = useRouter();
+  const { onOpen, setUpAlert } = useSetUpAlert();
 
   const follow = (afterStatus: string) => {
+    onOpen();
     client.PUT("/api/follows/follow", { body: { userName: user.userName } });
     userCallback?.({ ...user, followingStatus: afterStatus });
   };
 
   const unfollow = (afterStatus: string) => {
+    onOpen();
     client.PUT("/api/follows/unfollow", { body: { userName: user.userName } });
     userCallback?.({ ...user, followingStatus: afterStatus });
   };
 
   const reject = () => {
+    onOpen();
     client.PUT("/api/follows/reject", { body: { userName: user.userName } });
     userCallback?.({ ...user, followingStatus: domainConsts.NONE });
   };
@@ -40,6 +45,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
       padding="12px"
       borderBottom="1px"
       borderColor={useColorModeValue("gray.200", "gray.700")}>
+      {setUpAlert}
       <Box
         cursor="pointer"
         w="45px"

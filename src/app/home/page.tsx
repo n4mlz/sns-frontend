@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
+import SetUpAlert from "@/components/handle/setUpAlert";
 import Posts from "@/components/ui/posts";
 import MenuHeader from "@/components/ui/menuHeader";
 import PostButton from "@/components/elements/postButton";
@@ -21,6 +22,7 @@ const Timeline = () => {
 
   return (
     <Box>
+      <SetUpAlert />
       <MenuHeader />
       <PostButton submitCallback={postSubmitCallback} />
       {isLoading ? (

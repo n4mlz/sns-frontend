@@ -17,11 +17,12 @@ import {
 } from "@chakra-ui/react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import SetUpAlert from "@/components/handle/setUpAlert";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { getFormattedDate } from "@/utils/time";
-import Comments from "@/app/(auth)/posts/[postId]/_components/comments";
+import Comments from "@/app/posts/[postId]/_components/comments";
 
 const PostPage = ({ params }: { params: { postId: string } }) => {
   const router = useRouter();
@@ -43,6 +44,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
 
   return (
     <>
+      <SetUpAlert />
       <BackButtonHeader title="ポスト" />
       <Box>
         <Flex
