@@ -2,7 +2,6 @@ import path from "path";
 import { useRouter } from "next/navigation";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
-import { userIconUrl } from "@/lib/image";
 import { getAboutDate } from "@/utils/time";
 
 type Props = {
@@ -23,7 +22,7 @@ const Reply = ({ reply, replyCallback }: Props) => {
         backgroundColor="gray.200"
         overflow="hidden"
         onClick={() => router.push(path.join("/users", reply?.replier?.userName ? reply.replier.userName : ""))}>
-        <Image src={userIconUrl(reply?.replier?.userName!)} w="45px" h="45px" alt="" />
+        <Image src={reply?.replier?.iconUrl} w="45px" h="45px" alt="" />
       </Box>
       <Flex direction="column" gap="4px" flex="1">
         <Flex direction="column">

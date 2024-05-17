@@ -21,7 +21,6 @@ import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Posts from "@/components/ui/posts";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import { userBgImageUrl, userIconUrl } from "@/lib/image";
 import domainConsts from "@/constants/domain";
 import PageBackButton from "@/components/elements/pageBackButton";
 import PostButton from "@/components/elements/postButton";
@@ -79,7 +78,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
             {!userData || !userData.userName || userError || isLoadingUser ? (
               <Box w="100%" aspectRatio={3} />
             ) : (
-              <Image src={userBgImageUrl(userData.userName)} w="100%" aspectRatio={3} alt="" />
+              <Image src={userData.bgImageUrl} w="100%" aspectRatio={3} alt="" />
             )}
           </Skeleton>
         </Box>
@@ -102,7 +101,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
                 ) : (
                   // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
                   // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
-                  <Image src={userIconUrl(userData.userName)} w="80px" h="80px" alt="" />
+                  <Image src={userData.iconUrl} w="80px" h="80px" alt="" />
                 )}
               </Skeleton>
             </Box>

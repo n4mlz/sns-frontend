@@ -16,7 +16,7 @@ import useImageCrop from "@/hooks/imageCrop/useImageCrop";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import domainConsts from "@/constants/domain";
-import { postUserIconUrl, postUserBgImageUrl, userIconUrl, userBgImageUrl } from "@/lib/image";
+import { postUserIconUrl, postUserBgImageUrl } from "@/lib/image";
 
 const schema = z.object({
   displayName: z
@@ -118,7 +118,7 @@ const ProfileSettingsPage = () => {
               ) : !data || !data.userName || error || isLoading ? (
                 <Box w="100%" aspectRatio={3} cursor="pointer" />
               ) : (
-                <Image src={userBgImageUrl(data.userName)} w="100%" alt="" aspectRatio={3} cursor="pointer" />
+                <Image src={data.bgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />
               )}
               <Input type="file" accept="image/*" display="none" onChange={onBgImageFileChange} />
               {bgImageModalCropper}
@@ -148,7 +148,7 @@ const ProfileSettingsPage = () => {
                 ) : (
                   // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
                   // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
-                  <Image src={userIconUrl(data.userName)} w="80px" h="80px" alt="" cursor="pointer" />
+                  <Image src={data.iconUrl} w="80px" h="80px" alt="" cursor="pointer" />
                 )}
                 <Input type="file" accept="image/*" display="none" onChange={onIconFileChange} />
                 {iconModalCropper}

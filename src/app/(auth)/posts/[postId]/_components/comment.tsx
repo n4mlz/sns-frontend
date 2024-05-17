@@ -4,7 +4,6 @@ import path from "path";
 import { useRouter } from "next/navigation";
 import { Box, Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
-import { userIconUrl } from "@/lib/image";
 import { getAboutDate } from "@/utils/time";
 import Replies from "@/app/(auth)/posts/[postId]/_components/replies";
 
@@ -38,7 +37,7 @@ const Comment = ({ comment, commentCallback }: Props) => {
           onClick={() =>
             router.push(path.join("/users", comment?.commenter?.userName ? comment.commenter.userName : ""))
           }>
-          <Image src={userIconUrl(comment?.commenter?.userName!)} w="45px" h="45px" alt="" />
+          <Image src={comment?.commenter?.iconUrl} w="45px" h="45px" alt="" />
         </Box>
         <Flex direction="column" flex={1}>
           <Flex direction="row" gap="4px">

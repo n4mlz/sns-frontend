@@ -6,7 +6,6 @@ import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 import useCommentModal from "@/hooks/commentModal";
 import Comment from "@/app/(auth)/posts/[postId]/_components/comment";
-import { userIconUrl } from "@/lib/image";
 
 type Props = {
   postId: string;
@@ -47,7 +46,7 @@ const Comments = ({ postId, comments, commentsCallback }: Props) => {
         <Flex direction="row" alignItems="center" padding="12px">
           <Box w="45px" h="45px" borderRadius="full" backgroundColor="gray.200" overflow="hidden">
             <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
-              <Image src={userIconUrl(data?.userName!)} w="45px" h="45px" alt="" />
+              <Image src={data?.iconUrl} w="45px" h="45px" alt="" />
             </Skeleton>
           </Box>
           <Button

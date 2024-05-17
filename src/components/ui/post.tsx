@@ -6,7 +6,6 @@ import { Flex, Box, Text, Tooltip, Image, useColorModeValue } from "@chakra-ui/r
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import { userIconUrl } from "@/lib/image";
 import { getAboutDate } from "@/utils/time";
 
 type Props = { post: components["schemas"]["post"]; postCallback?: (post: components["schemas"]["post"]) => void };
@@ -39,7 +38,7 @@ const Post = ({ post, postCallback }: Props) => {
         backgroundColor="gray.200"
         overflow="hidden"
         onClick={() => router.push(path.join("/users", post.poster?.userName ? post.poster?.userName : ""))}>
-        <Image src={userIconUrl(post.poster?.userName!)} w="45px" h="45px" alt="" />
+        <Image src={post.poster?.iconUrl} w="45px" h="45px" alt="" />
       </Box>
       <Flex direction="column" gap="4px" flex="1">
         <Flex

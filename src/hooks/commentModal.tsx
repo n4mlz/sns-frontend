@@ -27,7 +27,6 @@ import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import { userIconUrl } from "@/lib/image";
 import domainConsts from "@/constants/domain";
 
 const schema = z.object({
@@ -111,7 +110,7 @@ const useCommentModal = (postId: string, submitCallback?: (comment: components["
                 {!data || !data.userName || error || isLoading ? (
                   <Box w="100%" aspectRatio={3} />
                 ) : (
-                  <Image src={userIconUrl(data?.userName)} w="35px" h="35px" alt="" />
+                  <Image src={data?.iconUrl} w="35px" h="35px" alt="" />
                 )}
               </Skeleton>
             </Box>

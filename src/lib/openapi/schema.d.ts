@@ -480,18 +480,22 @@ export interface components {
     userName: {
       userName?: string;
     };
-    userDisplay: {
-      userName?: string;
-      displayName?: string;
-    };
     userSettings: {
       displayName?: string;
       biography?: string;
+    };
+    userDisplay: {
+      userName?: string;
+      displayName?: string;
+      iconUrl?: string;
+      bgImageUrl?: string;
     };
     profile: {
       userName?: string;
       displayName?: string;
       biography?: string;
+      iconUrl?: string;
+      bgImageUrl?: string;
     };
     user: {
       userName?: string;
@@ -500,6 +504,8 @@ export interface components {
       /** Format: date-time */
       createdAt?: string;
       followingStatus?: string;
+      iconUrl?: string;
+      bgImageUrl?: string;
     };
     userDetail: {
       userName?: string;
@@ -509,6 +515,11 @@ export interface components {
       createdAt?: string;
       mutuals?: number;
       followingStatus?: string;
+      iconUrl?: string;
+      bgImageUrl?: string;
+    };
+    url: {
+      url?: string;
     };
     postId: {
       postId?: string;
@@ -518,7 +529,7 @@ export interface components {
     };
     post: {
       postId?: string;
-      poster?: components["schemas"]["user"];
+      poster?: components["schemas"]["userDisplay"];
       content?: string;
       likes?: number;
       liked?: boolean;
@@ -528,7 +539,7 @@ export interface components {
     };
     postDetail: {
       postId?: string;
-      poster?: components["schemas"]["user"];
+      poster?: components["schemas"]["userDisplay"];
       content?: string;
       likes?: number;
       liked?: boolean;
@@ -542,7 +553,7 @@ export interface components {
     };
     comment: {
       commentId?: string;
-      commenter?: components["schemas"]["user"];
+      commenter?: components["schemas"]["userDisplay"];
       content?: string;
       replies?: components["schemas"]["reply"][];
       /** Format: date-time */
@@ -554,7 +565,7 @@ export interface components {
     };
     reply: {
       replyId?: string;
-      replier?: components["schemas"]["user"];
+      replier?: components["schemas"]["userDisplay"];
       content?: string;
       /** Format: date-time */
       createdAt?: string;

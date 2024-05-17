@@ -20,7 +20,6 @@ import { useAuthContext } from "@/components/contexts/AuthProvider";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import { userIconUrl } from "@/lib/image";
 import { getFormattedDate } from "@/utils/time";
 import Comments from "@/app/(auth)/posts/[postId]/_components/comments";
 
@@ -62,7 +61,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
               overflow="hidden"
               onClick={() => router.push(path.join("/users", data?.poster?.userName ? data.poster.userName : ""))}>
               <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
-                <Image src={userIconUrl(data?.poster?.userName!)} w="45px" h="45px" alt="" />
+                <Image src={data?.poster?.iconUrl} w="45px" h="45px" alt="" />
               </Skeleton>
             </Box>
             <Flex direction="column" gap="4px" flex="1">

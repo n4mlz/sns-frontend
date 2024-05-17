@@ -6,7 +6,6 @@ import { Flex, Box, Text, Button, IconButton, Image, useColorModeValue } from "@
 import { CloseIcon } from "@chakra-ui/icons";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import { userIconUrl } from "@/lib/image";
 import domainConsts from "@/constants/domain";
 import { adjustBio } from "@/utils/stringOperation";
 
@@ -49,7 +48,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
         backgroundColor="gray.200"
         overflow="hidden"
         onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
-        <Image src={userIconUrl(user.userName!)} w="45px" h="45px" alt="" />
+        <Image src={user.iconUrl} w="45px" h="45px" alt="" />
       </Box>
       <Flex direction="column" gap="4px" flex="1">
         <Flex direction="row" justifyContent="space-between">
