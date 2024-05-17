@@ -258,8 +258,8 @@ paths:
 
 # 軽量化のため以下のエンドポイントは使わず、Cloudflare R2 のバケットを直接見に行く
   
-  # /api/users/{userName}/icon
-  # /api/users/{userName}/bgImage
+  # /api/users/{userName}/icon -> '#/components/schemas/url'
+  # /api/users/{userName}/bgImage -> '#/components/schemas/url'
 
   /api/users/{userName}/posts:
     get:
@@ -493,6 +493,13 @@ components:
       properties:
         userName:
           type: string
+    userSettings:
+      type: object
+      properties:
+        displayName:
+          type: string
+        biography:
+          type: string
     userDisplay:
       type: object
       properties:
@@ -500,12 +507,9 @@ components:
           type: string
         displayName:
           type: string
-    userSettings:
-      type: object
-      properties:
-        displayName:
+        iconUrl:
           type: string
-        biography:
+        bgImageUrl:
           type: string
     profile:
       type: object
@@ -515,6 +519,10 @@ components:
         displayName:
           type: string
         biography:
+          type: string
+        iconUrl:
+          type: string
+        bgImageUrl:
           type: string
     user:
       type: object
@@ -529,6 +537,10 @@ components:
           type: string
           format: date-time
         followingStatus:
+          type: string
+        iconUrl:
+          type: string
+        bgImageUrl:
           type: string
     userDetail:
       type: object
@@ -546,6 +558,15 @@ components:
           type: integer
         followingStatus:
           type: string
+        iconUrl:
+          type: string
+        bgImageUrl:
+          type: string
+    url: 
+      type: object
+      properties:
+        url:
+          type: string
     postId:
       type: object
       properties:
@@ -562,7 +583,7 @@ components:
         postId:
           type: string
         poster:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/userDisplay'
         content:
           type: string
         likes:
@@ -580,7 +601,7 @@ components:
         postId:
           type: string
         poster:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/userDisplay'
         content:
           type: string
         likes:
@@ -607,7 +628,7 @@ components:
         commentId:
           type: string
         commenter:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/userDisplay'
         content:
           type: string
         replies:
@@ -630,7 +651,7 @@ components:
         replyId:
           type: string
         replier:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/userDisplay'
         content:
           type: string
         createdAt:

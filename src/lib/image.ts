@@ -2,11 +2,6 @@ import { getAuth } from "firebase/auth";
 import { firebaseApp } from "@lib/firebase";
 import { publicEnv } from "@/constants/env";
 
-const userIconUrl = (userName: string) => new URL(`/images/users/${userName}/icon.png`, publicEnv.IMAGE_URL).href;
-
-const userBgImageUrl = (userName: string) =>
-  new URL(`/images/users/${userName}/background.png`, publicEnv.IMAGE_URL).href;
-
 const postUserIconUrl = async (blob: Blob) => {
   const auth = getAuth(firebaseApp);
   const idToken = await auth.currentUser?.getIdToken();
@@ -39,4 +34,4 @@ const postUserBgImageUrl = async (blob: Blob) => {
   });
 };
 
-export { userIconUrl, userBgImageUrl, postUserIconUrl, postUserBgImageUrl };
+export { postUserIconUrl, postUserBgImageUrl };

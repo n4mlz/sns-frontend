@@ -26,7 +26,6 @@ import {
 } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import client from "@/lib/openapi";
-import { userIconUrl } from "@/lib/image";
 import domainConsts from "@/constants/domain";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 
@@ -111,7 +110,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
                 {!data || !data.userName || error || isLoading ? (
                   <Box w="100%" aspectRatio={3} />
                 ) : (
-                  <Image src={userIconUrl(data?.userName)} w="35px" h="35px" alt="" />
+                  <Image src={data?.iconUrl} w="35px" h="35px" alt="" />
                 )}
               </Skeleton>
             </Box>
