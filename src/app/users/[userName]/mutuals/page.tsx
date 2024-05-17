@@ -1,6 +1,7 @@
 "use client";
 
 import path from "path";
+import { useEffect } from "react";
 import useSWR from "swr";
 import { Box, Center, Spinner } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
@@ -12,13 +13,17 @@ const UserMutualsPage = ({ params }: { params: { userName: string } }) => {
   const authContext = useAuthContext();
 
   const { data, isLoading, mutate } = useSWR<components["schemas"]["user"][]>(
-    authContext.currentUser ? path.join("/api/users", params.userName, "/mutuals") : null
+    path.join("/api/users", params.userName, "/mutuals")
   );
+
+  useEffect(() => {
+    mutate();
+  }, [authContext.currentUser]);
 
   return (
     <>
       <BackButtonHeader title="相互フォロー" />
-      {!authContext.currentUser || isLoading ? (
+      {isLoading ? (
         <Center>
           <Spinner thickness="2px" color="gray.300" margin="40px" />
         </Center>

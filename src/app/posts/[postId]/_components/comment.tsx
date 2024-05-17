@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Box, Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
 import { getAboutDate } from "@/utils/time";
-import Replies from "@/app/(auth)/posts/[postId]/_components/replies";
+import Replies from "@/app/posts/[postId]/_components/replies";
 
 type Props = {
   comment: components["schemas"]["comment"];

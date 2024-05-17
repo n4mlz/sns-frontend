@@ -238,7 +238,7 @@ paths:
       tags:
         - user
       summary: ユーザーのプロフィールを取得する
-      description: Authorization ヘッダーを必要とします
+      description: Authorization ヘッダーは必要ありません
       security:
         - bearerAuth: []
       parameters:
@@ -290,7 +290,7 @@ paths:
       tags:
         - user
       summary: ユーザーとの相互フォローを取得する
-      description: Authorization ヘッダーを必要とします
+      description: Authorization ヘッダーは必要ありません
       security:
         - bearerAuth: []
       parameters:

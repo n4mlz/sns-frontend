@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import {
@@ -17,9 +17,9 @@ import { signIn } from "@/lib/firebase";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 
-const AuthRedirect = () => {
+const useSetUpAlert = () => {
   const router = useRouter();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const disclosure = useDisclosure();
   const cancelRef = useRef(null);
   const authContext = useAuthContext();
   const [dialog, setDialog] = useState<"userNull" | "userNameNull" | undefined>(undefined);
@@ -28,42 +28,35 @@ const AuthRedirect = () => {
     authContext.currentUser ? "/api/settings/profile" : null
   );
 
-  useEffect(() => {
+  const onOpen = () => {
     if (authContext.currentUser === null) {
       setDialog("userNull");
-      onOpen();
-    }
-  }, [authContext.currentUser]);
-
-  useEffect(() => {
-    if (authContext.currentUser && !isLoading && (!data || !data.userName || error)) {
+    } else if (authContext.currentUser && !isLoading && (!data || !data.userName || error)) {
       setDialog("userNameNull");
-      onOpen();
     }
-  }, [data, error, isLoading]);
+    disclosure.onOpen();
+  };
 
-  return (
+  const setUpAlert = (
     <>
       {dialog === "userNull" && (
         <AlertDialog
-          isOpen={isOpen}
+          isOpen={disclosure.isOpen}
           leastDestructiveRef={cancelRef}
-          onClose={onClose}
+          onClose={disclosure.onClose}
           size={{ base: "sm", md: "md", lg: "lg" }}>
           <AlertDialogOverlay>
             <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 はじめよう
               </AlertDialogHeader>
-
               <AlertDialogBody>Google アカウントでログインすることで、簡単に開始できます。</AlertDialogBody>
-
               <AlertDialogFooter>
                 <Button
                   color="white"
                   backgroundColor="primary.300"
                   onClick={() => {
-                    onClose();
+                    disclosure.onClose();
                     signIn(() => router.push("/home"));
                   }}
                   ml={3}>
@@ -76,24 +69,22 @@ const AuthRedirect = () => {
       )}
       {dialog === "userNameNull" && (
         <AlertDialog
-          isOpen={isOpen}
+          isOpen={disclosure.isOpen}
           leastDestructiveRef={cancelRef}
-          onClose={onClose}
+          onClose={disclosure.onClose}
           size={{ base: "sm", md: "md", lg: "lg" }}>
           <AlertDialogOverlay>
             <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 ユーザー名の登録
               </AlertDialogHeader>
-
               <AlertDialogBody>まずはユーザー名を登録しましょう !</AlertDialogBody>
-
               <AlertDialogFooter>
                 <Button
                   color="white"
                   backgroundColor="primary.300"
                   onClick={() => {
-                    onClose();
+                    disclosure.onClose();
                     router.push("/settings/userName");
                   }}
                   ml={3}>
@@ -106,6 +97,8 @@ const AuthRedirect = () => {
       )}
     </>
   );
+
+  return { ...disclosure, onOpen, setUpAlert };
 };
 
-export default AuthRedirect;
+export default useSetUpAlert;
