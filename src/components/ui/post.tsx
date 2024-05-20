@@ -75,7 +75,7 @@ const Post = ({ post, postCallback }: Props) => {
               <Text color="gray.500">{`@${post.poster?.userName}`}</Text>
               <Text color="gray.500">{`· ${getAboutDate(post.createdAt!)}`}</Text>
             </Flex>
-            {/* {post.poster?.userName === data?.userName && (
+            {post.poster?.userName === data?.userName && (
               <Menu>
                 <MenuButton>
                   <ChevronDownIcon fontSize="20px" color="gray.500" />
@@ -85,9 +85,14 @@ const Post = ({ post, postCallback }: Props) => {
                   {deletePostDialog}
                 </MenuList>
               </Menu>
-            )} */}
+            )}
           </Flex>
-          <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
+          <Text
+            cursor="pointer"
+            overflowWrap="anywhere"
+            wordBreak="normal"
+            whiteSpace="break-spaces"
+            onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
             {post.content}
           </Text>
         </Flex>
