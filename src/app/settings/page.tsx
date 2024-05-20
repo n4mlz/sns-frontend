@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { Flex, Heading } from "@chakra-ui/react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { LuAtSign } from "react-icons/lu";
-import SetUpAlert from "@/components/handle/setUpAlert";
+import SetUpDialog from "@/components/handle/setUpDialog";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
 
 const SettingsPage = () => {
@@ -12,7 +12,7 @@ const SettingsPage = () => {
 
   return (
     <>
-      <SetUpAlert />
+      <SetUpDialog />
       <BackButtonHeader title="設定" />
       <Flex direction="column" gap="32px" padding="20px">
         <Flex

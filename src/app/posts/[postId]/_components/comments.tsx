@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { Flex, Box, Button, Skeleton, Image, useColorModeValue } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
-import useCommentModal from "@/hooks/commentModal";
+import useCommentModal from "@/hooks/comment/commentModal";
 import Comment from "@/app/posts/[postId]/_components/comment";
 
 type Props = {
@@ -21,9 +21,13 @@ const Comments = ({ postId, comments, commentsCallback }: Props) => {
   );
 
   const commentCallback = (index: number) => {
-    return (comment: components["schemas"]["comment"]) => {
+    return (comment: components["schemas"]["comment"] | null) => {
       const newComments = [...comments];
-      newComments[index] = comment;
+      if (comment) {
+        newComments[index] = comment;
+      } else {
+        newComments.splice(index, 1);
+      }
       commentsCallback?.(newComments);
     };
   };

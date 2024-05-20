@@ -25,12 +25,12 @@ import { components } from "@/lib/openapi/schema";
 import domainConsts from "@/constants/domain";
 import PageBackButton from "@/components/elements/pageBackButton";
 import PostButton from "@/components/elements/postButton";
-import useSetUpAlert from "@/hooks/setUpAlert";
+import useSetUpDialog from "@/hooks/setUpDialog";
 
 const UserPage = ({ params }: { params: { userName: string } }) => {
   const router = useRouter();
   const authContext = useAuthContext();
-  const { onOpen, setUpAlert } = useSetUpAlert();
+  const { onOpen, setUpDialog } = useSetUpDialog();
 
   const {
     data: userData,
@@ -77,7 +77,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
 
   return (
     <Box padding={0}>
-      {setUpAlert}
+      {setUpDialog}
       <PageBackButton />
       <PostButton submitCallback={postSubmitCallback} />
       <Box paddingBottom="8px">

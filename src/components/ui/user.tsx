@@ -6,7 +6,7 @@ import { Flex, Box, Text, Button, IconButton, Image, useColorModeValue } from "@
 import { CloseIcon } from "@chakra-ui/icons";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import useSetUpAlert from "@/hooks/setUpAlert";
+import useSetUpDialog from "@/hooks/setUpDialog";
 import domainConsts from "@/constants/domain";
 import { adjustBio } from "@/utils/stringOperation";
 
@@ -18,7 +18,7 @@ type Props = {
 
 const User = ({ user, userCallback, enableReject }: Props) => {
   const router = useRouter();
-  const { onOpen, setUpAlert } = useSetUpAlert();
+  const { onOpen, setUpDialog } = useSetUpDialog();
 
   const follow = (afterStatus: string) => {
     onOpen();
@@ -45,7 +45,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
       padding="12px"
       borderBottom="1px"
       borderColor={useColorModeValue("gray.200", "gray.700")}>
-      {setUpAlert}
+      {setUpDialog}
       <Box
         cursor="pointer"
         w="45px"

@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import useSWR from "swr";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import useSetUpAlert from "@/hooks/setUpAlert";
+import useSetUpDialog from "@/hooks/setUpDialog";
 
-const SetUpAlert = () => {
+const SetUpDialog = () => {
   const authContext = useAuthContext();
-  const { onOpen, setUpAlert } = useSetUpAlert();
+  const { onOpen, setUpDialog } = useSetUpDialog();
 
   const { data, error, isLoading } = useSWR<components["schemas"]["profile"]>(
     authContext.currentUser ? "/api/settings/profile" : null
@@ -23,7 +23,7 @@ const SetUpAlert = () => {
     }
   }, [authContext.currentUser, data, error, isLoading]);
 
-  return <>{setUpAlert}</>;
+  return <>{setUpDialog}</>;
 };
 
-export default SetUpAlert;
+export default SetUpDialog;

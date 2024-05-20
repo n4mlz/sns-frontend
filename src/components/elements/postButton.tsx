@@ -1,6 +1,6 @@
 "use client";
 
-import usePostModal from "@/hooks/postModal";
+import usePostModal from "@/hooks/post/postModal";
 import { Box, Flex } from "@chakra-ui/react";
 import { LuSend } from "react-icons/lu";
 import { components } from "@/lib/openapi/schema";

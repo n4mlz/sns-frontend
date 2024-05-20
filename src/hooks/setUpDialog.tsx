@@ -17,7 +17,7 @@ import { signIn } from "@/lib/firebase";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 
-const useSetUpAlert = () => {
+const useSetUpDialog = () => {
   const router = useRouter();
   const disclosure = useDisclosure();
   const cancelRef = useRef(null);
@@ -37,7 +37,7 @@ const useSetUpAlert = () => {
     disclosure.onOpen();
   };
 
-  const setUpAlert = (
+  const setUpDialog = (
     <>
       {dialog === "userNull" && (
         <AlertDialog
@@ -98,7 +98,7 @@ const useSetUpAlert = () => {
     </>
   );
 
-  return { ...disclosure, onOpen, setUpAlert };
+  return { ...disclosure, onOpen, setUpDialog };
 };
 
-export default useSetUpAlert;
+export default useSetUpDialog;

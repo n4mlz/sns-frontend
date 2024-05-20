@@ -9,9 +9,13 @@ type Props = {
 
 const Posts = ({ posts, postsCallback }: Props) => {
   const postCallback = (index: number) => {
-    return (post: components["schemas"]["post"]) => {
+    return (post: components["schemas"]["post"] | null) => {
       const newPosts = [...posts];
-      newPosts[index] = post;
+      if (post) {
+        newPosts[index] = post;
+      } else {
+        newPosts.splice(index, 1);
+      }
       postsCallback?.(newPosts);
     };
   };

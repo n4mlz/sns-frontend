@@ -1,6 +1,6 @@
 import { Flex, Box, Button, useColorModeValue } from "@chakra-ui/react";
 import { components } from "@/lib/openapi/schema";
-import useReplyModal from "@/hooks/replyModal";
+import useReplyModal from "@/hooks/reply/replyModal";
 import Reply from "@/app/posts/[postId]/_components/reply";
 
 type Props = {
@@ -11,9 +11,13 @@ type Props = {
 
 const Replies = ({ commentId, replies, repliesCallback }: Props) => {
   const replyCallback = (index: number) => {
-    return (reply: components["schemas"]["reply"]) => {
+    return (reply: components["schemas"]["reply"] | null) => {
       const newReplies = [...replies];
-      newReplies[index] = reply;
+      if (reply) {
+        newReplies[index] = reply;
+      } else {
+        newReplies.splice(index, 1);
+      }
       repliesCallback?.(newReplies);
     };
   };
