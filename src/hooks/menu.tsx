@@ -9,7 +9,7 @@ import { MdLogout, MdOutlineDarkMode, MdOutlineLightMode, MdOutlineSettings } fr
 import { LuSend } from "react-icons/lu";
 import { useAuthContext } from "@components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
-import usePostModal from "@/hooks/postModal";
+import usePostModal from "@/hooks/post/postModal";
 import useSignOutDialog from "./signOutDialog";
 
 type Props = {

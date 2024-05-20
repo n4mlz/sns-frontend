@@ -5,7 +5,7 @@ import { Box, Center, Spinner } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
-import SetUpAlert from "@/components/handle/setUpAlert";
+import SetUpDialog from "@/components/handle/setUpDialog";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
 
 const RequestsPage = () => {
@@ -17,7 +17,7 @@ const RequestsPage = () => {
 
   return (
     <>
-      <SetUpAlert />
+      <SetUpDialog />
       <BackButtonHeader title="リクエスト" />
       {!authContext.currentUser || isLoading ? (
         <Center>

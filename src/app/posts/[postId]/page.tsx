@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import SetUpAlert from "@/components/handle/setUpAlert";
+import SetUpDialog from "@/components/handle/setUpDialog";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
@@ -44,7 +44,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
 
   return (
     <>
-      <SetUpAlert />
+      <SetUpDialog />
       <BackButtonHeader title="ポスト" />
       <Box>
         <Flex

@@ -2,16 +2,39 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import { Flex, Box, Text, Tooltip, Image, useColorModeValue } from "@chakra-ui/react";
+import useSWR from "swr";
+import {
+  Flex,
+  Box,
+  Text,
+  Tooltip,
+  Image,
+  useColorModeValue,
+  MenuButton,
+  Menu,
+  MenuList,
+  MenuItem,
+} from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
+import { useAuthContext } from "@components/contexts/AuthProvider";
+import useDeletePostDialog from "@/hooks/post/deletePostDialog";
 import { getAboutDate } from "@/utils/time";
 
-type Props = { post: components["schemas"]["post"]; postCallback?: (post: components["schemas"]["post"]) => void };
+type Props = {
+  post: components["schemas"]["post"];
+  postCallback?: (post: components["schemas"]["post"] | null) => void;
+};
 
 const Post = ({ post, postCallback }: Props) => {
   const router = useRouter();
+  const authContext = useAuthContext();
+
+  const { data } = useSWR<components["schemas"]["profile"]>(authContext.currentUser ? "/api/settings/profile" : null);
+
+  const { onOpen, deletePostDialog } = useDeletePostDialog(post.postId!, postCallback);
 
   const like = () => {
     client.PUT("/api/posts/like", { body: { postId: post.postId } });
@@ -41,14 +64,28 @@ const Post = ({ post, postCallback }: Props) => {
         <Image src={post.poster?.iconUrl} w="45px" h="45px" alt="" />
       </Box>
       <Flex direction="column" gap="4px" flex="1">
-        <Flex
-          cursor="pointer"
-          direction="column"
-          onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
-          <Flex direction="row" gap="4px">
-            <Text fontWeight={700}>{post.poster?.displayName}</Text>
-            <Text color="gray.500">{`@${post.poster?.userName}`}</Text>
-            <Text color="gray.500">{`· ${getAboutDate(post.createdAt!)}`}</Text>
+        <Flex direction="column">
+          <Flex direction="row" justifyContent="space-between" alignItems="center">
+            <Flex
+              cursor="pointer"
+              direction="row"
+              gap="4px"
+              onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
+              <Text fontWeight={700}>{post.poster?.displayName}</Text>
+              <Text color="gray.500">{`@${post.poster?.userName}`}</Text>
+              <Text color="gray.500">{`· ${getAboutDate(post.createdAt!)}`}</Text>
+            </Flex>
+            {/* {post.poster?.userName === data?.userName && (
+              <Menu>
+                <MenuButton>
+                  <ChevronDownIcon fontSize="20px" color="gray.500" />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem onClick={onOpen}>ポストを削除</MenuItem>
+                  {deletePostDialog}
+                </MenuList>
+              </Menu>
+            )} */}
           </Flex>
           <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
             {post.content}

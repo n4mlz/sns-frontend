@@ -1,50 +1,21 @@
-import { useRef } from "react";
+"use client";
+
 import { useRouter } from "next/navigation";
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  useDisclosure,
-} from "@chakra-ui/react";
 import { signOut } from "@/lib/firebase";
+import useSimpleDialog from "@hooks/SimpleDialog";
 
 const useSignOutDialog = () => {
-  const disclosure = useDisclosure();
-  const cancelRef = useRef(null);
   const router = useRouter();
 
-  const onClose = () => {
-    disclosure.onClose();
-    signOut(() => router.push("/"));
-  };
-
-  const signOutDialog = (
-    <AlertDialog
-      isOpen={disclosure.isOpen}
-      leastDestructiveRef={cancelRef}
-      onClose={disclosure.onClose}
-      size={{ base: "sm", md: "md", lg: "lg" }}>
-      <AlertDialogOverlay>
-        <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
-            ログアウトの確認
-          </AlertDialogHeader>
-          <AlertDialogBody>ログアウトしますか？</AlertDialogBody>
-          <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={disclosure.onClose}>
-              キャンセル
-            </Button>
-            <Button color="white" backgroundColor="red.500" onClick={() => onClose()} ml={3}>
-              ログアウト
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialogOverlay>
-    </AlertDialog>
+  const { disclosure, dialog: signOutDialog } = useSimpleDialog(
+    () => signOut(() => router.push("/")),
+    {
+      header: "ログアウトの確認",
+      body: "ログアウトしますか？",
+      button: "ログアウト",
+      cancel: "キャンセル",
+    },
+    "red.500"
   );
 
   return { ...disclosure, signOutDialog };

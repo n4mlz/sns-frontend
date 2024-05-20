@@ -6,7 +6,7 @@ import { getAboutDate } from "@/utils/time";
 
 type Props = {
   reply: components["schemas"]["reply"];
-  replyCallback?: (reply: components["schemas"]["reply"]) => void;
+  replyCallback?: (reply: components["schemas"]["reply"] | null) => void;
 };
 
 const Reply = ({ reply, replyCallback }: Props) => {

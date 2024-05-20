@@ -72,7 +72,7 @@ const useCommentModal = (postId: string, submitCallback?: (comment: components["
     const res = await client.POST("/api/posts/comments", { body: { postId: postId, content: form.content } });
     setIsPosting(false);
     if (res.response.ok) {
-      submitCallback && submitCallback({ ...res.data });
+      submitCallback?.({ ...res.data });
       disclosure.onClose();
       toast({
         title: "コメントしました !",

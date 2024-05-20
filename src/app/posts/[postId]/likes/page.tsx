@@ -7,7 +7,7 @@ import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
-import SetUpAlert from "@/components/handle/setUpAlert";
+import SetUpDialog from "@/components/handle/setUpDialog";
 
 const postLikesPage = ({ params }: { params: { postId: string } }) => {
   const authContext = useAuthContext();
@@ -18,7 +18,7 @@ const postLikesPage = ({ params }: { params: { postId: string } }) => {
 
   return (
     <>
-      <SetUpAlert />
+      <SetUpDialog />
       <BackButtonHeader title="いいねした人" />
       {!authContext.currentUser || isLoading ? (
         <Center>

@@ -9,7 +9,7 @@ import Replies from "@/app/posts/[postId]/_components/replies";
 
 type Props = {
   comment: components["schemas"]["comment"];
-  commentCallback?: (comment: components["schemas"]["comment"]) => void;
+  commentCallback?: (comment: components["schemas"]["comment"] | null) => void;
 };
 
 const Comment = ({ comment, commentCallback }: Props) => {
