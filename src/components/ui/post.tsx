@@ -3,23 +3,13 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import {
-  Flex,
-  Box,
-  Text,
-  Tooltip,
-  Image,
-  useColorModeValue,
-  MenuButton,
-  Menu,
-  MenuList,
-  MenuItem,
-} from "@chakra-ui/react";
+import { Flex, Box, Text, Tooltip, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@components/contexts/AuthProvider";
+import UserIcon from "@components/ui/userIcon";
 import useDeletePostDialog from "@/hooks/post/deletePostDialog";
 import { getAboutDate } from "@/utils/time";
 
@@ -53,16 +43,7 @@ const Post = ({ post, postCallback }: Props) => {
       padding="12px"
       borderBottom="1px"
       borderColor={useColorModeValue("gray.200", "gray.700")}>
-      <Box
-        cursor="pointer"
-        w="45px"
-        h="45px"
-        borderRadius="full"
-        backgroundColor="gray.200"
-        overflow="hidden"
-        onClick={() => router.push(path.join("/users", post.poster?.userName ? post.poster?.userName : ""))}>
-        <Image src={post.poster?.iconUrl} w="45px" h="45px" alt="" />
-      </Box>
+      <UserIcon user={post.poster!} size="45px" />
       <Flex direction="column" gap="4px" flex="1">
         <Flex direction="column">
           <Flex direction="row" justifyContent="space-between" alignItems="center">

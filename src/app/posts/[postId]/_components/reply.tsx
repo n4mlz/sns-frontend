@@ -1,10 +1,11 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Box, Flex, Image, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
+import { Flex, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import UserIcon from "@/components/ui/userIcon";
 import useDeleteReplyDialog from "@/hooks/reply/deleteReplyDialog";
 import { getAboutDate } from "@/utils/time";
 
@@ -23,16 +24,7 @@ const Reply = ({ reply, replyCallback }: Props) => {
 
   return (
     <Flex direction="row" gap="8px">
-      <Box
-        cursor="pointer"
-        w="45px"
-        h="45px"
-        borderRadius="full"
-        backgroundColor="gray.200"
-        overflow="hidden"
-        onClick={() => router.push(path.join("/users", reply?.replier?.userName ? reply.replier.userName : ""))}>
-        <Image src={reply?.replier?.iconUrl} w="45px" h="45px" alt="" />
-      </Box>
+      <UserIcon user={reply.replier!} size="45px" />
       <Flex direction="column" gap="4px" flex="1">
         <Flex direction="column">
           <Flex direction="row" justifyContent="space-between" alignItems="center">

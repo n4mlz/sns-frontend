@@ -19,6 +19,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
+import UserIcon from "@/components/ui/userIcon";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { getFormattedDate } from "@/utils/time";
@@ -54,18 +55,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
           borderBottom="2px"
           borderColor={useColorModeValue("gray.200", "gray.700")}>
           <Flex direction="row" gap="8px">
-            <Box
-              cursor="pointer"
-              w="45px"
-              h="45px"
-              borderRadius="full"
-              backgroundColor="gray.200"
-              overflow="hidden"
-              onClick={() => router.push(path.join("/users", data?.poster?.userName ? data.poster.userName : ""))}>
-              <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
-                <Image src={data?.poster?.iconUrl} w="45px" h="45px" alt="" />
-              </Skeleton>
-            </Box>
+            <UserIcon user={data?.poster!} size="45px" isLoading={authContext.currentUser == undefined || isLoading} />
             <Flex direction="column" gap="4px" flex="1">
               <Flex
                 cursor="pointer"
