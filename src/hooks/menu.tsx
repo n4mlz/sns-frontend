@@ -5,12 +5,18 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Box, Button, Center, Flex, Heading, useColorMode } from "@chakra-ui/react";
 import { FaRegUser } from "react-icons/fa6";
-import { MdLogout, MdOutlineDarkMode, MdOutlineLightMode, MdOutlineSettings } from "react-icons/md";
+import {
+  MdLogout,
+  MdOutlineDarkMode,
+  MdOutlineLightMode,
+  MdOutlinePersonSearch,
+  MdOutlineSettings,
+} from "react-icons/md";
 import { LuSend } from "react-icons/lu";
 import { useAuthContext } from "@components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 import usePostModal from "@/hooks/post/postModal";
-import useSignOutDialog from "./signOutDialog";
+import useSignOutDialog from "@hooks/signOutDialog";
 
 type Props = {
   postModalOpenCallback?: () => any;
@@ -76,6 +82,12 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
         </Box>
         <Heading as="h2" size="md">
           リクエスト
+        </Heading>
+      </Flex>
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => router.push("/search")}>
+        <MdOutlinePersonSearch size="22px" />
+        <Heading as="h2" size="md">
+          ユーザーを検索
         </Heading>
       </Flex>
       <Box>
