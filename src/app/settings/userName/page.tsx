@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Flex, Box, Button, useToast } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import BackButtonHeader from "@/components/ui/backButtonHeader";
-import { ControlledInput } from "@/components/elements/ControlledInput";
+import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import domainConsts from "@/constants/domain";
@@ -75,8 +75,8 @@ const userNameSettingsPage = () => {
     }
   };
 
-  const [isAvailableUserName, setIsAvailableUserName] = useState<boolean>(false);
-  const [isLoadingAvailable, setIsLoadingAvailable] = useState<boolean>(false);
+  const [isCheckedUserName, setIsCheckedUserName] = useState<boolean>(false);
+  const [isCheckingUserName, setIsCheckingUserName] = useState<boolean>(false);
   let lastLoad = new Date();
 
   const availableUserName = async (userName: string) => {
@@ -93,11 +93,11 @@ const userNameSettingsPage = () => {
       await sleep(750);
       if (currentValue !== getValues("userName")) return;
       const now = new Date();
-      setIsLoadingAvailable(true);
+      setIsCheckingUserName(true);
       const availability = await availableUserName(getValues("userName"));
       if (lastLoad < now) {
-        setIsAvailableUserName(availability);
-        setIsLoadingAvailable(false);
+        setIsCheckedUserName(availability);
+        setIsCheckingUserName(false);
         lastLoad = now;
       }
     })();
@@ -108,14 +108,13 @@ const userNameSettingsPage = () => {
       <BackButtonHeader title="ユーザー名の設定" />
       <Box as="form" padding={0}>
         <Flex direction="column" gap={3} paddingX={6} paddingY={3}>
-          <ControlledInput
+          <ControlledUserNameInput
             label="新しいユーザー名"
             errors={errors}
             isRequired
-            isUserName
             isLoaded={authContext.currentUser != undefined && !isLoading}
-            isLoadingAvailable={isLoadingAvailable}
-            isAvailableUserName={isAvailableUserName}
+            isCheckingUserName={isCheckingUserName}
+            isCheckedUserName={isCheckedUserName}
             {...register("userName")}
             defaultValue={data && data.userName ? data.userName : undefined}
           />
