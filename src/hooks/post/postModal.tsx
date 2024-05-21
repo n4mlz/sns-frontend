@@ -12,7 +12,6 @@ import {
   CircularProgress,
   Flex,
   Heading,
-  Image,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -20,11 +19,11 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Skeleton,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import UserIcon from "@/components/ui/userIcon";
 import client from "@/lib/openapi";
 import domainConsts from "@/constants/domain";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
@@ -43,7 +42,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
   const toast = useToast();
   const authContext = useAuthContext();
 
-  const { data, error, isLoading } = useSWR<components["schemas"]["profile"]>(
+  const { data, isLoading } = useSWR<components["schemas"]["profile"]>(
     authContext.currentUser ? "/api/settings/profile" : null
   );
 
@@ -105,15 +104,12 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
         <ModalCloseButton />
         <ModalBody>
           <Flex direction="row" gap="10px">
-            <Box w="35px" h="35px" borderRadius="full" backgroundColor="gray.200" overflow="hidden">
-              <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
-                {!data || !data.userName || error || isLoading ? (
-                  <Box w="100%" aspectRatio={3} />
-                ) : (
-                  <Image src={data?.iconUrl} w="35px" h="35px" alt="" />
-                )}
-              </Skeleton>
-            </Box>
+            <UserIcon
+              user={data!}
+              size="35px"
+              isLoading={authContext.currentUser == undefined || isLoading}
+              disableClick
+            />
             <Box flex={1}>
               <ControlledTextarea
                 variant="unstyled"

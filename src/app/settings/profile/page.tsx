@@ -112,12 +112,12 @@ const ProfileSettingsPage = () => {
       <SetUpDialog />
       <BackButtonHeader title="プロフィールの設定" />
       <Box as="form" padding={0}>
-        <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
+        <Box w="100%" aspectRatio={3} backgroundColor={useColorModeValue("gray.200", "gray.900")} overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
             <label>
               {croppedBgImageUrl ? (
                 <Image src={croppedBgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />
-              ) : !data || !data.userName || error || isLoading ? (
+              ) : !data || !data.userName || error || isLoading || data.iconUrl == "" ? (
                 <Box w="100%" aspectRatio={3} cursor="pointer" />
               ) : (
                 <Image src={data.bgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />
@@ -138,18 +138,16 @@ const ProfileSettingsPage = () => {
             border="4px"
             borderColor={useColorModeValue("white", "gray.800")}
             borderRadius="44px"
-            backgroundColor="gray.200"
+            backgroundColor={useColorModeValue("gray.200", "gray.900")}
             overflow="hidden"
             cursor="pointer">
             <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
               <label>
                 {croppedIconUrl ? (
                   <Image src={croppedIconUrl} w="80px" h="80px" alt="" cursor="pointer" />
-                ) : !data || !data.userName || error || isLoading ? (
+                ) : !data || !data.userName || error || isLoading || data.iconUrl == "" ? (
                   <Box w="80px" h="80px" cursor="pointer" />
                 ) : (
-                  // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
-                  // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
                   <Image src={data.iconUrl} w="80px" h="80px" alt="" cursor="pointer" />
                 )}
                 <Input type="file" accept="image/*" display="none" onChange={onIconFileChange} />

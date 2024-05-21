@@ -81,9 +81,9 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
       <PageBackButton />
       <PostButton submitCallback={postSubmitCallback} />
       <Box paddingBottom="8px">
-        <Box w="100%" aspectRatio={3} backgroundColor="gray.200" overflow="hidden">
+        <Box w="100%" aspectRatio={3} backgroundColor={useColorModeValue("gray.200", "gray.900")} overflow="hidden">
           <Skeleton isLoaded={!isLoadingUser}>
-            {!userData || !userData.userName || userError || isLoadingUser ? (
+            {!userData || !userData.userName || userError || isLoadingUser || userData.iconUrl == "" ? (
               <Box w="100%" aspectRatio={3} />
             ) : (
               <Image src={userData.bgImageUrl} w="100%" aspectRatio={3} alt="" />
@@ -101,14 +101,12 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
               border="4px"
               borderColor={useColorModeValue("white", "gray.800")}
               borderRadius="44px"
-              backgroundColor="gray.200"
+              backgroundColor={useColorModeValue("gray.200", "gray.900")}
               overflow="hidden">
               <Skeleton isLoaded={!isLoadingUser}>
-                {!userData || !userData.userName || userError || isLoadingUser ? (
+                {!userData || !userData.userName || userError || isLoadingUser || userData.iconUrl == "" ? (
                   <Box w="80px" h="80px" />
                 ) : (
-                  // TODO: 謎の枠線ができてしまうので onerror="this.src=(代替のURL)" などで対処する
-                  // TODO: 以下を nocache にする (プロフィールを変更しても以前の画像が表示されてしまうため)
                   <Image src={userData.iconUrl} w="80px" h="80px" alt="" />
                 )}
               </Skeleton>

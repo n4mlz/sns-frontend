@@ -3,10 +3,11 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Box, Flex, Image, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import UserIcon from "@/components/ui/userIcon";
 import useDeleteCommentDialog from "@/hooks/comment/deleteCommentDialog";
 import { getAboutDate } from "@/utils/time";
 import Replies from "@/app/posts/[postId]/_components/replies";
@@ -36,9 +37,7 @@ const Comment = ({ comment, commentCallback }: Props) => {
       borderBottom="1px"
       borderColor={useColorModeValue("gray.200", "gray.700")}>
       <Flex direction="row" gap="8px">
-        <Box w="45px" h="45px" borderRadius="full" backgroundColor="gray.200" overflow="hidden">
-          <Image src={comment?.commenter?.iconUrl} w="45px" h="45px" alt="" />
-        </Box>
+        <UserIcon user={comment.commenter!} size="45px" />
         <Flex direction="column" flex={1}>
           <Flex direction="row" justifyContent="space-between" alignItems="center">
             <Flex

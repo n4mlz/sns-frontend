@@ -3,6 +3,7 @@
 import useSWR from "swr";
 import { Flex, Box, Button, Skeleton, Image, useColorModeValue } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import UserIcon from "@/components/ui/userIcon";
 import { components } from "@/lib/openapi/schema";
 import useCommentModal from "@/hooks/comment/commentModal";
 import Comment from "@/app/posts/[postId]/_components/comment";
@@ -48,11 +49,12 @@ const Comments = ({ postId, comments, commentsCallback }: Props) => {
           ))}
         </Flex>
         <Flex direction="row" alignItems="center" padding="12px">
-          <Box w="45px" h="45px" borderRadius="full" backgroundColor="gray.200" overflow="hidden">
-            <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
-              <Image src={data?.iconUrl} w="45px" h="45px" alt="" />
-            </Skeleton>
-          </Box>
+          <UserIcon
+            user={data!}
+            size="45px"
+            isLoading={authContext.currentUser == undefined || isLoading}
+            disableClick
+          />
           <Button
             onClick={onOpen}
             margin="8px"

@@ -2,10 +2,11 @@
 
 import path from "path";
 import { useRouter } from "next/navigation";
-import { Flex, Box, Text, Button, IconButton, Image, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Text, Button, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
+import UserIcon from "@components/ui/userIcon";
 import useSetUpDialog from "@/hooks/setUpDialog";
 import domainConsts from "@/constants/domain";
 import { adjustBio } from "@/utils/stringOperation";
@@ -46,16 +47,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
       borderBottom="1px"
       borderColor={useColorModeValue("gray.200", "gray.700")}>
       {setUpDialog}
-      <Box
-        cursor="pointer"
-        w="45px"
-        h="45px"
-        borderRadius="full"
-        backgroundColor="gray.200"
-        overflow="hidden"
-        onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
-        <Image src={user.iconUrl} w="45px" h="45px" alt="" />
-      </Box>
+      <UserIcon user={user} size="45px" />
       <Flex direction="column" gap="4px" flex="1">
         <Flex direction="row" justifyContent="space-between">
           <Flex
