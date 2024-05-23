@@ -1,23 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_JP } from "next/font/google";
 import { Container } from "@chakra-ui/react";
 import { AuthProvider } from "@/components/contexts/AuthProvider";
 import SWRConfigProvider from "@/components/contexts/SWRConfigProvider";
 import ChakraConfigProvider from "@/components/contexts/ChakraConfigProvider";
 import { metaDataConsts } from "@/constants/metadata";
 import "normalize.css";
-import "@styles/global.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const notojp = Noto_Sans_JP({
-  subsets: ["latin"],
-  variable: "--font-notojp",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaDataConsts.SITE_URL),
@@ -67,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${inter.variable} ${notojp.variable}`}>
+      <body>
         <AuthProvider>
           <SWRConfigProvider>
             <ChakraConfigProvider>
