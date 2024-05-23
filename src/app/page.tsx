@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Box, Button, Center, Flex, Heading, Image, Spinner, useColorModeValue } from "@chakra-ui/react";
+// @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/css";
+import "@splidejs/react-splide/css";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn } from "@/lib/firebase";
 import { slides } from "@/utils/images";
