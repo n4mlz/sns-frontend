@@ -19,11 +19,11 @@ import {
 } from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import TransparentHeader from "@/components/ui/transparentHeader";
 import Posts from "@/components/ui/posts";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import domainConsts from "@/constants/domain";
-import PageBackButton from "@/components/elements/pageBackButton";
 import PostButton from "@/components/elements/postButton";
 import useSetUpDialog from "@/hooks/setUpDialog";
 
@@ -78,7 +78,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   return (
     <Box padding={0}>
       {setUpDialog}
-      <PageBackButton />
+      <TransparentHeader />
       <PostButton submitCallback={postSubmitCallback} />
       <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor={useColorModeValue("gray.200", "gray.900")} overflow="hidden">

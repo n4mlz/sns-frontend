@@ -18,30 +18,28 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: metaDataConsts.SITE_URL,
     siteName: metaDataConsts.SITE_NAME,
-    // TODO: OGP を追加する
-    // images: [
-    //   {
-    //     url: "/images/ogp.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: metaDataConsts.SITE_NAME,
-    //   },
-    // ],
+    images: [
+      {
+        url: "/images/ogp.png",
+        width: 1200,
+        height: 630,
+        alt: metaDataConsts.SITE_NAME,
+      },
+    ],
   },
-  // TODO: OGP を追加する
-  // twitter: {
-  //   title: metaDataConsts.SITE_NAME,
-  //   description: metaDataConsts.SITE_DESCRIPTION,
-  //   card: "summary_large_image",
-  //   images: [
-  //     {
-  //       url: `${metaDataConsts.SITE_URL}/images/ogp.png`,
-  //       width: 1200,
-  //       height: 630,
-  //       alt: metaDataConsts.SITE_NAME,
-  //     },
-  //   ],
-  // },
+  twitter: {
+    title: metaDataConsts.SITE_NAME,
+    description: metaDataConsts.SITE_DESCRIPTION,
+    card: "summary_large_image",
+    images: [
+      {
+        url: `${metaDataConsts.SITE_URL}/images/ogp.png`,
+        width: 1200,
+        height: 630,
+        alt: metaDataConsts.SITE_NAME,
+      },
+    ],
+  },
   alternates: {
     canonical: metaDataConsts.SITE_URL,
   },

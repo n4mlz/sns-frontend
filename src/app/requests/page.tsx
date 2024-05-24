@@ -6,7 +6,7 @@ import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
 import SetUpDialog from "@/components/handle/setUpDialog";
-import BackButtonHeader from "@/components/ui/backButtonHeader";
+import TitleHeader from "@/components/ui/titleHeader";
 
 const RequestsPage = () => {
   const authContext = useAuthContext();
@@ -18,7 +18,7 @@ const RequestsPage = () => {
   return (
     <>
       <SetUpDialog />
-      <BackButtonHeader title="リクエスト" />
+      <TitleHeader title="リクエスト" />
       {!authContext.currentUser || isLoading ? (
         <Center>
           <Spinner thickness="2px" color="gray.300" margin="40px" />

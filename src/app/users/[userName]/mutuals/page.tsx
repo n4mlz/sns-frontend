@@ -7,7 +7,7 @@ import { Box, Center, Spinner } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
-import BackButtonHeader from "@/components/ui/backButtonHeader";
+import TitleHeader from "@/components/ui/titleHeader";
 
 const UserMutualsPage = ({ params }: { params: { userName: string } }) => {
   const authContext = useAuthContext();
@@ -22,7 +22,7 @@ const UserMutualsPage = ({ params }: { params: { userName: string } }) => {
 
   return (
     <>
-      <BackButtonHeader title="相互フォロー" />
+      <TitleHeader title="相互フォロー" />
       {isLoading ? (
         <Center>
           <Spinner thickness="2px" color="gray.300" margin="40px" />
