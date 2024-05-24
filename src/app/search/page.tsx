@@ -9,6 +9,8 @@ import { ControlledUserNameInput } from "@/components/elements/ControlledUserNam
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { sleep } from "@/utils/time";
+import useSWR from "swr";
+import path from "path";
 
 const SearchPage = () => {
   const {
@@ -18,9 +20,12 @@ const SearchPage = () => {
     formState: { errors },
   } = useForm();
 
+  const { data, isLoading, mutate } = useSWR<components["schemas"]["user"]>(
+    getValues("userName") ? path.join("/api/users", getValues("userName")) : null
+  );
+
   const [isCheckStarted, setIsCheckStarted] = useState<boolean>(false);
-  const [isChecking, setIsChecking] = useState<boolean>(false);
-  const [user, setUser] = useState<components["schemas"]["user"] | undefined>(undefined);
+
   let lastLoad = new Date();
 
   useEffect(() => {
@@ -30,12 +35,9 @@ const SearchPage = () => {
       await sleep(750);
       if (currentValue !== getValues("userName")) return;
       const now = new Date();
-      setIsChecking(true);
-      const user = await client.GET("/api/users/{userName}", { params: { path: { userName: getValues("userName") } } });
+      await mutate(undefined, true);
       if (lastLoad < now) {
         setIsCheckStarted(false);
-        setIsChecking(false);
-        setUser(user.response.ok ? user.data : undefined);
         lastLoad = now;
       }
     })();
@@ -54,13 +56,13 @@ const SearchPage = () => {
           {...register("userName")}
         />
       </Box>
-      {isChecking ? (
+      {isLoading && isCheckStarted ? (
         <Center>
           <Spinner thickness="2px" color="gray.300" margin="40px" />
         </Center>
-      ) : user ? (
+      ) : data && data.userName ? (
         <Box marginY={4} borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
-          <User user={user} />
+          <User user={data} userCallback={(user) => mutate(user, false)} />
         </Box>
       ) : getValues("userName") && !isCheckStarted ? (
         <Center paddingY={10}>
