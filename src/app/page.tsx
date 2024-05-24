@@ -8,7 +8,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn } from "@/lib/firebase";
-import { slides } from "@/utils/images";
+import { logo, slides } from "@/utils/images";
 
 const Welcome = () => {
   const authContext = useAuthContext();
@@ -40,7 +40,10 @@ const Welcome = () => {
           <Spinner thickness="2px" color="gray.300" margin="40px" />
         </Center>
       ) : (
-        <Flex direction="column" gap="20px" paddingY="100px" justifyContent="center" alignItems="center">
+        <Flex direction="column" gap="25px" paddingY="100px" justifyContent="center" alignItems="center">
+          <Box w="50%">
+            <Image src={logo.src} alt="logo" w="fit-content" paddingRight="7%" />
+          </Box>
           <Flex direction="column" gap="10px" justifyContent="center" alignItems="center">
             <Heading as="h2" size="sm">
               静かな世界で愚痴をこぼしたい人へ。

@@ -1,27 +1,26 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Box, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { Box, Flex } from "@chakra-ui/react";
+import { ArrowBackIcon, HamburgerIcon } from "@chakra-ui/icons";
+import useMenuDrawer from "@/hooks/menuDrawer";
 
-type Props = {
-  title: string;
-};
-
-const BackButtonHeader = ({ title }: Props) => {
+const TransparentHeader = () => {
   const router = useRouter();
+  const { onOpen, menuDrawer } = useMenuDrawer();
 
   return (
-    <Box h="60px">
+    <Box>
+      {menuDrawer}
       <Flex
         as="header"
         direction="row"
         w="100%"
         maxW="600px"
         h="60px"
+        justifyContent="space-between"
         alignItems="center"
-        position="fixed"
-        backgroundColor={useColorModeValue("white", "gray.800")}>
+        position="fixed">
         <Flex
           cursor="pointer"
           w="35px"
@@ -35,12 +34,10 @@ const BackButtonHeader = ({ title }: Props) => {
           onClick={router.back}>
           <ArrowBackIcon w="22px" h="22px" color="white" />
         </Flex>
-        <Heading as="h1" size="md" margin="0">
-          {title}
-        </Heading>
+        <HamburgerIcon cursor="pointer" w="35px" h="35px" marginX="15px" color="gray.400" onClick={onOpen} />
       </Flex>
     </Box>
   );
 };
 
-export default BackButtonHeader;
+export default TransparentHeader;

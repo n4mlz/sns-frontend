@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
-import BackButtonHeader from "@/components/ui/backButtonHeader";
+import TitleHeader from "@/components/ui/titleHeader";
 import User from "@/components/ui/user";
 import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
 import client from "@/lib/openapi";
@@ -43,7 +43,7 @@ const SearchPage = () => {
 
   return (
     <>
-      <BackButtonHeader title="ユーザーを検索" />
+      <TitleHeader title="ユーザーを検索" />
       <Box as="form" paddingX={6} paddingY={3}>
         <ControlledUserNameInput
           label="検索するユーザー名"

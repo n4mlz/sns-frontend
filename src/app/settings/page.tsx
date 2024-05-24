@@ -5,7 +5,7 @@ import { Flex, Heading } from "@chakra-ui/react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { LuAtSign } from "react-icons/lu";
 import SetUpDialog from "@/components/handle/setUpDialog";
-import BackButtonHeader from "@/components/ui/backButtonHeader";
+import TitleHeader from "@/components/ui/titleHeader";
 
 const SettingsPage = () => {
   const router = useRouter();
@@ -13,7 +13,7 @@ const SettingsPage = () => {
   return (
     <>
       <SetUpDialog />
-      <BackButtonHeader title="設定" />
+      <TitleHeader title="設定" />
       <Flex direction="column" gap="32px" padding="20px">
         <Flex
           cursor="pointer"

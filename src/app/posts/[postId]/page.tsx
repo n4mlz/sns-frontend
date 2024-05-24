@@ -3,22 +3,11 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import {
-  Box,
-  Center,
-  Flex,
-  Image,
-  Skeleton,
-  SkeletonText,
-  Spinner,
-  Text,
-  Tooltip,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Center, Flex, Skeleton, SkeletonText, Spinner, Text, Tooltip, useColorModeValue } from "@chakra-ui/react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import SetUpDialog from "@/components/handle/setUpDialog";
-import BackButtonHeader from "@/components/ui/backButtonHeader";
+import TitleHeader from "@/components/ui/titleHeader";
 import UserIcon from "@/components/ui/userIcon";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
@@ -46,7 +35,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
   return (
     <>
       <SetUpDialog />
-      <BackButtonHeader title="ポスト" />
+      <TitleHeader title="ポスト" />
       <Box>
         <Flex
           direction="column"

@@ -6,13 +6,13 @@ import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import Posts from "@/components/ui/posts";
-import MenuHeader from "@/components/ui/menuHeader";
+import LogoHeader from "@/components/ui/logoHeader";
 import PostButton from "@/components/elements/postButton";
 
 const Timeline = () => {
   const authContext = useAuthContext();
 
-  const { data, isLoading, mutate, error } = useSWR<components["schemas"]["post"][]>(
+  const { data, isLoading, mutate } = useSWR<components["schemas"]["post"][]>(
     authContext.currentUser ? "/api/posts/timeline" : null
   );
 
@@ -23,7 +23,7 @@ const Timeline = () => {
   return (
     <Box>
       <SetUpDialog />
-      <MenuHeader />
+      <LogoHeader />
       <PostButton submitCallback={postSubmitCallback} />
       {isLoading ? (
         <Center borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>

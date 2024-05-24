@@ -4,11 +4,12 @@ import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Box, Button, Center, Flex, Heading, useColorMode } from "@chakra-ui/react";
-import { FaRegUser } from "react-icons/fa6";
 import {
   MdLogout,
   MdOutlineDarkMode,
+  MdOutlineHome,
   MdOutlineLightMode,
+  MdOutlinePersonOutline,
   MdOutlinePersonSearch,
   MdOutlineSettings,
 } from "react-icons/md";
@@ -21,9 +22,10 @@ import useSignOutDialog from "@hooks/signOutDialog";
 type Props = {
   postModalOpenCallback?: () => any;
   signOutDialogOpenCallback?: () => any;
+  onMenuClose?: () => any;
 };
 
-const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) => {
+const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose }: Props) => {
   const router = useRouter();
   const { colorMode, toggleColorMode } = useColorMode();
   const authContext = useAuthContext();
@@ -47,29 +49,40 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
     signOutDialog.onOpen();
   };
 
+  const closeAndPush = (path: string) => {
+    onMenuClose?.();
+    router.push(path);
+  };
+
   const mainMenu = (
     <Flex direction="column" gap="32px">
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/home")}>
+        <MdOutlineHome size="26px" />
+        <Heading as="h2" size="md">
+          ホーム
+        </Heading>
+      </Flex>
       <Flex
         cursor="pointer"
         direction="row"
         gap="16px"
         alignItems="center"
-        onClick={() => router.push(path.join("/users", profileData?.userName ? profileData.userName : ""))}>
-        <FaRegUser size="22px" />
+        onClick={() => closeAndPush(path.join("/users", profileData?.userName ? profileData.userName : ""))}>
+        <MdOutlinePersonOutline size="26px" />
         <Heading as="h2" size="md">
           プロフィール
         </Heading>
       </Flex>
-      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => router.push("/settings")}>
-        <MdOutlineSettings size="22px" />
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/settings")}>
+        <MdOutlineSettings size="26px" />
         <Heading as="h2" size="md">
           設定
         </Heading>
       </Flex>
-      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => router.push("/requests")}>
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/requests")}>
         <Box
-          minW="24px"
-          h="24px"
+          minW="26px"
+          h="26px"
           borderRadius="full"
           backgroundColor={requestsData && requestsData.length > 0 ? "primary.300" : "primary.200"}
           color="white"
@@ -84,8 +97,8 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback }: Props) =>
           リクエスト
         </Heading>
       </Flex>
-      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => router.push("/search")}>
-        <MdOutlinePersonSearch size="22px" />
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/search")}>
+        <MdOutlinePersonSearch size="26px" />
         <Heading as="h2" size="md">
           ユーザーを検索
         </Heading>

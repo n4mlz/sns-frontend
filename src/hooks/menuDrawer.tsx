@@ -17,6 +17,7 @@ const useMenuDrawer = () => {
   const { postModal, signOutDialog, mainMenu, subMenu } = useMenu({
     postModalOpenCallback: disclosure.onClose,
     signOutDialogOpenCallback: disclosure.onClose,
+    onMenuClose: disclosure.onClose,
   });
 
   const menuDrawerOnOpen = () => {
