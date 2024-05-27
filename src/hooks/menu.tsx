@@ -56,12 +56,6 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
 
   const mainMenu = (
     <Flex direction="column" gap="32px">
-      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/home")}>
-        <MdOutlineHome size="26px" />
-        <Heading as="h2" size="md">
-          ホーム
-        </Heading>
-      </Flex>
       <Flex
         cursor="pointer"
         direction="row"
@@ -71,6 +65,12 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
         <MdOutlinePersonOutline size="26px" />
         <Heading as="h2" size="md">
           プロフィール
+        </Heading>
+      </Flex>
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/home")}>
+        <MdOutlineHome size="26px" />
+        <Heading as="h2" size="md">
+          ホーム
         </Heading>
       </Flex>
       <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/settings")}>

@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import {
   Box,
   Button,
   Center,
+  Checkbox,
   Divider,
   Flex,
   Heading,
   Image,
+  Link,
   List,
   ListIcon,
   ListItem,
@@ -29,6 +30,7 @@ import { logo, slides } from "@/utils/images";
 const Welcome = () => {
   const authContext = useAuthContext();
   const router = useRouter();
+  const [isChecked, setIsChecked] = useState(false);
 
   const splideOptions = {
     autoplay: true,
@@ -88,9 +90,23 @@ const Welcome = () => {
               相互フォローになることでしかお互いのポストを閲覧できないようになっているので、人との繋がりをより深く感じられます。
             </ListItem>
           </List>
-          <Button color="white" backgroundColor="primary.300" onClick={() => signIn(() => router.push("/home"))}>
+          <Button
+            color="white"
+            backgroundColor="primary.300"
+            isDisabled={!isChecked}
+            onClick={() => signIn(() => router.push("/home"))}>
             Google でサインイン
           </Button>
+          <Checkbox colorScheme="green" onChange={(e) => setIsChecked(e.target.checked)}>
+            <Link href="/terms-of-service" color="primary.300" target="_blank" rel="noopener noreferrer">
+              利用規約
+            </Link>
+            と
+            <Link href="/privacy-policy" color="primary.300" target="_blank" rel="noopener noreferrer">
+              プライバシーポリシー
+            </Link>
+            に同意する
+          </Checkbox>
           <Splide options={splideOptions}>
             {slides.map((slide, index) => (
               <SplideSlide key={index}>
@@ -103,8 +119,12 @@ const Welcome = () => {
           <Flex w="100%" direction="column" alignItems="center" gap="35px" paddingTop="100px" paddingBottom="30px">
             <Divider w="90%" />
             <Flex direction="column" gap="10px" justifyContent="center" alignItems="center">
-              <Link href="/terms-of-service">利用規約</Link>
-              <Link href="/privacy-policy">プライバシーポリシー</Link>
+              <Link href="/terms-of-service" _hover={{ textDecoration: "none" }}>
+                利用規約
+              </Link>
+              <Link href="/privacy-policy" _hover={{ textDecoration: "none" }}>
+                プライバシーポリシー
+              </Link>
             </Flex>
           </Flex>
         </Flex>

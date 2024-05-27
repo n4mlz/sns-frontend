@@ -1,7 +1,17 @@
 "use client";
 
-import Link from "next/link";
-import { Box, Divider, Flex, Heading, Image, List, ListIcon, ListItem, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Image,
+  Link,
+  List,
+  ListIcon,
+  ListItem,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { QuestionIcon } from "@chakra-ui/icons";
 import { MdCheckCircle } from "react-icons/md";
 // @ts-ignore
@@ -79,8 +89,12 @@ const AboutPage = () => {
         <Flex w="100%" direction="column" alignItems="center" gap="25px" paddingTop="10px" paddingBottom="30px">
           <Divider w="90%" />
           <Flex direction="column" gap="10px" justifyContent="center" alignItems="center">
-            <Link href="/terms-of-service">利用規約</Link>
-            <Link href="/privacy-policy">プライバシーポリシー</Link>
+            <Link href="/terms-of-service" _hover={{ textDecoration: "none" }}>
+              利用規約
+            </Link>
+            <Link href="/privacy-policy" _hover={{ textDecoration: "none" }}>
+              プライバシーポリシー
+            </Link>
           </Flex>
         </Flex>
       </Flex>
