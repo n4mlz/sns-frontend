@@ -1,6 +1,6 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { publicEnv } from "@/constants/env";
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signOut as firebaseSignOut, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: publicEnv.FIREBASE_API_KEY,
@@ -18,7 +18,7 @@ const signIn = async (afterAuth?: () => any) => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth(firebaseApp);
   const credential = await signInWithPopup(auth, provider);
-  afterAuth && afterAuth();
+  afterAuth?.();
   return credential;
 };
 
