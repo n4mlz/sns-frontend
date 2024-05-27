@@ -16,13 +16,13 @@ const useDeletePostDialog = (
     if (res.response.ok) {
       deletePostCallBack?.(null);
       toast({
-        title: "投稿を削除しました",
+        title: "ポストを削除しました",
         status: "success",
         isClosable: true,
       });
     } else {
       toast({
-        title: "投稿の削除に失敗しました",
+        title: "ポストの削除に失敗しました",
         description: "サーバーに問題が発生した可能性があります。",
         status: "error",
         isClosable: true,
@@ -33,8 +33,8 @@ const useDeletePostDialog = (
   const { disclosure, dialog: deletePostDialog } = useSimpleDialog(
     onClose,
     {
-      header: "投稿の削除",
-      body: "投稿を削除しますか？",
+      header: "ポストの削除",
+      body: "ポストを削除しますか？",
       button: "削除",
       cancel: "キャンセル",
     },

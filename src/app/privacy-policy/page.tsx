@@ -7,7 +7,7 @@ const PrivacyPolicyPage = () => {
       <Box height="30px">
         <PageBackButton />
       </Box>
-      <Box padding="20px">
+      <Box padding="30px">
         <Heading as="h1" size="lg">
           プライバシーポリシー
         </Heading>
