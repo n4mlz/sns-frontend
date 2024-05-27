@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Flex, Box, Button, useToast } from "@chakra-ui/react";
+import { Flex, Box, Button, useToast, Input } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import TitleHeader from "@/components/ui/titleHeader";
 import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
@@ -28,6 +28,7 @@ const schema = z.object({
       `ユーザー名は${domainConsts.MAX_USERNAME_LENGTH}文字以下で入力してください。`
     )
     .regex(domainConsts.USERNAME_REGEX, "ユーザー名は半角英数字とアンダースコアのみ使用できます。"),
+  dummy: z.string().readonly(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -118,6 +119,7 @@ const userNameSettingsPage = () => {
             {...register("userName")}
             defaultValue={data && data.userName ? data.userName : undefined}
           />
+          <Input display="none" readOnly value={undefined} {...register("dummy")} />
           <Button
             onClick={handleSubmit(onSubmit)}
             isLoading={isUploading}
