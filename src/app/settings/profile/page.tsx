@@ -8,6 +8,7 @@ import useSWR from "swr";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Flex, Box, Button, Input, Image, Skeleton, useToast, useColorModeValue } from "@chakra-ui/react";
+import { MdOutlineCameraAlt } from "react-icons/md";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
@@ -115,9 +116,20 @@ const ProfileSettingsPage = () => {
         <Box w="100%" aspectRatio={3} backgroundColor={useColorModeValue("gray.200", "gray.900")} overflow="hidden">
           <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
             <label>
+              <Flex
+                position="absolute"
+                w="100%"
+                aspectRatio={3}
+                pointerEvents="none"
+                backgroundColor="blackAlpha.500"
+                opacity={0.9}
+                justifyContent="center"
+                alignItems="center">
+                <MdOutlineCameraAlt size="40px" />
+              </Flex>
               {croppedBgImageUrl ? (
                 <Image src={croppedBgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />
-              ) : !data || !data.userName || error || isLoading || data.bgImageUrl == "" ? (
+              ) : !data || !data.userName || error || isLoading || data.iconUrl == "" ? (
                 <Box w="100%" aspectRatio={3} cursor="pointer" />
               ) : (
                 <Image src={data.bgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />
@@ -143,6 +155,17 @@ const ProfileSettingsPage = () => {
             cursor="pointer">
             <Skeleton isLoaded={authContext.currentUser != undefined && !isLoading}>
               <label>
+                <Flex
+                  position="absolute"
+                  w="80px"
+                  h="80px"
+                  pointerEvents="none"
+                  backgroundColor="blackAlpha.500"
+                  opacity={0.9}
+                  justifyContent="center"
+                  alignItems="center">
+                  <MdOutlineCameraAlt size="30px" />
+                </Flex>
                 {croppedIconUrl ? (
                   <Image src={croppedIconUrl} w="80px" h="80px" alt="" cursor="pointer" />
                 ) : !data || !data.userName || error || isLoading || data.iconUrl == "" ? (
