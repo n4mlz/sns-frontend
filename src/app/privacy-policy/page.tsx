@@ -12,7 +12,7 @@ const PrivacyPolicyPage = () => {
           プライバシーポリシー
         </Heading>
         <Text paddingY="5px">
-          snooze 運営 (以下、「運営」といいます。) は、本ウェブサイト上で提供するサービス
+          snooze 運営 (以下、「当運営」といいます。) は、本ウェブサイト上で提供するサービス
           (以下,「本サービス」といいます。)
           における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー
           (以下、「本ポリシー」といいます。) を定めます。
@@ -224,6 +224,7 @@ const PrivacyPolicyPage = () => {
             </Tr>
           </Tbody>
         </Table>
+        <Text paddingY="20px">以上</Text>
       </Box>
     </>
   );
