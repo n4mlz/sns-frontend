@@ -117,7 +117,7 @@ const ProfileSettingsPage = () => {
             <label>
               {croppedBgImageUrl ? (
                 <Image src={croppedBgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />
-              ) : !data || !data.userName || error || isLoading || data.iconUrl == "" ? (
+              ) : !data || !data.userName || error || isLoading || data.bgImageUrl == "" ? (
                 <Box w="100%" aspectRatio={3} cursor="pointer" />
               ) : (
                 <Image src={data.bgImageUrl} w="100%" alt="" aspectRatio={3} cursor="pointer" />

@@ -9,11 +9,11 @@ export default {
   colors: {
     primary: { 100: "#fed7e2", 200: "#fbb6ce", 300: "#f687b3", 400: "#ed64a6" },
     gray: {
-      50: "#faf2ff",
-      100: "#f2e9fa",
-      200: "#e8e0fb",
-      300: "#d5cae0",
-      400: "#aea0be",
+      50: "#f7fafc",
+      100: "#edeff7",
+      200: "#eaeaef",
+      300: "#dacae3",
+      400: "#aca0c2",
       500: "#7d7290",
       600: "#514d64",
       700: "#302d40",

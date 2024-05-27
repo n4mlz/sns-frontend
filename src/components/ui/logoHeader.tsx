@@ -5,7 +5,11 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import useMenuDrawer from "@/hooks/menuDrawer";
 import { logoIcon } from "@/utils/images";
 
-const LogoHeader = () => {
+type Props = {
+  onLogoClick?: () => any;
+};
+
+const LogoHeader = ({ onLogoClick }: Props) => {
   const { onOpen, menuDrawer } = useMenuDrawer();
 
   return (
@@ -20,10 +24,28 @@ const LogoHeader = () => {
         justifyContent="space-between"
         alignItems="center"
         position="fixed"
+        zIndex="100"
+        pointerEvents="none"
         backgroundColor={useColorModeValue("white", "gray.800")}>
         <Box w="35px" h="35px" marginX="15px" />
-        <Image src={logoIcon.src} alt="logo" w="35px" h="35px" />
-        <HamburgerIcon cursor="pointer" w="35px" h="35px" marginX="15px" color="gray.400" onClick={onOpen} />
+        <Image
+          src={logoIcon.src}
+          alt="logo"
+          cursor={onLogoClick ? "pointer" : "auto"}
+          w="35px"
+          h="35px"
+          pointerEvents="all"
+          onClick={onLogoClick}
+        />
+        <HamburgerIcon
+          cursor="pointer"
+          w="35px"
+          h="35px"
+          marginX="15px"
+          color="gray.400"
+          pointerEvents="all"
+          onClick={onOpen}
+        />
       </Flex>
     </Box>
   );

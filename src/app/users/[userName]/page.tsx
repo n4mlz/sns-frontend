@@ -83,7 +83,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
       <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor={useColorModeValue("gray.200", "gray.900")} overflow="hidden">
           <Skeleton isLoaded={!isLoadingUser}>
-            {!userData || !userData.userName || userError || isLoadingUser || userData.iconUrl == "" ? (
+            {!userData || !userData.userName || userError || isLoadingUser || userData.bgImageUrl == "" ? (
               <Box w="100%" aspectRatio={3} />
             ) : (
               <Image src={userData.bgImageUrl} w="100%" aspectRatio={3} alt="" />

@@ -7,7 +7,7 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 const PageBackButton = () => {
   const router = useRouter();
   return (
-    <Box position="relative">
+    <Box position="relative" pointerEvents="none">
       <Flex
         cursor="pointer"
         position="fixed"
@@ -19,6 +19,7 @@ const PageBackButton = () => {
         backgroundColor="gray.700"
         borderRadius="full"
         opacity="0.8"
+        pointerEvents="all"
         onClick={router.back}>
         <ArrowBackIcon w="22px" h="22px" color="white" />
       </Flex>

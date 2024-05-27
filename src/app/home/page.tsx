@@ -23,7 +23,7 @@ const Timeline = () => {
   return (
     <Box>
       <SetUpDialog />
-      <LogoHeader />
+      <LogoHeader onLogoClick={() => mutate(undefined, true)} />
       <PostButton submitCallback={postSubmitCallback} />
       {isLoading ? (
         <Center borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
