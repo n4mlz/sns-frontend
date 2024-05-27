@@ -3,6 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
   Box,
   Button,
   Center,
@@ -70,43 +75,37 @@ const Welcome = () => {
               鍵垢しか存在しないクローズドなSNS
             </Heading>
           </Flex>
-          <Flex direction="row" gap="4px" alignItems="center">
-            <QuestionIcon color="primary.400" />
-            <Heading as="h2" size="md">
-              snooze とは？
-            </Heading>
-          </Flex>
-          <List spacing={3} paddingX="30px">
-            <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.400" />
-              ユーザーそれぞれがプライベートな"鍵垢"を持つことができる、全く新しいコンセプトの SNS です。
-            </ListItem>
-            <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.400" />
-              自分の許可した人たちとのみ交流できる閉じた空間で、自由にポストや交流が楽しめます。
-            </ListItem>
-            <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.400" />
-              相互フォローになることでしかお互いのポストを閲覧できないようになっているので、人との繋がりをより深く感じられます。
-            </ListItem>
-          </List>
-          <Button
-            color="white"
-            backgroundColor="primary.300"
-            isDisabled={!isChecked}
-            onClick={() => signIn(() => router.push("/home"))}>
-            Google でサインイン
-          </Button>
-          <Checkbox colorScheme="green" onChange={(e) => setIsChecked(e.target.checked)}>
-            <Link href="/terms-of-service" color="primary.300" target="_blank" rel="noopener noreferrer">
-              利用規約
-            </Link>
-            と
-            <Link href="/privacy-policy" color="primary.300" target="_blank" rel="noopener noreferrer">
-              プライバシーポリシー
-            </Link>
-            に同意する
-          </Checkbox>
+          <Accordion allowToggle>
+            <AccordionItem border="0px">
+              <AccordionButton opacity={0.3} _expanded={{ opacity: 1 }}>
+                <Center w="100%">
+                  <Flex direction="row" gap="4px" alignItems="center">
+                    <QuestionIcon color="primary.400" />
+                    <Heading as="h2" size="md">
+                      snooze とは？
+                    </Heading>
+                  </Flex>
+                  <AccordionIcon />
+                </Center>
+              </AccordionButton>
+              <AccordionPanel>
+                <List spacing={3} paddingX="30px">
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.400" />
+                    ユーザーそれぞれがプライベートな"鍵垢"を持つことができる、全く新しいコンセプトの SNS です。
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.400" />
+                    自分の許可した人たちとのみ交流できる閉じた空間で、自由にポストや交流が楽しめます。
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.400" />
+                    相互フォローになることでしかお互いのポストを閲覧できないようになっているので、人との繋がりをより深く感じられます。
+                  </ListItem>
+                </List>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
           <Splide options={splideOptions}>
             {slides.map((slide, index) => (
               <SplideSlide key={index}>
@@ -116,7 +115,26 @@ const Welcome = () => {
               </SplideSlide>
             ))}
           </Splide>
-          <Flex w="100%" direction="column" alignItems="center" gap="35px" paddingTop="100px" paddingBottom="30px">
+          <Flex direction="column" justifyContent="center" alignItems="center" gap="25px" paddingTop="25px">
+            <Checkbox colorScheme="green" onChange={(e) => setIsChecked(e.target.checked)}>
+              <Link href="/terms-of-service" color="primary.300" target="_blank" rel="noopener noreferrer">
+                利用規約
+              </Link>
+              と
+              <Link href="/privacy-policy" color="primary.300" target="_blank" rel="noopener noreferrer">
+                プライバシーポリシー
+              </Link>
+              に同意する
+            </Checkbox>
+            <Button
+              color="white"
+              backgroundColor="primary.300"
+              isDisabled={!isChecked}
+              onClick={() => signIn(() => router.push("/home"))}>
+              Google でサインイン
+            </Button>
+          </Flex>
+          <Flex w="100%" direction="column" alignItems="center" gap="25px" paddingTop="25px" paddingBottom="30px">
             <Divider w="90%" />
             <Flex direction="column" gap="10px" justifyContent="center" alignItems="center">
               <Link href="/terms-of-service" _hover={{ textDecoration: "none" }}>
