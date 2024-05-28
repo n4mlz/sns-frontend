@@ -62,6 +62,9 @@ dependencies:
   react-icons:
     specifier: ^5.2.0
     version: 5.2.0(react@18.2.0)
+  rich-textarea:
+    specifier: ^0.26.0
+    version: 0.26.0(react@18.2.0)
   sharp:
     specifier: ^0.33.4
     version: 0.33.4
@@ -4579,6 +4582,14 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
+
+  /rich-textarea@0.26.0(react@18.2.0):
+    resolution: {integrity: sha512-rPIwEmhe6gEafKYH9qylnnmNWHNUJ8IDxgPraPASDSV8euY3dwBify11fc9SuYZHX6KbIWJrCpGkNLCsBBVAhA==}
+    peerDependencies:
+      react: '>=16.14.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
