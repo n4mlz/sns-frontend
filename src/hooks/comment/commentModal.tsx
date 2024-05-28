@@ -112,10 +112,9 @@ const useCommentModal = (postId: string, submitCallback?: (comment: components["
             />
             <Box flex={1}>
               <ControlledTextarea
-                variant="unstyled"
                 placeholder="コメントする"
-                padding={0}
                 isLoaded
+                isUnstyled
                 label=""
                 errors={errors}
                 {...register("content")}

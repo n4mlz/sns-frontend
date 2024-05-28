@@ -5,6 +5,7 @@ import SWRConfigProvider from "@/components/contexts/SWRConfigProvider";
 import ChakraConfigProvider from "@/components/contexts/ChakraConfigProvider";
 import { metaDataConsts } from "@/constants/metadata";
 import "normalize.css";
+import "@styles/global.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaDataConsts.SITE_URL),

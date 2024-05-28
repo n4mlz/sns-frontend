@@ -112,10 +112,9 @@ const useReplyModal = (commentId: string, submitCallback?: (reply: components["s
             />
             <Box flex={1}>
               <ControlledTextarea
-                variant="unstyled"
                 placeholder="返信する"
-                padding={0}
                 isLoaded
+                isUnstyled
                 label=""
                 errors={errors}
                 {...register("content")}

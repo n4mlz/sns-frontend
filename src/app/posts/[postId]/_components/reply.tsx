@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Flex, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import Linkify from "linkify-react";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import UserIcon from "@/components/ui/userIcon";
@@ -50,7 +51,7 @@ const Reply = ({ reply, replyCallback }: Props) => {
             )}
           </Flex>
           <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
-            {reply?.content}
+            <Linkify>{reply?.content}</Linkify>
           </Text>
         </Flex>
       </Flex>
