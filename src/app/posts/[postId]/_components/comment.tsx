@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import Linkify from "linkify-react";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
 import useDeleteCommentDialog from "@/hooks/comment/deleteCommentDialog";
 import { getAboutDate } from "@/utils/time";
@@ -65,7 +65,7 @@ const Comment = ({ comment, commentCallback }: Props) => {
             )}
           </Flex>
           <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
-            <Linkify>{comment?.content}</Linkify>
+            <CustomLinkify>{comment?.content}</CustomLinkify>
           </Text>
         </Flex>
       </Flex>

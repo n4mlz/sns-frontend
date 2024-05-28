@@ -60,10 +60,9 @@ export const ControlledTextarea = forwardRef<ControlledTextareaProps, "input">(
               {...rest}
               ref={ref}
               className={isUnstyled ? `${styles.richTextarea} ${styles.unstyled}` : styles.richTextarea}
-              style={{ width: "100%" }}>
+              style={{ width: "100%", height: "100px" }}>
               {renderer}
             </RichTextarea>
-            <RichTextarea />
             <FormErrorMessage {...formErrorMessageProps}>{errors[name]?.message}</FormErrorMessage>
           </Box>
         )}

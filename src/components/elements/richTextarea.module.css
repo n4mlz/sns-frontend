@@ -2,7 +2,7 @@
 .richTextarea {
   width:100%;
   font-feature-settings: "kern";
-  height:var(--input-height);
+  height: 100px;
   font-size:var(--input-font-size);
   -webkit-padding-start:var(--input-padding);
   padding-inline-start:var(--input-padding);
@@ -55,7 +55,14 @@
   border: none;
   outline: "none";
   resize: "none";
-  padding: "0";
+  padding-top: 0;
+  padding-bottom: 0;
+  padding: 0;
+  -webkit-padding-start: "none";
+  padding-inline-start:"none";
+  -webkit-padding-end:"none";
+  padding-inline-end:"none";
+  --input-padding: "none";
 }
 
 .unstyled:hover,

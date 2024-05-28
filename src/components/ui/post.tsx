@@ -6,10 +6,10 @@ import useSWR from "swr";
 import { Flex, Box, Text, Tooltip, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
-import Linkify from "linkify-react";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@components/contexts/AuthProvider";
+import { CustomLinkify } from "@components/elements/customLinkify";
 import UserIcon from "@components/ui/userIcon";
 import useDeletePostDialog from "@/hooks/post/deletePostDialog";
 import { getAboutDate } from "@/utils/time";
@@ -75,7 +75,7 @@ const Post = ({ post, postCallback }: Props) => {
             wordBreak="normal"
             whiteSpace="break-spaces"
             onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
-            <Linkify>{post.content}</Linkify>
+            <CustomLinkify>{post.content}</CustomLinkify>
           </Text>
         </Flex>
         <Flex direction="row" gap="16px">

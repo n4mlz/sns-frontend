@@ -3,9 +3,9 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Flex, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import Linkify from "linkify-react";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
 import useDeleteReplyDialog from "@/hooks/reply/deleteReplyDialog";
 import { getAboutDate } from "@/utils/time";
@@ -51,7 +51,7 @@ const Reply = ({ reply, replyCallback }: Props) => {
             )}
           </Flex>
           <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
-            <Linkify>{reply?.content}</Linkify>
+            <CustomLinkify>{reply?.content}</CustomLinkify>
           </Text>
         </Flex>
       </Flex>
