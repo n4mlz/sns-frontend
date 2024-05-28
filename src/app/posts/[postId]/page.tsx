@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Box, Center, Flex, Skeleton, SkeletonText, Spinner, Text, Tooltip, useColorModeValue } from "@chakra-ui/react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import Linkify from "linkify-react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
+import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
@@ -68,7 +68,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
           </Flex>
           <SkeletonText isLoaded={authContext.currentUser != undefined && !isLoading} noOfLines={3} marginY="4px">
             <Text fontSize={22} overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
-              <Linkify>{data?.content}</Linkify>
+              <CustomLinkify>{data?.content}</CustomLinkify>
             </Text>
           </SkeletonText>
           {authContext.currentUser != undefined && !isLoading && (

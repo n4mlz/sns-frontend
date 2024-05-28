@@ -4,9 +4,9 @@ import path from "path";
 import { useRouter } from "next/navigation";
 import { Flex, Text, Button, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
-import Linkify from "linkify-react";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
+import { CustomLinkify } from "@components/elements/customLinkify";
 import UserIcon from "@components/ui/userIcon";
 import useSetUpDialog from "@/hooks/setUpDialog";
 import domainConsts from "@/constants/domain";
@@ -108,7 +108,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
           wordBreak="normal"
           whiteSpace="break-spaces"
           onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
-          <Linkify>{adjustBio(user.biography ? user.biography : "")}</Linkify>
+          <CustomLinkify>{adjustBio(user.biography ? user.biography : "")}</CustomLinkify>
         </Text>
       </Flex>
     </Flex>
