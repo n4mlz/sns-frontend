@@ -13,7 +13,7 @@ const PostButton = ({ submitCallback }: Props) => {
   const { onOpen, postModal } = usePostModal(submitCallback);
 
   return (
-    <Flex w="100%" maxW="600px" justifyContent="flex-end" position="fixed" bottom="35px">
+    <Flex w="100%" maxW="600px" justifyContent="flex-end" position="fixed" bottom="35px" pointerEvents="none">
       <Box
         as="button"
         position="relative"
@@ -21,7 +21,8 @@ const PostButton = ({ submitCallback }: Props) => {
         h="60px"
         marginRight="35px"
         backgroundColor="primary.300"
-        borderRadius="full">
+        borderRadius="full"
+        pointerEvents="all">
         {postModal}
         <Box cursor="pointer" position="absolute" top="16px" left="13.5px">
           <LuSend size="30px" color="white" onClick={onOpen} />

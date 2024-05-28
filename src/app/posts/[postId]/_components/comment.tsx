@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import Linkify from "linkify-react";
 import { components } from "@/lib/openapi/schema";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import UserIcon from "@/components/ui/userIcon";
@@ -64,7 +65,7 @@ const Comment = ({ comment, commentCallback }: Props) => {
             )}
           </Flex>
           <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
-            {comment?.content}
+            <Linkify>{comment?.content}</Linkify>
           </Text>
         </Flex>
       </Flex>

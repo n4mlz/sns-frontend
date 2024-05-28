@@ -1,0 +1,71 @@
+
+.richTextarea {
+  width:100%;
+  font-feature-settings: "kern";
+  height:var(--input-height);
+  font-size:var(--input-font-size);
+  -webkit-padding-start:var(--input-padding);
+  padding-inline-start:var(--input-padding);
+  -webkit-padding-end:var(--input-padding);
+  padding-inline-end:var(--input-padding);
+  border-radius:var(--input-border-radius);
+  min-width:0px;
+  outline:2px solid transparent;
+  outline-offset:2px;
+  position:relative;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  transition-property:var(--chakra-transition-property-common);
+  transition-duration:var(--chakra-transition-duration-normal);
+  padding-top:var(--chakra-space-2);
+  padding-bottom:var(--chakra-space-2);
+  min-height:var(--chakra-sizes-20);
+  line-height:var(--chakra-lineHeights-short);
+  vertical-align:top;
+  --input-font-size:var(--chakra-fontSizes-md);
+  --input-padding:var(--chakra-space-4);
+  --input-border-radius:var(--chakra-radii-md);
+  --input-height:var(--chakra-sizes-10);
+  border:1px solid;
+  border-color:inherit;
+  background:inherit;
+  resize:none;
+}
+
+.richTextarea:hover,
+.richTextarea[data-hover] {
+  border-color:var(--chakra-colors-whiteAlpha-400);
+}
+
+
+.richTextarea:focus-visible,
+.richTextarea[data-focus-visible] {
+  z-index: 1;
+  border-color: #f687b3;
+  box-shadow: 0 0 0 1px #f687b3;
+}
+
+.richTextarea::placeholder {
+  color: var(--chakra-colors-chakra-placeholder-color);
+}
+
+.unstyled {
+  border: none;
+  outline: "none";
+  resize: "none";
+  padding: "0";
+}
+
+.unstyled:hover,
+.unstyled[data-hover] {
+  border: none;
+}
+
+.unstyled:focus-visible,
+.unstyled[data-focus-visible] {
+  z-index: auto;
+  border: none;
+  box-shadow: none;
+}

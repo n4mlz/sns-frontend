@@ -46,7 +46,7 @@ const useImageCrop = (width: number, height: number) => {
 
   const cropImage = async () => {
     if (!croppedAreaPixels) return;
-    const croppedImageBlob = await getCroppedImgBlob(inputImage, croppedAreaPixels);
+    const croppedImageBlob = await getCroppedImgBlob(inputImage, croppedAreaPixels, width, height);
     setCroppedImageBlob(croppedImageBlob);
     setCroppedImageUrl(URL.createObjectURL(croppedImageBlob));
   };

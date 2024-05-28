@@ -25,6 +25,8 @@ const TitleHeader = ({ title }: Props) => {
         justifyContent="space-between"
         alignItems="center"
         position="fixed"
+        zIndex="100"
+        pointerEvents="none"
         backgroundColor={useColorModeValue("white", "gray.800")}>
         <Flex
           cursor="pointer"
@@ -36,13 +38,22 @@ const TitleHeader = ({ title }: Props) => {
           backgroundColor="gray.700"
           borderRadius="full"
           opacity="0.8"
+          pointerEvents="all"
           onClick={router.back}>
           <ArrowBackIcon w="22px" h="22px" color="white" />
         </Flex>
         <Heading as="h1" size="md" margin="0">
           {title}
         </Heading>
-        <HamburgerIcon cursor="pointer" w="35px" h="35px" marginX="15px" color="gray.400" onClick={onOpen} />
+        <HamburgerIcon
+          cursor="pointer"
+          w="35px"
+          h="35px"
+          marginX="15px"
+          color="gray.400"
+          pointerEvents="all"
+          onClick={onOpen}
+        />
       </Flex>
     </Box>
   );

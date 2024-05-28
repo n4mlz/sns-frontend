@@ -74,13 +74,13 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
       submitCallback?.({ ...res.data });
       disclosure.onClose();
       toast({
-        title: "投稿しました !",
+        title: "ポストしました !",
         status: "success",
         isClosable: true,
       });
     } else {
       toast({
-        title: "投稿に失敗しました",
+        title: "ポストに失敗しました",
         description: "入力内容に誤りがあるか、サーバーに問題が発生した可能性があります。",
         status: "error",
         isClosable: true,
@@ -99,7 +99,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
       <ModalOverlay />
       <ModalContent>
         <ModalHeader margin={1}>
-          <Heading size="md">投稿する</Heading>
+          <Heading size="md">ポストする</Heading>
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -112,10 +112,9 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
             />
             <Box flex={1}>
               <ControlledTextarea
-                variant="unstyled"
                 placeholder="いまどうしてる？"
-                padding={0}
                 isLoaded
+                isUnstyled
                 label=""
                 errors={errors}
                 {...register("content")}
@@ -139,7 +138,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
               isDisabled={!isOk}
               isLoading={isPosting}
               onClick={handleSubmit(onSubmit)}>
-              投稿する
+              ポストする
             </Button>
           </Flex>
         </ModalFooter>

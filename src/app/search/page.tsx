@@ -6,7 +6,6 @@ import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react"
 import TitleHeader from "@/components/ui/titleHeader";
 import User from "@/components/ui/user";
 import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
-import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { sleep } from "@/utils/time";
 import useSWR from "swr";
@@ -20,11 +19,12 @@ const SearchPage = () => {
     formState: { errors },
   } = useForm();
 
-  const { data, isLoading, mutate } = useSWR<components["schemas"]["user"]>(
-    getValues("userName") ? path.join("/api/users", getValues("userName")) : null
-  );
-
   const [isCheckStarted, setIsCheckStarted] = useState<boolean>(false);
+  const [userName, setUserName] = useState<string>("");
+
+  const { data, isLoading, mutate } = useSWR<components["schemas"]["user"]>(
+    userName ? path.join("/api/users", userName) : null
+  );
 
   let lastLoad = new Date();
 
@@ -33,9 +33,13 @@ const SearchPage = () => {
       setIsCheckStarted(true);
       const currentValue = getValues("userName");
       await sleep(750);
+
       if (currentValue !== getValues("userName")) return;
+
       const now = new Date();
+      setUserName(currentValue);
       await mutate(undefined, true);
+
       if (lastLoad < now) {
         setIsCheckStarted(false);
         lastLoad = now;
@@ -46,7 +50,7 @@ const SearchPage = () => {
   return (
     <>
       <TitleHeader title="ユーザーを検索" />
-      <Box as="form" paddingX={6} paddingY={3}>
+      <Box paddingX={6} paddingY={3}>
         <ControlledUserNameInput
           label="検索するユーザー名"
           errors={errors}

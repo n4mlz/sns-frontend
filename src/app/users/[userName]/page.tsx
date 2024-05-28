@@ -18,6 +18,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";
+import Linkify from "linkify-react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import TransparentHeader from "@/components/ui/transparentHeader";
 import Posts from "@/components/ui/posts";
@@ -83,7 +84,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
       <Box paddingBottom="8px">
         <Box w="100%" aspectRatio={3} backgroundColor={useColorModeValue("gray.200", "gray.900")} overflow="hidden">
           <Skeleton isLoaded={!isLoadingUser}>
-            {!userData || !userData.userName || userError || isLoadingUser || userData.iconUrl == "" ? (
+            {!userData || !userData.userName || userError || isLoadingUser || userData.bgImageUrl == "" ? (
               <Box w="100%" aspectRatio={3} />
             ) : (
               <Image src={userData.bgImageUrl} w="100%" aspectRatio={3} alt="" />
@@ -164,7 +165,9 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
             )}
           </Box>
           <SkeletonText isLoaded={!isLoadingUser} noOfLines={3} marginY="4px">
-            <Text>{userData?.biography}</Text>
+            <Text>
+              <Linkify>{userData?.biography}</Linkify>
+            </Text>
           </SkeletonText>
           {!isLoadingUser && (
             <>

@@ -3,7 +3,7 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Box, Button, Center, Flex, Heading, useColorMode } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Heading, Link, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import {
   MdLogout,
   MdOutlineDarkMode,
@@ -56,12 +56,6 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
 
   const mainMenu = (
     <Flex direction="column" gap="32px">
-      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/home")}>
-        <MdOutlineHome size="26px" />
-        <Heading as="h2" size="md">
-          ホーム
-        </Heading>
-      </Flex>
       <Flex
         cursor="pointer"
         direction="row"
@@ -71,6 +65,12 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
         <MdOutlinePersonOutline size="26px" />
         <Heading as="h2" size="md">
           プロフィール
+        </Heading>
+      </Flex>
+      <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/home")}>
+        <MdOutlineHome size="26px" />
+        <Heading as="h2" size="md">
+          ホーム
         </Heading>
       </Flex>
       <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/settings")}>
@@ -117,7 +117,10 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
   );
 
   const subMenu = (
-    <Flex cursor="pointer" direction="row" gap="16px">
+    <Flex cursor="pointer" direction="row" gap="16px" alignItems="center">
+      <Link href="/about" color={useColorModeValue("gray.700", "gray.200")} _hover={{ textDecoration: "none" }}>
+        snooze について
+      </Link>
       {colorMode === "light" ? (
         <MdOutlineDarkMode size="30px" onClick={toggleColorMode} />
       ) : (

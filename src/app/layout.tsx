@@ -5,6 +5,7 @@ import SWRConfigProvider from "@/components/contexts/SWRConfigProvider";
 import ChakraConfigProvider from "@/components/contexts/ChakraConfigProvider";
 import { metaDataConsts } from "@/constants/metadata";
 import "normalize.css";
+import "@styles/global.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaDataConsts.SITE_URL),
@@ -56,7 +57,7 @@ export default function RootLayout({
         <AuthProvider>
           <SWRConfigProvider>
             <ChakraConfigProvider>
-              <Container position="relative" maxW="600px" minH="100vh" padding={0}>
+              <Container position="relative" maxW="600px" minH="100vh" padding={0} userSelect="none">
                 {children}
               </Container>
             </ChakraConfigProvider>
