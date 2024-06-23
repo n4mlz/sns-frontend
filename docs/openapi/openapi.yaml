@@ -224,15 +224,26 @@ paths:
       description: Authorization ヘッダーを必要とします
       security:
         - bearerAuth: []
+      parameters:
+        - in: query
+          name: cursor
+          required: false
+          schema:
+            type: string
+            description: カーソルページネーション用
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: number
+            description: カーソルページネーション用
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/post'
+                $ref: '#/components/schemas/posts'
   /api/users/{userName}:
     get:
       tags:
@@ -276,15 +287,25 @@ paths:
           schema:
             type: string
             description: userName
+        - in: query
+          name: cursor
+          required: false
+          schema:
+            type: string
+            description: カーソルページネーション用
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: number
+            description: カーソルページネーション用
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/post'
+                $ref: '#/components/schemas/posts'
   /api/users/{userName}/mutuals:
     get:
       tags:
@@ -481,6 +502,17 @@ paths:
       responses:
         '204':
           description: no content
+  /api/settings/account:
+    delete:
+      tags:
+        - settings
+      summary: アカウントを削除する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: no content
 components:
   securitySchemes:
     bearerAuth:
@@ -615,6 +647,15 @@ components:
         createdAt:
           type: string
           format: date-time
+    posts:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/post'
+        nextCursor:
+          type: string
     createComment:
       type: object
       properties:
