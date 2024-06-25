@@ -243,7 +243,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/posts'
+                $ref: '#/components/schemas/postsWithCursor'
   /api/users/{userName}:
     get:
       tags:
@@ -305,7 +305,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/posts'
+                $ref: '#/components/schemas/postsWithCursor'
   /api/users/{userName}/mutuals:
     get:
       tags:
@@ -647,7 +647,7 @@ components:
         createdAt:
           type: string
           format: date-time
-    posts:
+    postsWithCursor:
       type: object
       properties:
         posts:

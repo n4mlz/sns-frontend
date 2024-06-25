@@ -218,11 +218,17 @@ export interface paths {
      * @description Authorization ヘッダーを必要とします
      */
     get: {
+      parameters: {
+        query?: {
+          cursor?: string;
+          limit?: number;
+        };
+      };
       responses: {
         /** @description successful operation */
         200: {
           content: {
-            "application/json": components["schemas"]["post"][];
+            "application/json": components["schemas"]["postsWithCursor"];
           };
         };
       };
@@ -231,7 +237,7 @@ export interface paths {
   "/api/users/{userName}": {
     /**
      * ユーザーのプロフィールを取得する
-     * @description Authorization ヘッダーを必要とします
+     * @description Authorization ヘッダーは必要ありません
      */
     get: {
       parameters: {
@@ -256,6 +262,10 @@ export interface paths {
      */
     get: {
       parameters: {
+        query?: {
+          cursor?: string;
+          limit?: number;
+        };
         path: {
           userName: string;
         };
@@ -264,7 +274,7 @@ export interface paths {
         /** @description successful operation */
         200: {
           content: {
-            "application/json": components["schemas"]["post"][];
+            "application/json": components["schemas"]["postsWithCursor"];
           };
         };
       };
@@ -273,7 +283,7 @@ export interface paths {
   "/api/users/{userName}/mutuals": {
     /**
      * ユーザーとの相互フォローを取得する
-     * @description Authorization ヘッダーを必要とします
+     * @description Authorization ヘッダーは必要ありません
      */
     get: {
       parameters: {
@@ -471,6 +481,20 @@ export interface paths {
       };
     };
   };
+  "/api/settings/account": {
+    /**
+     * アカウントを削除する
+     * @description Authorization ヘッダーを必要とします
+     */
+    delete: {
+      responses: {
+        /** @description no content */
+        204: {
+          content: never;
+        };
+      };
+    };
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -546,6 +570,10 @@ export interface components {
       comments?: components["schemas"]["comment"][];
       /** Format: date-time */
       createdAt?: string;
+    };
+    postsWithCursor: {
+      posts?: components["schemas"]["post"][];
+      nextCursor?: string;
     };
     createComment: {
       postId?: string;
