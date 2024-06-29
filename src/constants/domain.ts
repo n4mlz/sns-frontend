@@ -22,7 +22,7 @@ const domainConsts = {
   NONE: "none",
   OWN: "own",
 
-  CURSOR_PAGINATION_LIMIT: 32,
+  CURSOR_PAGINATION_LIMIT: 5,
 };
 
 export default domainConsts;
