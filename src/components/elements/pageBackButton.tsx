@@ -20,6 +20,7 @@ const PageBackButton = () => {
         borderRadius="full"
         opacity="0.8"
         pointerEvents="all"
+        zIndex="100"
         onClick={router.back}>
         <ArrowBackIcon w="22px" h="22px" color="white" />
       </Flex>
