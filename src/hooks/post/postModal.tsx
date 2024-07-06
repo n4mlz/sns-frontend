@@ -31,6 +31,7 @@ import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 const schema = z.object({
   content: z
     .string()
+    .trim()
     .min(1, "1文字以上で入力してください。")
     .max(domainConsts.MAX_CONTENT_LENGTH, `${domainConsts.MAX_CONTENT_LENGTH}文字以下で入力してください。`),
 });
@@ -117,6 +118,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
                 isUnstyled
                 label=""
                 errors={errors}
+                submitCallback={handleSubmit(onSubmit)}
                 {...register("content")}
               />
             </Box>

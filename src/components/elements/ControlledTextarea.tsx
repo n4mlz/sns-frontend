@@ -27,6 +27,7 @@ export type ControlledTextareaProps = {
   formErrorMessageProps?: FormErrorMessageProps;
   isLoaded?: boolean;
   isUnstyled?: boolean;
+  submitCallback?: () => any;
 } & Omit<RichTextareaProps, "isRequired" | "style">;
 
 export const ControlledTextarea = forwardRef<ControlledTextareaProps, "input">(
@@ -41,12 +42,19 @@ export const ControlledTextarea = forwardRef<ControlledTextareaProps, "input">(
       formErrorMessageProps,
       isLoaded,
       isUnstyled,
+      submitCallback,
       ...rest
     }: Omit<ControlledTextareaProps, "ref">,
     ref
   ) => {
     const [blue400] = useToken("colors", ["blue.400"]);
     const renderer = createRegexRenderer([[/https?:\/\/[\w/:%#\$&\?\(\)~\.=\+\-]+/g, { color: blue400 }]]);
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key === "Enter" && (event.ctrlKey || event.metaKey) && submitCallback) {
+        submitCallback();
+      }
+    };
 
     return (
       <FormControl isInvalid={Boolean(errors[name])} isRequired={isRequired} {...formControlProps}>
@@ -60,6 +68,7 @@ export const ControlledTextarea = forwardRef<ControlledTextareaProps, "input">(
               {...rest}
               ref={ref}
               className={isUnstyled ? `${styles.richTextarea} ${styles.unstyled}` : styles.richTextarea}
+              onKeyDown={handleKeyDown}
               style={{ width: "100%", height: "100px" }}>
               {renderer}
             </RichTextarea>

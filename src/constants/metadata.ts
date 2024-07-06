@@ -1,4 +1,4 @@
-import { publicEnv } from "./env";
+import { publicEnv } from "@constants/env";
 
 export const metaDataConsts = {
   SITE_NAME: "snooze",
