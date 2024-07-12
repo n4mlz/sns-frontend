@@ -114,10 +114,13 @@ const userNameSettingsPage = () => {
             errors={errors}
             isRequired
             isLoaded={authContext.currentUser != undefined && !isLoading}
+            defaultValue={data && data.userName ? data.userName : undefined}
             isCheckingUserName={isCheckingUserName}
             isCheckedUserName={isCheckedUserName}
+            checkingTooltipLabel="ユーザー名が使用可能か検証しています..."
+            checkedTooltipLabel="このユーザー名は使用できます。"
+            notCheckedTooltipLabel="このユーザー名は使用できません。"
             {...register("userName")}
-            defaultValue={data && data.userName ? data.userName : undefined}
           />
           <Input display="none" readOnly value={undefined} {...register("dummy")} />
           <Button
