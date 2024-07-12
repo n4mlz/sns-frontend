@@ -95,6 +95,9 @@ const AboutPage = () => {
             <Link href="/privacy-policy" _hover={{ textDecoration: "none" }}>
               プライバシーポリシー
             </Link>
+            <Link href="/announcements" _hover={{ textDecoration: "none" }}>
+              過去のお知らせ
+            </Link>
           </Flex>
         </Flex>
       </Flex>

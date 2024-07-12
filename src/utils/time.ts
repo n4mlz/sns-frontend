@@ -36,7 +36,7 @@ const getFormattedDate = (date: Date | string) => {
     date = new Date(date);
   }
 
-  date = format(date, "yyyy年MM月dd日 hh:mm");
+  date = format(date, "yyyy年MM月dd日 HH:mm");
 
   return date;
 };

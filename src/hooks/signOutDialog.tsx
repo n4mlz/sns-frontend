@@ -13,7 +13,7 @@ const useSignOutDialog = () => {
       header: "ログアウトの確認",
       body: "ログアウトしますか？",
       button: "ログアウト",
-      cancel: "キャンセル",
+      close: "キャンセル",
     },
     "red.500"
   );

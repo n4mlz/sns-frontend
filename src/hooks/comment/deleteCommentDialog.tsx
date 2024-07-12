@@ -36,7 +36,7 @@ const useDeleteCommentDialog = (
       header: "コメントの削除",
       body: "コメントを削除しますか？",
       button: "削除",
-      cancel: "キャンセル",
+      close: "キャンセル",
     },
     "red.500"
   );
