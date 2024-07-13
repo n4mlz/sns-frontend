@@ -47,4 +47,5 @@ next-env.d.ts
 **/public/worker-*.js.map
 
 # custom
+.env.*
 memo.md
