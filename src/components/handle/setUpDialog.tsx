@@ -10,12 +10,15 @@ const SetUpDialog = () => {
   const authContext = useAuthContext();
   const { onOpen, setUpDialog } = useSetUpDialog();
 
-  const { data, isLoading } = useSWR<components["schemas"]["profile"]>(
+  const { data, isLoading, error } = useSWR<components["schemas"]["profile"]>(
     authContext.currentUser ? "/api/settings/profile" : null
   );
 
   useEffect(() => {
-    if (authContext.currentUser === null || (authContext.currentUser && !isLoading && (!data || !data.userName))) {
+    if (
+      !error &&
+      (authContext.currentUser === null || (authContext.currentUser && !isLoading && (!data || !data.userName)))
+    ) {
       onOpen();
     }
   }, [authContext.currentUser, data, isLoading]);
