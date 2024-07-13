@@ -2,6 +2,8 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import AnnouncementDialog from "@/components/handle/announcementDialog";
+import NetworkErrorDialog from "@/components/handle/networkErrorDialog";
 
 const variants = {
   hidden: { opacity: 0 },
@@ -22,6 +24,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
         type: "linear",
         duration: 0.25,
       }}>
+      <AnnouncementDialog />
+      <NetworkErrorDialog />
       {children}
     </motion.div>
   );

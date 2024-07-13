@@ -36,7 +36,7 @@ const useDeleteReplyDialog = (
       header: "返信の削除",
       body: "返信を削除しますか？",
       button: "削除",
-      cancel: "キャンセル",
+      close: "キャンセル",
     },
     "red.500"
   );

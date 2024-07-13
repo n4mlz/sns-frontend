@@ -3,7 +3,7 @@
 import path from "path";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Flex, Box, Text, Tooltip, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
+import { Flex, Box, Text, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import client from "@/lib/openapi";
@@ -86,29 +86,17 @@ const Post = ({ post, postCallback }: Props) => {
             alignItems="center"
             color="gray.500"
             onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
-            <Tooltip label="コメントする" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
-              <Box>
-                <FaRegCommentAlt />
-              </Box>
-            </Tooltip>
+            <FaRegCommentAlt />
             <Text>{post.comments}</Text>
           </Flex>
           {post.liked ? (
             <Flex cursor="pointer" direction="row" gap="6px" alignItems="center" color="red.500" onClick={unlike}>
-              <Tooltip label="いいねを取り消す" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
-                <Box>
-                  <FaHeart />
-                </Box>
-              </Tooltip>
+              <FaHeart />
               <Text>{post.likes}</Text>
             </Flex>
           ) : (
             <Flex cursor="pointer" direction="row" gap="6px" alignItems="center" color="gray.500" onClick={like}>
-              <Tooltip label="いいね !" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
-                <Box>
-                  <FaRegHeart />
-                </Box>
-              </Tooltip>
+              <FaRegHeart />
               <Text>{post.likes}</Text>
             </Flex>
           )}

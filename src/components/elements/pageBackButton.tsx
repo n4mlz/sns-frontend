@@ -1,11 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, FlexProps } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
-const PageBackButton = () => {
+type Props = FlexProps;
+
+const PageBackButton = ({ ...rest }: Props) => {
   const router = useRouter();
+
   return (
     <Box position="relative" pointerEvents="none">
       <Flex
@@ -20,7 +23,9 @@ const PageBackButton = () => {
         borderRadius="full"
         opacity="0.8"
         pointerEvents="all"
-        onClick={router.back}>
+        zIndex="100"
+        onClick={router.back}
+        {...rest}>
         <ArrowBackIcon w="22px" h="22px" color="white" />
       </Flex>
     </Box>

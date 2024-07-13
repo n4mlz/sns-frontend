@@ -14,9 +14,8 @@ import {
 
 const useSimpleDialog = (
   onClose: () => any,
-  message: { header: string; body: string; button: string; cancel?: string },
-  buttonColor?: string,
-  hasCancel?: boolean
+  message: { header: string; body: string; button: string; close?: string },
+  buttonColor?: string
 ) => {
   const disclosure = useDisclosure();
   const cancelRef = useRef(null);
@@ -39,9 +38,9 @@ const useSimpleDialog = (
           </AlertDialogHeader>
           <AlertDialogBody>{message.body}</AlertDialogBody>
           <AlertDialogFooter>
-            {(hasCancel || hasCancel === undefined) && (
+            {message.close && (
               <Button ref={cancelRef} onClick={disclosure.onClose}>
-                {message.cancel}
+                {message.close}
               </Button>
             )}
             <Button color="white" backgroundColor={buttonColor} onClick={() => onCloseDialog()} ml={3}>

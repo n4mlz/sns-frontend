@@ -21,6 +21,8 @@ const domainConsts = {
   FOLLOWED: "followed",
   NONE: "none",
   OWN: "own",
+
+  CURSOR_PAGINATION_LIMIT: 32,
 };
 
 export default domainConsts;

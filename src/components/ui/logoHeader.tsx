@@ -25,7 +25,6 @@ const LogoHeader = ({ onLogoClick }: Props) => {
         alignItems="center"
         position="fixed"
         zIndex="100"
-        pointerEvents="none"
         backgroundColor={useColorModeValue("white", "gray.800")}>
         <Box w="35px" h="35px" marginX="15px" />
         <Image

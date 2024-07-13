@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Box, Flex } from "@chakra-ui/react";
 import { ArrowBackIcon, HamburgerIcon } from "@chakra-ui/icons";
 import useMenuDrawer from "@/hooks/menuDrawer";
+import PageBackButton from "../elements/pageBackButton";
 
 const TransparentHeader = () => {
   const router = useRouter();
@@ -22,20 +23,7 @@ const TransparentHeader = () => {
         alignItems="center"
         position="fixed"
         pointerEvents="none">
-        <Flex
-          cursor="pointer"
-          w="35px"
-          h="35px"
-          justifyContent="center"
-          alignItems="center"
-          marginX="15px"
-          backgroundColor="gray.700"
-          borderRadius="full"
-          opacity="0.8"
-          pointerEvents="all"
-          onClick={router.back}>
-          <ArrowBackIcon w="22px" h="22px" color="white" />
-        </Flex>
+        <PageBackButton position="inherit" />
         <HamburgerIcon
           cursor="pointer"
           w="35px"

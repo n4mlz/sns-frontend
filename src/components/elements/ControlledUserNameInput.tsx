@@ -32,6 +32,9 @@ export type ControlledUserNameInputProps = {
   isCheckingUserName?: boolean;
   isCheckedUserName?: boolean;
   disableRightElement?: boolean;
+  checkingTooltipLabel?: string;
+  checkedTooltipLabel?: string;
+  notCheckedTooltipLabel?: string;
 } & Omit<InputProps, "isRequired">;
 
 export const ControlledUserNameInput = forwardRef<ControlledUserNameInputProps, "input">(
@@ -48,6 +51,9 @@ export const ControlledUserNameInput = forwardRef<ControlledUserNameInputProps, 
       isCheckingUserName,
       isCheckedUserName,
       disableRightElement,
+      checkingTooltipLabel,
+      checkedTooltipLabel,
+      notCheckedTooltipLabel,
       ...rest
     }: Omit<ControlledUserNameInputProps, "ref">,
     ref
@@ -66,19 +72,19 @@ export const ControlledUserNameInput = forwardRef<ControlledUserNameInputProps, 
               <Input name={name} {...rest} ref={ref} />
               {disableRightElement ? null : isCheckingUserName ? (
                 <InputRightElement>
-                  <Tooltip label="ユーザー名が使用可能か検証しています..." bg={useColorModeValue("gray.500", "white")}>
+                  <Tooltip label={checkingTooltipLabel} bg={useColorModeValue("gray.500", "white")}>
                     <Spinner size="sm" />
                   </Tooltip>
                 </InputRightElement>
               ) : isCheckedUserName ? (
                 <InputRightElement>
-                  <Tooltip label="このユーザー名は使用できます。" bg={useColorModeValue("gray.500", "white")}>
+                  <Tooltip label={checkedTooltipLabel} bg={useColorModeValue("gray.500", "white")}>
                     <CheckCircleIcon color="green.500" />
                   </Tooltip>
                 </InputRightElement>
               ) : (
                 <InputRightElement>
-                  <Tooltip label="このユーザー名は使用できません。" bg={useColorModeValue("gray.500", "white")}>
+                  <Tooltip label={notCheckedTooltipLabel} bg={useColorModeValue("gray.500", "white")}>
                     <NotAllowedIcon color="red.500" />
                   </Tooltip>
                 </InputRightElement>

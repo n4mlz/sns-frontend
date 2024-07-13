@@ -24,14 +24,14 @@ const useSetUpDialog = () => {
   const authContext = useAuthContext();
   const [dialog, setDialog] = useState<"userNull" | "userNameNull" | undefined>(undefined);
 
-  const { data, error, isLoading } = useSWR<components["schemas"]["profile"]>(
+  const { data, isLoading } = useSWR<components["schemas"]["profile"]>(
     authContext.currentUser ? "/api/settings/profile" : null
   );
 
   const onOpen = () => {
     if (authContext.currentUser === null) {
       setDialog("userNull");
-    } else if (authContext.currentUser && !isLoading && (!data || !data.userName || error)) {
+    } else if (authContext.currentUser && !isLoading && (!data || !data.userName)) {
       setDialog("userNameNull");
     }
     disclosure.onOpen();

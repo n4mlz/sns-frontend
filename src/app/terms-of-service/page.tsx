@@ -81,7 +81,7 @@ const TermsOfServicePage = () => {
           </ListItem>
           <ListItem>
             <Text paddingY="5px">
-              ユーザーアカウントが第三者によって使用されたことによって生じた損害は、当運営に故意又は重大な過失がある場合を除き、当運営は一切の責任を負わないものとします。
+              ユーザーアカウントが第三者によって使用されたことによって生じた損害は、当運営は一切の責任を負わないものとします。
             </Text>
           </ListItem>
         </OrderedList>
@@ -185,7 +185,7 @@ const TermsOfServicePage = () => {
         <OrderedList>
           <ListItem>
             <Text paddingY="5px">
-              当運営は、以下のいずれかの事由があると判断した場合、ユーザーに事前に通知することなく本サービスの全部または一部の提供を停止または中断することができるものとします。{" "}
+              当運営は、以下のいずれかの事由があると判断した場合、ユーザーに事前に通知することなく本サービスの全部または一部の提供を停止または中断することができるものとします。
             </Text>
             <OrderedList>
               <ListItem>
@@ -247,12 +247,6 @@ const TermsOfServicePage = () => {
                 <Text paddingY="5px">登録事項に虚偽の事実があることが判明した場合</Text>
               </ListItem>
               <ListItem>
-                <Text paddingY="5px">決済手段として当該ユーザーが届け出たクレジットカードが利用停止となった場合</Text>
-              </ListItem>
-              <ListItem>
-                <Text paddingY="5px">料金等の支払債務の不履行があった場合</Text>
-              </ListItem>
-              <ListItem>
                 <Text paddingY="5px">当運営からの連絡に対し、一定期間返答がない場合</Text>
               </ListItem>
               <ListItem>
@@ -291,22 +285,30 @@ const TermsOfServicePage = () => {
           </ListItem>
           <ListItem>
             <Text paddingY="5px">
-              当運営は、本サービスに起因してユーザーに生じたあらゆる損害について、当運営の故意又は重過失による場合を除き、一切の責任を負いません。ただし、本サービスに関する当運営とユーザーとの間の契約
-              (本規約を含みます。) が消費者契約法に定める消費者契約となる場合、この免責規定は適用されません。
+              当運営は、本サービスに起因してユーザーに生じたあらゆる損害について、一切の責任を負いません。
             </Text>
           </ListItem>
           <ListItem>
             <Text paddingY="5px">
-              前項ただし書に定める場合であっても、当運営は、当運営の過失 (重過失を除きます。)
+              前項ただし書に定める場合であっても、当運営は、当運営の過失
               による債務不履行または不法行為によりユーザーに生じた損害のうち特別な事情から生じた損害
               (当運営またはユーザーが損害発生につき予見し、または予見し得た場合を含みます。)
-              について一切の責任を負いません。また、当運営の過失 (重過失を除きます。)
-              による債務不履行または不法行為によりユーザーに生じた損害の賠償は、ユーザーから当該損害が発生した月に受領した利用料の額を上限とします。
+              について一切の責任を負いません。
             </Text>
           </ListItem>
           <ListItem>
             <Text paddingY="5px">
               当運営は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じた取引、連絡または紛争等について一切責任を負いません。
+            </Text>
+          </ListItem>
+          <ListItem>
+            <Text paddingY="5px">
+              本サービスによって生じた直接的、また間接的トラブル、損失、損害については、当運営は一切の責任を負いません。
+            </Text>
+          </ListItem>
+          <ListItem>
+            <Text paddingY="5px">
+              本サービスが停止したことを起因してユーザーに生じた損害については、当運営は一切の責任を負いません。
             </Text>
           </ListItem>
         </OrderedList>
@@ -334,11 +336,6 @@ const TermsOfServicePage = () => {
                 </Text>
               </ListItem>
             </OrderedList>
-          </ListItem>
-          <ListItem>
-            <Text paddingY="5px">
-              当運営はユーザーに対し、前項による本規約の変更にあたり、事前に、本規約を変更する旨及び変更後の本規約の内容並びにその効力発生時期を通知します。
-            </Text>
           </ListItem>
         </OrderedList>
         <Heading as="h2" size="md" paddingY="10px">

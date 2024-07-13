@@ -26,7 +26,6 @@ const TitleHeader = ({ title }: Props) => {
         alignItems="center"
         position="fixed"
         zIndex="100"
-        pointerEvents="none"
         backgroundColor={useColorModeValue("white", "gray.800")}>
         <Flex
           cursor="pointer"

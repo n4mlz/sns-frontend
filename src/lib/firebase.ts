@@ -1,6 +1,7 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { publicEnv } from "@/constants/env";
 import { GoogleAuthProvider, getAuth, signOut as firebaseSignOut, signInWithPopup } from "firebase/auth";
+import { ANNOUNCEMENT_LOCALSTORAGE_KEY } from "@/constants/announcement";
 
 const firebaseConfig = {
   apiKey: publicEnv.FIREBASE_API_KEY,
@@ -18,6 +19,7 @@ const signIn = async (afterAuth?: () => any) => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth(firebaseApp);
   const credential = await signInWithPopup(auth, provider);
+  localStorage.removeItem(ANNOUNCEMENT_LOCALSTORAGE_KEY);
   afterAuth?.();
   return credential;
 };
@@ -25,7 +27,8 @@ const signIn = async (afterAuth?: () => any) => {
 const signOut = async (afterAuth?: () => any) => {
   const auth = getAuth(firebaseApp);
   const credential = await firebaseSignOut(auth);
-  afterAuth && afterAuth();
+  localStorage.removeItem(ANNOUNCEMENT_LOCALSTORAGE_KEY);
+  afterAuth?.();
   return credential;
 };
 

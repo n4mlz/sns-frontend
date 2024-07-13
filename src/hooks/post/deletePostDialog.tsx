@@ -36,7 +36,7 @@ const useDeletePostDialog = (
       header: "ポストの削除",
       body: "ポストを削除しますか？",
       button: "削除",
-      cancel: "キャンセル",
+      close: "キャンセル",
     },
     "red.500"
   );

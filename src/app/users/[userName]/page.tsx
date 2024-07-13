@@ -1,7 +1,7 @@
 "use client";
 
 import path from "path";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import {
@@ -18,6 +18,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";
+// @ts-ignore
+import InfiniteScroll from "react-infinite-scroller";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import TransparentHeader from "@/components/ui/transparentHeader";
 import Posts from "@/components/ui/posts";
@@ -33,20 +35,53 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   const authContext = useAuthContext();
   const { onOpen, setUpDialog } = useSetUpDialog();
 
+  const [posts, setPosts] = useState<components["schemas"]["post"][]>([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [cursor, setCursor] = useState<string | undefined>();
+
+  const loadMore = async () => {
+    if (!hasMore || authContext.currentUser === undefined) {
+      return;
+    }
+
+    if (authContext.currentUser === null) {
+      setHasMore(false);
+      return;
+    }
+
+    const res = await client.GET("/api/users/{userName}/posts", {
+      params: {
+        path: { userName: params.userName },
+        query: { limit: domainConsts.CURSOR_PAGINATION_LIMIT, cursor: cursor },
+      },
+    });
+    if (!res.response.ok || !res.data) {
+      return;
+    }
+
+    if (res.data.nextCursor) {
+      setCursor(res.data.nextCursor);
+    } else {
+      setHasMore(false);
+    }
+
+    if (!res.data.posts) {
+      return;
+    }
+
+    setPosts([...posts, ...res.data.posts]);
+  };
+
+  const postSubmitCallback = (post: components["schemas"]["post"]) => {
+    setPosts([post, ...posts]);
+  };
+
   const {
     data: userData,
     isLoading: isLoadingUser,
     mutate: userMutate,
     error: userError,
   } = useSWR<components["schemas"]["userDetail"]>(path.join("/api/users", params.userName).toString());
-
-  const {
-    data: postsData,
-    isLoading: isLoadingPosts,
-    mutate: postsMutate,
-  } = useSWR<components["schemas"]["post"][]>(
-    authContext.currentUser ? path.join("/api/users", params.userName, "/posts") : null
-  );
 
   const follow = (afterStatus: string) => {
     onOpen();
@@ -66,10 +101,6 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
     } else {
       userMutate({ ...userData, followingStatus: afterStatus }, false);
     }
-  };
-
-  const postSubmitCallback = (post: components["schemas"]["post"]) => {
-    postsMutate([post, ...(postsData ? postsData : [])], false);
   };
 
   useEffect(() => {
@@ -193,26 +224,26 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
         </Flex>
       </Box>
       <Box>
-        {isLoadingPosts ? (
-          <Center borderTop="2px" borderColor={useColorModeValue("gray.200", "gray.700")}>
-            <Spinner thickness="2px" color="gray.300" margin="40px" />
-          </Center>
-        ) : postsData && postsData.length ? (
-          <Box borderTop="2px" borderColor={useColorModeValue("gray.300", "gray.700")}>
-            <Posts
-              posts={postsData.sort((a, b) => Number(new Date(a.createdAt!) < new Date(b.createdAt!) ? 1 : -1))}
-              postsCallback={(posts) => postsMutate(posts, false)}
-            />
-          </Box>
-        ) : (
-          postsData !== undefined && (
+        <InfiniteScroll
+          loadMore={loadMore}
+          hasMore={hasMore}
+          loader={
+            <Center borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
+              <Spinner thickness="2px" color="gray.300" margin="40px" />
+            </Center>
+          }>
+          {hasMore || posts.length > 0 ? (
+            <Box borderTop="1px" borderColor={useColorModeValue("gray.300", "gray.700")}>
+              <Posts posts={posts} postsCallback={(posts) => setPosts(posts)} />
+            </Box>
+          ) : (
             <Center paddingY="100px">
               <Text fontWeight="500" color="gray.400">
                 表示するポストがありません
               </Text>
             </Center>
-          )
-        )}
+          )}
+        </InfiniteScroll>
       </Box>
     </Box>
   );
