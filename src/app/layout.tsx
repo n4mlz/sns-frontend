@@ -3,10 +3,8 @@ import { Container } from "@chakra-ui/react";
 import { AuthProvider } from "@/components/contexts/AuthProvider";
 import SWRConfigProvider from "@/components/contexts/SWRConfigProvider";
 import ChakraConfigProvider from "@/components/contexts/ChakraConfigProvider";
-import NetworkErrorDialog from "@/components/handle/networkErrorDialog";
 import { metaDataConsts } from "@/constants/metadata";
 import "normalize.css";
-import AnnouncementDialog from "@/components/handle/announcementDialog";
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaDataConsts.SITE_URL),
@@ -59,8 +57,6 @@ export default function RootLayout({
           <SWRConfigProvider>
             <ChakraConfigProvider>
               <Container position="relative" maxW="600px" minH="100vh" padding={0} userSelect="none">
-                <AnnouncementDialog />
-                <NetworkErrorDialog />
                 {children}
               </Container>
             </ChakraConfigProvider>

@@ -13,17 +13,15 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import announcements from "@/constants/announcement";
+import { ANNOUNCEMENT_LOCALSTORAGE_KEY, announcements } from "@/constants/announcement";
 import { getFormattedDate } from "@/utils/time";
 import useLocalStorage from "@/hooks/localStorage";
-
-const localStorageKey = "announcementDialog";
 
 const AnnouncementDialog = () => {
   const disclosure = useDisclosure();
   const cancelRef = useRef(null);
   const router = useRouter();
-  const { value, setValue, isLoading } = useLocalStorage(localStorageKey);
+  const { value, setValue, isLoading } = useLocalStorage(ANNOUNCEMENT_LOCALSTORAGE_KEY);
 
   const recentAnnouncement = announcements[announcements.length - 1];
 

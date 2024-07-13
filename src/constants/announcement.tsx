@@ -1,5 +1,7 @@
 import { Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 
+const ANNOUNCEMENT_LOCALSTORAGE_KEY = "announcementDialog";
+
 type Announcement = {
   title: string;
   content: React.JSX.Element;
@@ -35,4 +37,4 @@ const announcements: Announcement[] = [
   },
 ];
 
-export default announcements;
+export { ANNOUNCEMENT_LOCALSTORAGE_KEY, announcements };

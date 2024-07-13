@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import PageBackButton from "@/components/elements/pageBackButton";
-import announcements from "@/constants/announcement";
+import { announcements } from "@/constants/announcement";
 import { getFormattedDate } from "@/utils/time";
 
 const AnnouncementsPage = () => {

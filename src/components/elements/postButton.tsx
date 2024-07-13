@@ -22,10 +22,11 @@ const PostButton = ({ submitCallback }: Props) => {
         marginRight="35px"
         backgroundColor="primary.300"
         borderRadius="full"
-        pointerEvents="all">
+        pointerEvents="all"
+        onClick={onOpen}>
         {postModal}
         <Box cursor="pointer" position="absolute" top="16px" left="13.5px">
-          <LuSend size="30px" color="white" onClick={onOpen} />
+          <LuSend size="30px" color="white" />
         </Box>
       </Box>
     </Flex>
