@@ -32,9 +32,9 @@ export type ControlledUserNameInputProps = {
   isCheckingUserName?: boolean;
   isCheckedUserName?: boolean;
   disableRightElement?: boolean;
-  checkingTooltipLabel: string;
-  checkedTooltipLabel: string;
-  notCheckedTooltipLabel: string;
+  checkingTooltipLabel?: string;
+  checkedTooltipLabel?: string;
+  notCheckedTooltipLabel?: string;
 } & Omit<InputProps, "isRequired">;
 
 export const ControlledUserNameInput = forwardRef<ControlledUserNameInputProps, "input">(

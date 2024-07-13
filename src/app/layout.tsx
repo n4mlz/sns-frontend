@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: { default: metaDataConsts.SITE_NAME, template: `%s | ${metaDataConsts.SITE_NAME}` },
   description: metaDataConsts.SITE_DESCRIPTION,
   icons: [{ rel: "icon", url: "/images/favicon.ico", type: "image/x-icon" }],
+  manifest: "/manifest.json",
   openGraph: {
     title: metaDataConsts.SITE_NAME,
     description: metaDataConsts.SITE_DESCRIPTION,
