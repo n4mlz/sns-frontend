@@ -24,12 +24,11 @@ const AnnouncementDialog = () => {
   const { value, setValue, isLoading } = useLocalStorage(ANNOUNCEMENT_LOCALSTORAGE_KEY);
 
   const recentAnnouncement = announcements[announcements.length - 1];
+  const recentAnnouncementKey = String(announcements.length - 1);
 
   useEffect(() => {
     if (isLoading) return;
-    const recentAnnouncementKey = String(announcements.length - 1);
     if (recentAnnouncement && recentAnnouncementKey !== value) {
-      setValue(recentAnnouncementKey);
       disclosure.onOpen();
     }
   }, [isLoading]);
@@ -58,8 +57,16 @@ const AnnouncementDialog = () => {
               }}>
               過去のお知らせを見る
             </Button>
-            <Button color="white" backgroundColor="primary.300" ref={cancelRef} onClick={disclosure.onClose} ml={3}>
-              閉じる
+            <Button
+              color="white"
+              backgroundColor="primary.300"
+              ref={cancelRef}
+              onClick={() => {
+                setValue(recentAnnouncementKey);
+                disclosure.onClose();
+              }}
+              ml={3}>
+              確認済みにする
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

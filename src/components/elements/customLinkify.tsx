@@ -16,7 +16,9 @@ const renderLink = ({ attributes, content }: { attributes: any; content: any }) 
   } else {
     return (
       <Link href={href} {...props}>
-        <Text color="blue.400">{content}</Text>
+        <Text color="blue.400" overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
+          {content}
+        </Text>
       </Link>
     );
   }
