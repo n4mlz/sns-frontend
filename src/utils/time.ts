@@ -21,9 +21,15 @@ const getAboutDate = (date: Date | string) => {
   if (time.indexOf("未満") !== -1) {
     time = "たった今";
   } else if (time.indexOf("か月") !== -1 || time.indexOf("年") !== -1) {
-    time = format(date, "yyyy年M月d日", {
-      locale: ja,
-    });
+    if (new Date().getFullYear() === date.getFullYear()) {
+      time = format(date, "M月d日", {
+        locale: ja,
+      });
+    } else {
+      time = format(date, "yyyy年M月d日", {
+        locale: ja,
+      });
+    }
   } else {
     time = time + "前";
   }
