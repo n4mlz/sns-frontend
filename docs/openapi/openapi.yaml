@@ -244,6 +244,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/postsWithCursor'
+  /api/posts/notifications:
+    get:
+      tags:
+        - post
+      summary: 通知を取得する
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: cursor
+          required: false
+          schema:
+            type: string
+            description: カーソルページネーション用
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: number
+            description: カーソルページネーション用
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postNotificationsWithCursor'
   /api/users/{userName}:
     get:
       tags:
@@ -698,3 +726,26 @@ components:
         createdAt:
           type: string
           format: date-time
+    postNotification:
+      type: object
+      properties:
+        postId:
+          type: string
+        notifier:
+          $ref: '#/components/schemas/userDisplay'
+        notificationType:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    postNotificationsWithCursor:
+      type: object
+      properties:
+        postNotifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/postNotification'
+        nextCursor:
+          type: string
