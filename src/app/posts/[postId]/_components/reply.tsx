@@ -9,6 +9,7 @@ import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
 import useDeleteReplyDialog from "@/hooks/reply/deleteReplyDialog";
 import { getAboutDate } from "@/utils/time";
+import domainConsts from "@/constants/domain";
 
 type Props = {
   reply: components["schemas"]["reply"];
@@ -50,9 +51,13 @@ const Reply = ({ reply, replyCallback }: Props) => {
               </Menu>
             )}
           </Flex>
-          <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
-            <CustomLinkify>{reply?.content}</CustomLinkify>
-          </Text>
+          {reply?.replier?.userName !== domainConsts.NonVisibleUserName ? (
+            <Text overflowWrap="anywhere" wordBreak="normal" whiteSpace="break-spaces">
+              <CustomLinkify>{reply?.content}</CustomLinkify>
+            </Text>
+          ) : (
+            <Text color="gray.500">この返信は表示できません。</Text>
+          )}
         </Flex>
       </Flex>
     </Flex>

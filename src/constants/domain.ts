@@ -25,6 +25,8 @@ const domainConsts = {
   COMMENT: "comment",
   REPLY: "reply",
 
+  NonVisibleUserName: "",
+
   CURSOR_PAGINATION_LIMIT: 32,
 };
 
