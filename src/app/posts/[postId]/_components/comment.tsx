@@ -45,9 +45,7 @@ const Comment = ({ comment, commentCallback }: Props) => {
               cursor="pointer"
               direction="row"
               gap="4px"
-              onClick={() =>
-                router.push(path.join("/users", comment?.commenter?.userName ? comment.commenter.userName : ""))
-              }>
+              onClick={() => router.push(path.join("/users", comment?.commenter?.userName ?? ""))}>
               <Text fontWeight={700}>{comment?.commenter?.displayName}</Text>
               <Text color="gray.500">{`@${comment?.commenter?.userName}`}</Text>
               <Text color="gray.500">{`· ${getAboutDate(comment?.createdAt!)}`}</Text>

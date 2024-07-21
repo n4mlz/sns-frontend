@@ -729,7 +729,11 @@ components:
     postNotification:
       type: object
       properties:
-        postId:
+        postNotificationId:
+          type: string
+        reactedPostId:
+          type: string
+        reactedPostContent:
           type: string
         notifier:
           $ref: '#/components/schemas/userDisplay'

@@ -234,6 +234,28 @@ export interface paths {
       };
     };
   };
+  "/api/posts/notifications": {
+    /**
+     * 通知を取得する
+     * @description Authorization ヘッダーを必要とします
+     */
+    get: {
+      parameters: {
+        query?: {
+          cursor?: string;
+          limit?: number;
+        };
+      };
+      responses: {
+        /** @description successful operation */
+        200: {
+          content: {
+            "application/json": components["schemas"]["postNotificationsWithCursor"];
+          };
+        };
+      };
+    };
+  };
   "/api/users/{userName}": {
     /**
      * ユーザーのプロフィールを取得する
@@ -597,6 +619,20 @@ export interface components {
       content?: string;
       /** Format: date-time */
       createdAt?: string;
+    };
+    postNotification: {
+      postNotificationId?: string;
+      reactedPostId?: string;
+      reactedPostContent?: string;
+      notifier?: components["schemas"]["userDisplay"];
+      notificationType?: string;
+      content?: string;
+      /** Format: date-time */
+      createdAt?: string;
+    };
+    postNotificationsWithCursor: {
+      postNotifications?: components["schemas"]["postNotification"][];
+      nextCursor?: string;
     };
   };
   responses: never;

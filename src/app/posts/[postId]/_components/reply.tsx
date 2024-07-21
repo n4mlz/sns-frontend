@@ -33,7 +33,7 @@ const Reply = ({ reply, replyCallback }: Props) => {
               cursor="pointer"
               direction="row"
               gap="4px"
-              onClick={() => router.push(path.join("/users", reply?.replier?.userName ? reply.replier.userName : ""))}>
+              onClick={() => router.push(path.join("/users", reply?.replier?.userName ?? ""))}>
               <Text fontWeight={700}>{reply?.replier?.displayName}</Text>
               <Text color="gray.500">{`@${reply?.replier?.userName}`}</Text>
               <Text color="gray.500">{`· ${getAboutDate(reply?.createdAt!)}`}</Text>

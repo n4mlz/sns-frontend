@@ -104,7 +104,7 @@ const ProfileSettingsPage = () => {
         status: "success",
         isClosable: true,
       });
-      router.push(path.join("/users", data?.userName ? data.userName : ""));
+      router.push(path.join("/users", data?.userName ?? ""));
     }
   };
 
