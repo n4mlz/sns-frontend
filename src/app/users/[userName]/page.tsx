@@ -35,6 +35,10 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   const authContext = useAuthContext();
   const { onOpen, setUpDialog } = useSetUpDialog();
 
+  const { data: profileData } = useSWR<components["schemas"]["profile"]>(
+    authContext.currentUser ? "/api/settings/profile" : null
+  );
+
   const [posts, setPosts] = useState<components["schemas"]["post"][]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [cursor, setCursor] = useState<string | undefined>();
@@ -73,7 +77,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
   };
 
   const postSubmitCallback = (post: components["schemas"]["post"]) => {
-    setPosts([post, ...posts]);
+    if (profileData?.userName === params.userName) setPosts([post, ...posts]);
   };
 
   const {

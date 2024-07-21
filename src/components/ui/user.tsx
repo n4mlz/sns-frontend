@@ -55,7 +55,7 @@ const User = ({ user, userCallback, enableReject }: Props) => {
             cursor="pointer"
             direction="column"
             flex="1"
-            onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
+            onClick={() => router.push(path.join("/users", user.userName ?? ""))}>
             <Text fontWeight={700}>{user.displayName}</Text>
             <Text color="gray.500">{`@${user.userName}`}</Text>
           </Flex>
@@ -107,8 +107,8 @@ const User = ({ user, userCallback, enableReject }: Props) => {
           overflowWrap="anywhere"
           wordBreak="normal"
           whiteSpace="break-spaces"
-          onClick={() => router.push(path.join("/users", user.userName ? user.userName : ""))}>
-          <CustomLinkify>{adjustBio(user.biography ? user.biography : "")}</CustomLinkify>
+          onClick={() => router.push(path.join("/users", user.userName ?? ""))}>
+          <CustomLinkify>{adjustBio(user.biography ?? "")}</CustomLinkify>
         </Text>
       </Flex>
     </Flex>

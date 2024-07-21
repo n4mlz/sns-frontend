@@ -52,7 +52,7 @@ const Post = ({ post, postCallback }: Props) => {
               cursor="pointer"
               direction="row"
               gap="4px"
-              onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
+              onClick={() => router.push(path.join("/posts", post.postId ?? ""))}>
               <Text fontWeight={700}>{post.poster?.displayName}</Text>
               <Text color="gray.500">{`@${post.poster?.userName}`}</Text>
               <Text color="gray.500">{`· ${getAboutDate(post.createdAt!)}`}</Text>
@@ -74,7 +74,7 @@ const Post = ({ post, postCallback }: Props) => {
             overflowWrap="anywhere"
             wordBreak="normal"
             whiteSpace="break-spaces"
-            onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
+            onClick={() => router.push(path.join("/posts", post.postId ?? ""))}>
             <CustomLinkify>{post.content}</CustomLinkify>
           </Text>
         </Flex>
@@ -85,7 +85,7 @@ const Post = ({ post, postCallback }: Props) => {
             gap="6px"
             alignItems="center"
             color="gray.500"
-            onClick={() => router.push(path.join("/posts", post.postId ? post.postId : ""))}>
+            onClick={() => router.push(path.join("/posts", post.postId ?? ""))}>
             <FaRegCommentAlt />
             <Text>{post.comments}</Text>
           </Flex>

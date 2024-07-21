@@ -51,7 +51,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
                 cursor="pointer"
                 direction="column"
                 flex="1"
-                onClick={() => router.push(path.join("/users", data?.poster?.userName ? data.poster.userName : ""))}>
+                onClick={() => router.push(path.join("/users", data?.poster?.userName ?? ""))}>
                 {authContext.currentUser != undefined && !isLoading ? (
                   <>
                     <Text fontWeight={700}>{data?.poster?.displayName}</Text>

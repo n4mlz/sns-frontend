@@ -6,6 +6,8 @@ import useSWR from "swr";
 import { Box, Button, Center, Flex, Heading, Link, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import {
   MdLogout,
+  MdNotificationsActive,
+  MdNotificationsNone,
   MdOutlineDarkMode,
   MdOutlineHome,
   MdOutlineLightMode,
@@ -38,6 +40,14 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
   const { data: requestsData } = useSWR<components["schemas"]["user"][]>(
     authContext.currentUser ? "/api/follows/requests" : null
   );
+
+  const { data: notificationsData } = useSWR<components["schemas"]["postNotificationsWithCursor"]>(
+    authContext.currentUser ? "/api/posts/notifications?limit=1" : null
+  );
+
+  const lastConfirmedPostNotificationId = localStorage.getItem("lastConfirmedPostNotificationId") ?? "";
+  const newestPostNotificationId = notificationsData?.postNotifications?.[0].postNotificationId ?? "";
+  const isNotificationsExist = newestPostNotificationId > lastConfirmedPostNotificationId;
 
   const openPostModal = () => {
     postModalOpenCallback && postModalOpenCallback();
@@ -95,6 +105,23 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
         </Box>
         <Heading as="h2" size="md">
           リクエスト
+        </Heading>
+      </Flex>
+      <Flex
+        cursor="pointer"
+        direction="row"
+        gap="16px"
+        alignItems="center"
+        onClick={() => closeAndPush("/notifications")}>
+        {isNotificationsExist ? (
+          <Box color="primary.300">
+            <MdNotificationsActive size="26px" />
+          </Box>
+        ) : (
+          <MdNotificationsNone size="26px" />
+        )}
+        <Heading as="h2" size="md">
+          通知
         </Heading>
       </Flex>
       <Flex cursor="pointer" direction="row" gap="16px" alignItems="center" onClick={() => closeAndPush("/search")}>

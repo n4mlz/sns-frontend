@@ -22,6 +22,9 @@ const domainConsts = {
   NONE: "none",
   OWN: "own",
 
+  COMMENT: "comment",
+  REPLY: "reply",
+
   CURSOR_PAGINATION_LIMIT: 32,
 };
 

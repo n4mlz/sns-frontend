@@ -23,7 +23,7 @@ const UserIcon = ({ user, size, isLoading, disableClick }: Props) => {
       backgroundColor={useColorModeValue("gray.200", "gray.900")}
       overflow="hidden"
       cursor="pointer"
-      onClick={!disableClick ? () => router.push(path.join("/users", user.userName ? user.userName : "")) : undefined}>
+      onClick={!disableClick ? () => router.push(path.join("/users", user.userName ?? "")) : undefined}>
       <Skeleton isLoaded={!isLoading}>
         {user && user.iconUrl && user.iconUrl !== "" ? (
           <Image src={user.iconUrl} w={size} h={size} alt="" cursor="pointer" />
