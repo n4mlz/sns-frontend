@@ -11,6 +11,10 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
+  Checkbox,
+  Flex,
+  Link,
+  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import { signIn } from "@/lib/firebase";
@@ -23,6 +27,7 @@ const useSetUpDialog = () => {
   const cancelRef = useRef(null);
   const authContext = useAuthContext();
   const [dialog, setDialog] = useState<"userNull" | "userNameNull" | undefined>(undefined);
+  const [isChecked, setIsChecked] = useState(false);
 
   const { data, isLoading, error } = useSWR<components["schemas"]["profile"]>(
     authContext.currentUser ? "/api/settings/profile" : null
@@ -35,6 +40,7 @@ const useSetUpDialog = () => {
       setDialog("userNameNull");
     }
     disclosure.onOpen();
+    setIsChecked(false);
   };
 
   const setUpDialog = (
@@ -50,11 +56,26 @@ const useSetUpDialog = () => {
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 はじめよう
               </AlertDialogHeader>
-              <AlertDialogBody>Google アカウントでログインすることで、簡単に開始できます。</AlertDialogBody>
-              <AlertDialogFooter>
+              <AlertDialogBody>
+                <Flex direction="column" gap="10px" paddingBottom="10px">
+                  <Text>Google アカウントでログインすることで、簡単に開始できます。</Text>
+                  <Checkbox colorScheme="green" onChange={(e) => setIsChecked(e.target.checked)}>
+                    <Link href="/terms-of-service" color="primary.300" target="_blank" rel="noopener noreferrer">
+                      利用規約
+                    </Link>
+                    と
+                    <Link href="/privacy-policy" color="primary.300" target="_blank" rel="noopener noreferrer">
+                      プライバシーポリシー
+                    </Link>
+                    に同意する
+                  </Checkbox>
+                </Flex>
+              </AlertDialogBody>
+              <AlertDialogFooter justifyContent="center" paddingBottom="25px">
                 <Button
                   color="white"
                   backgroundColor="primary.300"
+                  isDisabled={!isChecked}
                   onClick={() => {
                     disclosure.onClose();
                     signIn(() => router.push("/home"));

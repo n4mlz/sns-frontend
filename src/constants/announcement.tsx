@@ -37,6 +37,22 @@ const announcements: Announcement[] = [
     ),
     createdAt: new Date("2024-07-14T00:00:00Z"),
   },
+  {
+    title: "snooze アップデートのお知らせ",
+    content: (
+      <Flex direction="column" gap={3}>
+        <Text>この度、snooze がアップデートされました！</Text>
+        <Text>更新内容</Text>
+        <UnorderedList>
+          <ListItem>通知機能の追加</ListItem>
+          <ListItem>特定の条件下でポストの詳細が表示できない不具合の修正</ListItem>
+          <ListItem>その他 UI の調整</ListItem>
+        </UnorderedList>
+        <Text>今後とも snooze をよろしくお願いします。</Text>
+      </Flex>
+    ),
+    createdAt: new Date("2024-07-22T00:00:00Z"),
+  },
 ];
 
 export { ANNOUNCEMENT_LOCALSTORAGE_KEY, announcements };
