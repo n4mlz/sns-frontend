@@ -1,16 +1,19 @@
+"use client";
+
 import { useEffect, useState } from "react";
+import { LocalStorage } from "@/lib/localStorage";
 
 const useLocalStorage = (key: string) => {
   const [value, setValue] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setValue(window.localStorage.getItem(key));
+    setValue(LocalStorage.getItem(key) ?? null);
     setIsLoading(false);
   }, []);
 
   const setValueAndStorage = (newValue: string) => {
-    window.localStorage.setItem(key, newValue);
+    LocalStorage.setItem(key, newValue);
     setValue(newValue);
   };
 
