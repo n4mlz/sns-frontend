@@ -18,6 +18,7 @@ import {
 import { LuSend } from "react-icons/lu";
 import { useAuthContext } from "@components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
+import { LocalStorage } from "@/lib/localStorage";
 import usePostModal from "@/hooks/post/postModal";
 import useSignOutDialog from "@hooks/signOutDialog";
 
@@ -45,7 +46,7 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
     authContext.currentUser ? "/api/posts/notifications?limit=1" : null
   );
 
-  const lastConfirmedPostNotificationId = localStorage.getItem("lastConfirmedPostNotificationId") ?? "";
+  const lastConfirmedPostNotificationId = LocalStorage.getItem("lastConfirmedPostNotificationId") ?? "";
   const newestPostNotificationId = notificationsData?.postNotifications?.[0].postNotificationId ?? "";
   const isNotificationsExist = newestPostNotificationId > lastConfirmedPostNotificationId;
 

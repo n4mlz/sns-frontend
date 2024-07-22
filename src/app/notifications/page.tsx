@@ -11,6 +11,7 @@ import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
 import domainConsts from "@/constants/domain";
 import useLocalStorage from "@/hooks/localStorage";
+import { LocalStorage } from "@/lib/localStorage";
 import Notification from "@app/notifications/_components/notification";
 
 const NotificationsPage = () => {
@@ -39,7 +40,7 @@ const NotificationsPage = () => {
       return;
     }
 
-    const lastConfirmedPostNotificationId = localStorage.getItem("lastConfirmedPostNotificationId") ?? "";
+    const lastConfirmedPostNotificationId = LocalStorage.getItem("lastConfirmedPostNotificationId") ?? "";
     const newestPostNotificationId = res.data.postNotifications?.[0].postNotificationId ?? "";
 
     setLastConfirmedPostNotificationId(
