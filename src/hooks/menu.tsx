@@ -18,7 +18,6 @@ import {
 import { LuSend } from "react-icons/lu";
 import { useAuthContext } from "@components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
-import { LocalStorage } from "@/lib/localStorage";
 import usePostModal from "@/hooks/post/postModal";
 import useSignOutDialog from "@hooks/signOutDialog";
 
