@@ -18,10 +18,11 @@ const Notification = ({ notification }: Props) => {
       direction="column"
       gap="2px"
       position="relative"
-      paddingTop="4px"
-      paddingBottom="10px"
+      padding="12px"
+      paddingTop="6px"
       borderBottom="1px"
-      borderColor={useColorModeValue("gray.200", "gray.700")}>
+      borderColor={useColorModeValue("gray.200", "gray.700")}
+      backgroundColor={!notification.confirmed ? "gray.700" : undefined}>
       <Flex
         cursor="pointer"
         direction="row"

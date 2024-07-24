@@ -10,8 +10,6 @@ import { components } from "@/lib/openapi/schema";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
 import domainConsts from "@/constants/domain";
-import useLocalStorage from "@/hooks/localStorage";
-import { LocalStorage } from "@/lib/localStorage";
 import Notification from "@app/notifications/_components/notification";
 
 const NotificationsPage = () => {
@@ -20,8 +18,6 @@ const NotificationsPage = () => {
   const [notifications, setNotifications] = useState<components["schemas"]["postNotification"][]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [cursor, setCursor] = useState<string | undefined>();
-
-  const { setValue: setLastConfirmedPostNotificationId } = useLocalStorage("lastConfirmedPostNotificationId");
 
   const loadMore = async () => {
     if (!hasMore || authContext.currentUser === undefined) {
@@ -40,14 +36,6 @@ const NotificationsPage = () => {
       return;
     }
 
-    const lastConfirmedPostNotificationId = LocalStorage.getItem("lastConfirmedPostNotificationId") ?? "";
-    const newestPostNotificationId = res.data.postNotifications?.[0].postNotificationId ?? "";
-
-    setLastConfirmedPostNotificationId(
-      lastConfirmedPostNotificationId > newestPostNotificationId
-        ? lastConfirmedPostNotificationId
-        : newestPostNotificationId
-    );
     if (res.data.nextCursor) {
       setCursor(res.data.nextCursor);
     } else {
@@ -59,6 +47,10 @@ const NotificationsPage = () => {
     }
 
     setNotifications([...notifications, ...res.data.postNotifications]);
+
+    client.PUT("/api/posts/notifications/confirm", {
+      body: { postNotificationIds: res.data.postNotifications.map((n) => n.postNotificationId!) },
+    });
   };
 
   return (
@@ -75,7 +67,7 @@ const NotificationsPage = () => {
         }>
         {hasMore || notifications.length > 0 ? (
           <Box borderTop="1px" borderColor={useColorModeValue("gray.300", "gray.700")}>
-            <Flex direction="column" gap="4px" paddingY="4px">
+            <Flex direction="column" gap="4px">
               {notifications.map((notification) => (
                 <Notification notification={notification} />
               ))}
