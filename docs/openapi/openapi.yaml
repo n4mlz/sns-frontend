@@ -272,6 +272,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/postNotificationsWithCursor'
+  /api/posts/notifications/confirm:
+    put:
+      tags:
+        - post
+      summary: 通知を確認済みにする
+      description: Authorization ヘッダーを必要とします
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: 確認済みにする通知
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                postNotificationIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  postNotificationIds:
+                    type: array
+                    items:
+                      type: string
   /api/users/{userName}:
     get:
       tags:
@@ -741,6 +772,8 @@ components:
           type: string
         content:
           type: string
+        confirmed:
+          type: boolean
         createdAt:
           type: string
           format: date-time

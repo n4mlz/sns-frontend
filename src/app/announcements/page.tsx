@@ -19,13 +19,13 @@ const AnnouncementsPage = () => {
       <Box height="30px">
         <PageBackButton />
       </Box>
-      <Box padding="30px">
+      <Box>
         <Flex direction="column">
-          <Heading as="h2" size="lg" paddingY="16px">
+          <Heading as="h2" size="lg" padding="30px" paddingTop="45px">
             過去のお知らせ
           </Heading>
           <Accordion allowToggle>
-            {announcements.map((announcement, index) => (
+            {announcements.reverse().map((announcement, index) => (
               <AccordionItem key={index}>
                 <Box paddingX="10px" position="relative">
                   <AccordionButton>

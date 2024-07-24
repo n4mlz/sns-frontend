@@ -256,6 +256,32 @@ export interface paths {
       };
     };
   };
+  "/api/posts/notifications/confirm": {
+    /**
+     * 通知を確認済みにする
+     * @description Authorization ヘッダーを必要とします
+     */
+    put: {
+      /** @description 確認済みにする通知 */
+      requestBody?: {
+        content: {
+          "application/json": {
+            postNotificationIds?: string[];
+          };
+        };
+      };
+      responses: {
+        /** @description successful operation */
+        200: {
+          content: {
+            "application/json": {
+              postNotificationIds?: string[];
+            };
+          };
+        };
+      };
+    };
+  };
   "/api/users/{userName}": {
     /**
      * ユーザーのプロフィールを取得する
@@ -627,6 +653,7 @@ export interface components {
       notifier?: components["schemas"]["userDisplay"];
       notificationType?: string;
       content?: string;
+      confirmed?: boolean;
       /** Format: date-time */
       createdAt?: string;
     };

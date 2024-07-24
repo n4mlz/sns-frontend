@@ -1,7 +1,7 @@
 "use client";
 
 import path from "path";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useSWR from "swr";
 import { Box, Button, Center, Flex, Heading, Link, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import {
@@ -18,7 +18,6 @@ import {
 import { LuSend } from "react-icons/lu";
 import { useAuthContext } from "@components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
-import { LocalStorage } from "@/lib/localStorage";
 import usePostModal from "@/hooks/post/postModal";
 import useSignOutDialog from "@hooks/signOutDialog";
 
@@ -30,6 +29,7 @@ type Props = {
 
 const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose }: Props) => {
   const router = useRouter();
+  const pathName = usePathname();
   const { colorMode, toggleColorMode } = useColorMode();
   const authContext = useAuthContext();
   const postModal = usePostModal();
@@ -46,9 +46,8 @@ const useMenu = ({ postModalOpenCallback, signOutDialogOpenCallback, onMenuClose
     authContext.currentUser ? "/api/posts/notifications?limit=1" : null
   );
 
-  const lastConfirmedPostNotificationId = LocalStorage.getItem("lastConfirmedPostNotificationId") ?? "";
-  const newestPostNotificationId = notificationsData?.postNotifications?.[0].postNotificationId ?? "";
-  const isNotificationsExist = newestPostNotificationId > lastConfirmedPostNotificationId;
+  const isNotificationsExist =
+    notificationsData?.postNotifications?.[0].confirmed === false && pathName !== "/notifications";
 
   const openPostModal = () => {
     postModalOpenCallback && postModalOpenCallback();
