@@ -67,6 +67,18 @@ const announcements: Announcement[] = [
     ),
     createdAt: new Date("2024-08-10T00:00:00Z"),
   },
+  {
+    title: "ドメイン移行完了のお知らせ",
+    content: (
+      <Flex direction="column" gap={3}>
+        <Text>8月11日午前3時 (JST) に snooze のドメイン移行が完了しました。</Text>
+        <Text fontWeight={700}>旧: https://snooze.n4mlz.dev</Text>
+        <Text fontWeight={700}>新: https://snooze.page</Text>
+        <Text>ご協力ありがとうございました。今後とも snooze をよろしくお願いします。</Text>
+      </Flex>
+    ),
+    createdAt: new Date("2024-08-11T00:00:00Z"),
+  },
 ];
 
 export { ANNOUNCEMENT_LOCALSTORAGE_KEY, announcements };
