@@ -120,6 +120,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
                 errors={errors}
                 submitCallback={handleSubmit(onSubmit)}
                 {...register("content")}
+                autoFocus
               />
             </Box>
           </Flex>
