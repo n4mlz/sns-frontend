@@ -79,6 +79,21 @@ const announcements: Announcement[] = [
     ),
     createdAt: new Date("2024-08-11T00:00:00Z"),
   },
+  {
+    title: "筑波大学全学停電に伴う一時サービス停止のお知らせ",
+    content: (
+      <Flex direction="column" gap={3}>
+        <Text>いつも snooze をご利用頂きありがとうございます。</Text>
+        <Text>
+          この度、10月26日(土)、27日(日)に実施される筑波大学全学停電に伴い、下記の期間、snooze
+          のサービスを停止いたします。
+        </Text>
+        <Text>停止期間: 10月26日(土) 0:00 〜 10月27日(日) 23:59</Text>
+        <Text>大変ご不便をおかけしますが、皆様のご理解とご協力をお願い申し上げます。</Text>
+      </Flex>
+    ),
+    createdAt: new Date("2024-10-22T00:00:00Z"),
+  },
 ];
 
 export { ANNOUNCEMENT_LOCALSTORAGE_KEY, announcements };
