@@ -116,6 +116,7 @@ const useReplyModal = (commentId: string, submitCallback?: (reply: components["s
                 placeholder="返信する"
                 isLoaded
                 isUnstyled
+                autoFocus
                 label=""
                 errors={errors}
                 submitCallback={handleSubmit(onSubmit)}

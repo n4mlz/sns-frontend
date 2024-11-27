@@ -60,6 +60,7 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
       },
     });
     if (!res.response.ok || !res.data) {
+      setHasMore(false);
       return;
     }
 

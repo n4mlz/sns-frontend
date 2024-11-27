@@ -116,6 +116,7 @@ const useCommentModal = (postId: string, submitCallback?: (comment: components["
                 placeholder="コメントする"
                 isLoaded
                 isUnstyled
+                autoFocus
                 label=""
                 errors={errors}
                 submitCallback={handleSubmit(onSubmit)}
