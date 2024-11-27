@@ -3,7 +3,7 @@
 import path from "path";
 import { useEffect } from "react";
 import useSWR from "swr";
-import { Box, Center, Spinner } from "@chakra-ui/react";
+import { Box, Center, Spinner, Text } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
@@ -31,7 +31,13 @@ const UserMutualsPage = ({ params }: { params: { userName: string } }) => {
         <Box>
           <Users users={data} usersCallback={(users) => mutate(users, false)} />
         </Box>
-      ) : null}
+      ) : (
+        <Center paddingY="100px">
+          <Text fontWeight="500" color="gray.400">
+            表示するユーザーがいません
+          </Text>
+        </Center>
+      )}
     </>
   );
 };

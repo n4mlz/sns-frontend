@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import { Box, Center, Spinner } from "@chakra-ui/react";
+import { Box, Center, Spinner, Text } from "@chakra-ui/react";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
@@ -27,7 +27,13 @@ const RequestsPage = () => {
         <Box>
           <Users users={data} usersCallback={(users) => mutate(users, false)} enableReject />
         </Box>
-      ) : null}
+      ) : (
+        <Center paddingY="100px">
+          <Text fontWeight="500" color="gray.400">
+            表示するユーザーがいません
+          </Text>
+        </Center>
+      )}
     </>
   );
 };
