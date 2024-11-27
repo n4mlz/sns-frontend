@@ -110,6 +110,22 @@ const announcements: Announcement[] = [
     ),
     createdAt: new Date("2024-10-27T08:30:00Z"),
   },
+  {
+    title: "snooze アップデートのお知らせ",
+    content: (
+      <Flex direction="column" gap={3}>
+        <Text>この度、snooze がアップデートされました！</Text>
+        <Text>更新内容</Text>
+        <UnorderedList>
+          <ListItem>改行を含むポストができるように</ListItem>
+          <ListItem>テキストエリアに自動でフォーカスが当たるように</ListItem>
+          <ListItem>閲覧権限のないユーザーを永遠にローディング表示してしまう問題の修正</ListItem>
+        </UnorderedList>
+        <Text>今後とも snooze をよろしくお願いします。</Text>
+      </Flex>
+    ),
+    createdAt: new Date("2024-11-27T09:00:00Z"),
+  },
 ];
 
 export { ANNOUNCEMENT_LOCALSTORAGE_KEY, announcements };
