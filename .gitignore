@@ -48,4 +48,5 @@ next-env.d.ts
 
 # custom
 .env.*
+!*.example
 memo.md
