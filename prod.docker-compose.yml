@@ -9,7 +9,7 @@ services:
     build:
       context: .
       dockerfile: prod.Dockerfile
-    container_name: frontend
+    container_name: frontend-prod
 networks:
   default:
     name: sns-network
