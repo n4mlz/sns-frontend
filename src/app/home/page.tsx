@@ -34,6 +34,7 @@ const Timeline = () => {
       params: { query: { limit: domainConsts.CURSOR_PAGINATION_LIMIT, cursor: cursor } },
     });
     if (!res.response.ok || !res.data) {
+      setHasMore(false);
       return;
     }
 
