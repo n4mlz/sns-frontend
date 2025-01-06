@@ -22,7 +22,7 @@ RUN pnpm build
 FROM base as prod
 
 WORKDIR /app
-ENV NODE_ENV production
+ENV NODE_ENV=production
 COPY --from=build /app/public ./public
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/.next/standalone ./
