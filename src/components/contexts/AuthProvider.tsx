@@ -2,6 +2,7 @@
 
 import { User, getAuth } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
+import type React from "react";
 
 import { firebaseApp } from "@/lib/firebase";
 

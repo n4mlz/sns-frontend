@@ -58,6 +58,7 @@ export const ControlledUserNameInput = forwardRef<ControlledUserNameInputProps, 
     }: Omit<ControlledUserNameInputProps, "ref">,
     ref
   ) => {
+    const tooltipBackground = useColorModeValue("gray.500", "white");
     return (
       <FormControl isInvalid={Boolean(errors[name])} isRequired={isRequired} {...formControlProps}>
         <FormLabel {...formLabelProps}>{label}</FormLabel>
@@ -72,19 +73,19 @@ export const ControlledUserNameInput = forwardRef<ControlledUserNameInputProps, 
               <Input name={name} {...rest} ref={ref} />
               {disableRightElement ? null : isCheckingUserName ? (
                 <InputRightElement>
-                  <Tooltip label={checkingTooltipLabel} bg={useColorModeValue("gray.500", "white")}>
+                  <Tooltip label={checkingTooltipLabel} bg={tooltipBackground}>
                     <Spinner size="sm" />
                   </Tooltip>
                 </InputRightElement>
               ) : isCheckedUserName ? (
                 <InputRightElement>
-                  <Tooltip label={checkedTooltipLabel} bg={useColorModeValue("gray.500", "white")}>
+                  <Tooltip label={checkedTooltipLabel} bg={tooltipBackground}>
                     <CheckCircleIcon color="green.500" />
                   </Tooltip>
                 </InputRightElement>
               ) : (
                 <InputRightElement>
-                  <Tooltip label={notCheckedTooltipLabel} bg={useColorModeValue("gray.500", "white")}>
+                  <Tooltip label={notCheckedTooltipLabel} bg={tooltipBackground}>
                     <NotAllowedIcon color="red.500" />
                   </Tooltip>
                 </InputRightElement>

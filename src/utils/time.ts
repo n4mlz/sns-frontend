@@ -2,9 +2,9 @@ import { formatDistance, format } from "date-fns";
 import { ja } from "date-fns/locale";
 
 const sleep = async (msec: number) => {
-  return new Promise(function (resolve: (value: unknown) => void) {
+  return new Promise(function (resolve) {
     setTimeout(function () {
-      resolve("");
+      resolve();
     }, msec);
   });
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, Box, Button, useToast, Input, Text, UnorderedList, ListItem } from "@chakra-ui/react";
+import { Flex, Box, Button, Input, Text, UnorderedList, ListItem } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

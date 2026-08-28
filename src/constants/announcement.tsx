@@ -1,4 +1,5 @@
 import { Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import type React from "react";
 
 const ANNOUNCEMENT_LOCALSTORAGE_KEY = "announcementDialog";
 

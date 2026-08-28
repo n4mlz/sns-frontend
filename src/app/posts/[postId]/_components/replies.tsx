@@ -36,7 +36,7 @@ const Replies = ({ commentId, replies, repliesCallback }: Props) => {
         {replies.length > 0 && (
           <Flex direction="column" gap="12px">
             {replies.map((reply, index) => (
-              <Reply reply={reply} replyCallback={replyCallback(index)} />
+              <Reply key={reply.replyId} reply={reply} replyCallback={replyCallback(index)} />
             ))}
           </Flex>
         )}

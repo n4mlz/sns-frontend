@@ -24,7 +24,7 @@ const Posts = ({ posts, postsCallback }: Props) => {
   return (
     <Flex direction="column">
       {posts.map((post, index) => (
-        <Post post={post} postCallback={postCallback(index)} />
+        <Post key={post.postId} post={post} postCallback={postCallback(index)} />
       ))}
     </Flex>
   );

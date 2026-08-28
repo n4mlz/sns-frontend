@@ -13,10 +13,10 @@ import {
   ListItem,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { MdCheckCircle } from "react-icons/md";
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { MdCheckCircle } from "react-icons/md";
 
 import PageBackButton from "@/components/elements/pageBackButton";
 import { logo, slides } from "@/utils/images";
@@ -68,7 +68,7 @@ const AboutPage = () => {
         <List spacing={3} paddingX="30px">
           <ListItem>
             <ListIcon as={MdCheckCircle} color="green.400" />
-            ユーザーそれぞれがプライベートな"鍵垢"を持つことができる、全く新しいコンセプトの SNS です。
+            ユーザーそれぞれがプライベートな「鍵垢」を持つことができる、全く新しいコンセプトの SNS です。
           </ListItem>
           <ListItem>
             <ListIcon as={MdCheckCircle} color="green.400" />

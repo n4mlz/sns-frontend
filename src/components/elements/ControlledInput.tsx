@@ -1,10 +1,6 @@
-import { AtSignIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
 import {
   Input,
   InputProps,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
   forwardRef,
   FormControl,
   FormLabel,
@@ -13,9 +9,6 @@ import {
   FormLabelProps,
   FormErrorMessageProps,
   Skeleton,
-  Tooltip,
-  Spinner,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { FieldErrors, Ref } from "react-hook-form";
 

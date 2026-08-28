@@ -3,7 +3,7 @@
 import path from "path";
 
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Flex, Box, Text, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
+import { Flex, Text, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import useSWR from "swr";

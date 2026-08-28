@@ -1,12 +1,12 @@
 import { Container } from "@chakra-ui/react";
 import type { Metadata } from "next";
+import "normalize.css";
+import type React from "react";
 
 import { AuthProvider } from "@/components/contexts/AuthProvider";
 import ChakraConfigProvider from "@/components/contexts/ChakraConfigProvider";
 import SWRConfigProvider from "@/components/contexts/SWRConfigProvider";
 import { metaDataConsts } from "@/constants/metadata";
-
-import "normalize.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaDataConsts.SITE_URL),
