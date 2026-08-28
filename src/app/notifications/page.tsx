@@ -15,6 +15,8 @@ import Notification from "@app/notifications/_components/notification";
 
 const NotificationsPage = () => {
   const authContext = useAuthContext();
+  const loaderBorderColor = useColorModeValue("gray.200", "gray.700");
+  const notificationsBorderColor = useColorModeValue("gray.300", "gray.700");
 
   const [notifications, setNotifications] = useState<components["schemas"]["postNotification"][]>([]);
   const [hasMore, setHasMore] = useState(true);
@@ -62,15 +64,15 @@ const NotificationsPage = () => {
         loadMore={loadMore}
         hasMore={hasMore}
         loader={
-          <Center borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
+          <Center borderTop="1px" borderColor={loaderBorderColor}>
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
         }>
         {hasMore || notifications.length > 0 ? (
-          <Box borderTop="1px" borderColor={useColorModeValue("gray.300", "gray.700")}>
+          <Box borderTop="1px" borderColor={notificationsBorderColor}>
             <Flex direction="column" gap="4px">
               {notifications.map((notification) => (
-                <Notification notification={notification} />
+                <Notification key={notification.postNotificationId} notification={notification} />
               ))}
             </Flex>
           </Box>

@@ -22,6 +22,7 @@ import PageBackButton from "@/components/elements/pageBackButton";
 import { logo, slides } from "@/utils/images";
 
 const AboutPage = () => {
+  const slideBorder = useColorModeValue("0px", "1px");
   const splideOptions = {
     autoplay: true,
     interval: 3000,
@@ -81,7 +82,7 @@ const AboutPage = () => {
         <Splide options={splideOptions}>
           {slides.map((slide, index) => (
             <SplideSlide key={index}>
-              <Box border={useColorModeValue("0px", "1px")} borderColor="gray.500" borderRadius="3px">
+              <Box border={slideBorder} borderColor="gray.500" borderRadius="3px">
                 <Image src={slide.src} alt="" borderRadius="2px" />
               </Box>
             </SplideSlide>

@@ -11,7 +11,7 @@ import TitleHeader from "@/components/ui/titleHeader";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
 
-const postLikesPage = ({ params }: { params: { postId: string } }) => {
+const PostLikesPage = ({ params }: { params: { postId: string } }) => {
   const authContext = useAuthContext();
 
   const { data, isLoading, mutate } = useSWR<components["schemas"]["user"][]>(
@@ -35,4 +35,4 @@ const postLikesPage = ({ params }: { params: { postId: string } }) => {
   );
 };
 
-export default postLikesPage;
+export default PostLikesPage;
