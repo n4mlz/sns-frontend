@@ -1,5 +1,6 @@
 "use client";
 
+import { QuestionIcon } from "@chakra-ui/icons";
 import {
   Box,
   Divider,
@@ -12,11 +13,11 @@ import {
   ListItem,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { QuestionIcon } from "@chakra-ui/icons";
 import { MdCheckCircle } from "react-icons/md";
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+
 import PageBackButton from "@/components/elements/pageBackButton";
 import { logo, slides } from "@/utils/images";
 

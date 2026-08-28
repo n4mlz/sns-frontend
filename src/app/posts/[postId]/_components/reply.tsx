@@ -1,15 +1,17 @@
 import path from "path";
+
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Flex, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Flex, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { components } from "@/lib/openapi/schema";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
-import useDeleteReplyDialog from "@/hooks/reply/deleteReplyDialog";
-import { getAboutDate } from "@/utils/time";
 import domainConsts from "@/constants/domain";
+import useDeleteReplyDialog from "@/hooks/reply/deleteReplyDialog";
+import { components } from "@/lib/openapi/schema";
+import { getAboutDate } from "@/utils/time";
 
 type Props = {
   reply: components["schemas"]["reply"];

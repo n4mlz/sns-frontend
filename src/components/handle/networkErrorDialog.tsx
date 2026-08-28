@@ -2,9 +2,10 @@
 
 import { useEffect } from "react";
 import useSWR from "swr";
-import { components } from "@/lib/openapi/schema";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import useNetworkErrorDialog from "@/hooks/networkErrorDialog";
+import { components } from "@/lib/openapi/schema";
 
 const NetworkErrorDialog = () => {
   const authContext = useAuthContext();

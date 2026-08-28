@@ -1,8 +1,9 @@
 "use client";
 
 import { SWRConfig } from "swr";
-import { useAuthContext } from "@components/contexts/AuthProvider";
+
 import { publicEnv } from "@/constants/env";
+import { useAuthContext } from "@components/contexts/AuthProvider";
 
 const SWRConfigProvider = ({ children }: { children: React.ReactNode }) => {
   const authContext = useAuthContext();

@@ -1,17 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
+import { useState } from "react";
 // @ts-ignore
 import InfiniteScroll from "react-infinite-scroller";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import PostButton from "@/components/elements/postButton";
+import SetUpDialog from "@/components/handle/setUpDialog";
+import LogoHeader from "@/components/ui/logoHeader";
+import Posts from "@/components/ui/posts";
+import domainConsts from "@/constants/domain";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import SetUpDialog from "@/components/handle/setUpDialog";
-import Posts from "@/components/ui/posts";
-import LogoHeader from "@/components/ui/logoHeader";
-import PostButton from "@/components/elements/postButton";
-import domainConsts from "@/constants/domain";
 
 const Timeline = () => {
   const authContext = useAuthContext();

@@ -1,4 +1,5 @@
 import { Box, Heading, ListItem, OrderedList, Table, Tbody, Td, Text, Tr } from "@chakra-ui/react";
+
 import PageBackButton from "@/components/elements/pageBackButton";
 
 const PrivacyPolicyPage = () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useToast } from "@chakra-ui/react";
+
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import useSimpleDialog from "@hooks/SimpleDialog";

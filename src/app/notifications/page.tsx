@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { Box, Center, Flex, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
+import { useState } from "react";
 // @ts-ignore
 import InfiniteScroll from "react-infinite-scroller";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import client from "@/lib/openapi";
-import { components } from "@/lib/openapi/schema";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
 import domainConsts from "@/constants/domain";
+import client from "@/lib/openapi";
+import { components } from "@/lib/openapi/schema";
 import Notification from "@app/notifications/_components/notification";
 
 const NotificationsPage = () => {

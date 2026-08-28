@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { LocalStorage } from "@/lib/localStorage";
 
 const useLocalStorage = (key: string) => {

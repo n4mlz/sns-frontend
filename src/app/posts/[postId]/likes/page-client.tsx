@@ -1,13 +1,15 @@
 "use client";
 
 import path from "path";
-import useSWR from "swr";
+
 import { Box, Center, Spinner } from "@chakra-ui/react";
+import useSWR from "swr";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import SetUpDialog from "@/components/handle/setUpDialog";
+import TitleHeader from "@/components/ui/titleHeader";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
-import TitleHeader from "@/components/ui/titleHeader";
-import SetUpDialog from "@/components/handle/setUpDialog";
 
 const postLikesPage = ({ params }: { params: { postId: string } }) => {
   const authContext = useAuthContext();

@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -13,9 +11,12 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
+
 import { ANNOUNCEMENT_LOCALSTORAGE_KEY, announcements } from "@/constants/announcement";
-import { getFormattedDate } from "@/utils/time";
 import useLocalStorage from "@/hooks/localStorage";
+import { getFormattedDate } from "@/utils/time";
 
 const AnnouncementDialog = () => {
   const disclosure = useDisclosure();

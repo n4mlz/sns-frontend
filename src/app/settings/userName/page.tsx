@@ -1,19 +1,21 @@
 "use client";
 
 import path from "path";
+
+import { Flex, Box, Button, useToast, Input } from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Flex, Box, Button, useToast, Input } from "@chakra-ui/react";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import TitleHeader from "@/components/ui/titleHeader";
 import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
+import TitleHeader from "@/components/ui/titleHeader";
+import domainConsts from "@/constants/domain";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import domainConsts from "@/constants/domain";
 import { sleep } from "@/utils/time";
 
 const schema = z.object({

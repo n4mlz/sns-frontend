@@ -1,13 +1,15 @@
 "use client";
 
 import path from "path";
+
+import { Box, Center, Spinner, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import useSWR from "swr";
-import { Box, Center, Spinner, Text } from "@chakra-ui/react";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import TitleHeader from "@/components/ui/titleHeader";
 import Users from "@/components/ui/users";
 import { components } from "@/lib/openapi/schema";
-import TitleHeader from "@/components/ui/titleHeader";
 
 const UserMutualsPage = ({ params }: { params: { userName: string } }) => {
   const authContext = useAuthContext();

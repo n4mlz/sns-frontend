@@ -1,11 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import useSWR from "swr";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { components } from "@/lib/openapi/schema";
 import {
   Box,
   Button,
@@ -22,11 +16,20 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import useSWR from "swr";
+import { z } from "zod";
+
+
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import UserIcon from "@/components/ui/userIcon";
-import client from "@/lib/openapi";
-import domainConsts from "@/constants/domain";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
+import UserIcon from "@/components/ui/userIcon";
+import domainConsts from "@/constants/domain";
+import client from "@/lib/openapi";
+import { components } from "@/lib/openapi/schema";
 
 const schema = z.object({
   content: z

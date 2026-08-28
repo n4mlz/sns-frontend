@@ -1,4 +1,4 @@
-import { FieldErrors, Ref } from "react-hook-form";
+import { AtSignIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
 import {
   Input,
   InputProps,
@@ -17,7 +17,7 @@ import {
   Spinner,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { AtSignIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
+import { FieldErrors, Ref } from "react-hook-form";
 
 export type ControlledUserNameInputProps = {
   label: string;

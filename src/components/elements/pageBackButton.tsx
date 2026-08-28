@@ -1,8 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { Box, Flex, FlexProps } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import { Box, Flex, FlexProps } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 type Props = FlexProps;
 

@@ -1,8 +1,10 @@
 "use client";
 
 import path from "path";
-import { useRouter } from "next/navigation";
+
 import { Box, Image, ResponsiveValue, Skeleton, useColorModeValue } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+
 import { components } from "@/lib/openapi/schema";
 
 type Props = {

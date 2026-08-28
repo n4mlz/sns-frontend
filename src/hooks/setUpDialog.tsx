@@ -1,8 +1,5 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import useSWR from "swr";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -17,9 +14,13 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
+import useSWR from "swr";
+
+import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn } from "@/lib/firebase";
 import { components } from "@/lib/openapi/schema";
-import { useAuthContext } from "@/components/contexts/AuthProvider";
 
 const useSetUpDialog = () => {
   const router = useRouter();

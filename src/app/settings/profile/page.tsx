@@ -1,24 +1,26 @@
 "use client";
 
 import path from "path";
+
+import { Flex, Box, Button, Input, Image, Skeleton, useToast, useColorModeValue } from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { MdOutlineCameraAlt } from "react-icons/md";
 import useSWR from "swr";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Flex, Box, Button, Input, Image, Skeleton, useToast, useColorModeValue } from "@chakra-ui/react";
-import { MdOutlineCameraAlt } from "react-icons/md";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import SetUpDialog from "@/components/handle/setUpDialog";
-import TitleHeader from "@/components/ui/titleHeader";
 import { ControlledInput } from "@/components/elements/ControlledInput";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
+import SetUpDialog from "@/components/handle/setUpDialog";
+import TitleHeader from "@/components/ui/titleHeader";
+import domainConsts from "@/constants/domain";
 import useImageCrop from "@/hooks/imageCrop/useImageCrop";
+import { postUserIconUrl, postUserBgImageUrl } from "@/lib/image";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import domainConsts from "@/constants/domain";
-import { postUserIconUrl, postUserBgImageUrl } from "@/lib/image";
 
 const schema = z.object({
   displayName: z

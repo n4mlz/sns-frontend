@@ -1,12 +1,13 @@
 "use client";
 
-import useSWR from "swr";
 import { Flex, Box, Button, Skeleton, Image, useColorModeValue } from "@chakra-ui/react";
+import useSWR from "swr";
+
+import Comment from "@/app/posts/[postId]/_components/comment";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import UserIcon from "@/components/ui/userIcon";
-import { components } from "@/lib/openapi/schema";
 import useCommentModal from "@/hooks/comment/commentModal";
-import Comment from "@/app/posts/[postId]/_components/comment";
+import { components } from "@/lib/openapi/schema";
 
 type Props = {
   postId: string;

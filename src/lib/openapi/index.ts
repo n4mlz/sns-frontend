@@ -1,8 +1,9 @@
-import createClient, { Middleware } from "openapi-fetch";
 import { getAuth } from "firebase/auth";
-import type { paths } from "@lib/openapi/schema";
-import { firebaseApp } from "@lib/firebase";
+import createClient, { Middleware } from "openapi-fetch";
+
 import { publicEnv } from "@/constants/env";
+import { firebaseApp } from "@lib/firebase";
+import type { paths } from "@lib/openapi/schema";
 
 const authInterceptor: Middleware = {
   async onRequest(req, _options) {

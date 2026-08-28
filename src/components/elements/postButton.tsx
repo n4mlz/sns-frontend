@@ -1,8 +1,9 @@
 "use client";
 
-import usePostModal from "@/hooks/post/postModal";
 import { Box, Flex } from "@chakra-ui/react";
 import { LuSend } from "react-icons/lu";
+
+import usePostModal from "@/hooks/post/postModal";
 import { components } from "@/lib/openapi/schema";
 
 type Props = {

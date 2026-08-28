@@ -1,21 +1,22 @@
 "use client";
 
+import { Flex, Box, Button, useToast, Input, Text, UnorderedList, ListItem } from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Flex, Box, Button, useToast, Input, Text, UnorderedList, ListItem } from "@chakra-ui/react";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import TitleHeader from "@/components/ui/titleHeader";
 import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
 import SetUpDialog from "@/components/handle/setUpDialog";
-import useDeleteAccountDialog from "@/hooks/deleteAccountDialog";
-import { components } from "@/lib/openapi/schema";
+import TitleHeader from "@/components/ui/titleHeader";
 import domainConsts from "@/constants/domain";
-import { sleep } from "@/utils/time";
+import useDeleteAccountDialog from "@/hooks/deleteAccountDialog";
 import { signOut } from "@/lib/firebase";
+import { components } from "@/lib/openapi/schema";
+import { sleep } from "@/utils/time";
 
 const schema = z.object({
   userName: z

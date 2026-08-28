@@ -1,9 +1,10 @@
 "use client";
 
 import path from "path";
-import { usePathname, useRouter } from "next/navigation";
-import useSWR from "swr";
+
 import { Box, Button, Center, Flex, Heading, Link, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { usePathname, useRouter } from "next/navigation";
+import { LuSend } from "react-icons/lu";
 import {
   MdLogout,
   MdNotificationsActive,
@@ -15,10 +16,11 @@ import {
   MdOutlinePersonSearch,
   MdOutlineSettings,
 } from "react-icons/md";
-import { LuSend } from "react-icons/lu";
-import { useAuthContext } from "@components/contexts/AuthProvider";
-import { components } from "@/lib/openapi/schema";
+import useSWR from "swr";
+
 import usePostModal from "@/hooks/post/postModal";
+import { components } from "@/lib/openapi/schema";
+import { useAuthContext } from "@components/contexts/AuthProvider";
 import useSignOutDialog from "@hooks/signOutDialog";
 
 type Props = {

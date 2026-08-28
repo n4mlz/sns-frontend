@@ -1,6 +1,5 @@
 import logo from "@images/service/logo.png";
 import logoIcon from "@images/service/logoIcon.png";
-
 import slide0 from "@images/slides/slide0.png";
 import slide1 from "@images/slides/slide1.png";
 import slide2 from "@images/slides/slide2.png";

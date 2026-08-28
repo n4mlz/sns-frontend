@@ -1,8 +1,9 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
-import { publicEnv } from "@/constants/env";
 import { GoogleAuthProvider, getAuth, signOut as firebaseSignOut, signInWithPopup } from "firebase/auth";
-import { LocalStorage } from "@lib/localStorage";
+
 import { ANNOUNCEMENT_LOCALSTORAGE_KEY } from "@/constants/announcement";
+import { publicEnv } from "@/constants/env";
+import { LocalStorage } from "@lib/localStorage";
 
 const firebaseConfig = {
   apiKey: publicEnv.FIREBASE_API_KEY,

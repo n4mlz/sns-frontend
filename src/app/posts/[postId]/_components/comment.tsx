@@ -1,17 +1,19 @@
 "use client";
 
 import path from "path";
+
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { components } from "@/lib/openapi/schema";
+
+import Replies from "@/app/posts/[postId]/_components/replies";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
 import useDeleteCommentDialog from "@/hooks/comment/deleteCommentDialog";
+import { components } from "@/lib/openapi/schema";
 import { getAboutDate } from "@/utils/time";
-import Replies from "@/app/posts/[postId]/_components/replies";
 
 type Props = {
   comment: components["schemas"]["comment"];

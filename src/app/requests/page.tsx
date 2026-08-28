@@ -1,12 +1,13 @@
 "use client";
 
-import useSWR from "swr";
 import { Box, Center, Spinner, Text } from "@chakra-ui/react";
+import useSWR from "swr";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import Users from "@/components/ui/users";
-import { components } from "@/lib/openapi/schema";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
+import Users from "@/components/ui/users";
+import { components } from "@/lib/openapi/schema";
 
 const RequestsPage = () => {
   const authContext = useAuthContext();
