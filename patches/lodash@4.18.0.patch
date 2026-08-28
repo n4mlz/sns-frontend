@@ -1,0 +1,13 @@
+diff --git a/template.js b/template.js
+index ebae2ac5f5b7ba59d6ffb95996ff5a3f5f6744ab..9a455bd2ffe38d222c6e2f472ae91528b0944e6b 100644
+--- a/template.js
++++ b/template.js
+@@ -1,6 +1,8 @@
+ var attempt = require('./attempt'),
+     baseValues = require('./_baseValues'),
+     customDefaultsAssignIn = require('./_customDefaultsAssignIn'),
++    assignWith = require('./assignWith'),
++    arrayEach = require('./_arrayEach'),
+     escapeStringChar = require('./_escapeStringChar'),
+     isError = require('./isError'),
+     isIterateeCall = require('./_isIterateeCall'),
