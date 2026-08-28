@@ -1,6 +1,7 @@
 import { getAuth } from "firebase/auth";
-import { firebaseApp } from "@lib/firebase";
+
 import { publicEnv } from "@/constants/env";
+import { firebaseApp } from "@lib/firebase";
 
 const postUserIconUrl = async (blob: Blob) => {
   const auth = getAuth(firebaseApp);

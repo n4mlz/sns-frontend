@@ -1,18 +1,20 @@
 "use client";
 
 import path from "path";
-import { useRouter } from "next/navigation";
-import useSWR from "swr";
-import { Flex, Box, Text, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
+
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Flex, Box, Text, useColorModeValue, MenuButton, Menu, MenuList, MenuItem } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { FaRegCommentAlt, FaHeart, FaRegHeart } from "react-icons/fa";
+import useSWR from "swr";
+
+import useDeletePostDialog from "@/hooks/post/deletePostDialog";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
+import { getAboutDate } from "@/utils/time";
 import { useAuthContext } from "@components/contexts/AuthProvider";
 import { CustomLinkify } from "@components/elements/customLinkify";
 import UserIcon from "@components/ui/userIcon";
-import useDeletePostDialog from "@/hooks/post/deletePostDialog";
-import { getAboutDate } from "@/utils/time";
 
 type Props = {
   post: components["schemas"]["post"];

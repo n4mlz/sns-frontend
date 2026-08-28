@@ -1,9 +1,11 @@
 import path from "path";
-import { useRouter } from "next/navigation";
+
 import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
-import { components } from "@/lib/openapi/schema";
+import { useRouter } from "next/navigation";
+
 import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
+import { components } from "@/lib/openapi/schema";
 import { getAboutDate } from "@/utils/time";
 
 type Props = {

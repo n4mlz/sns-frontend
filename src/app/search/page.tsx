@@ -1,15 +1,19 @@
 "use client";
 
+import path from "path";
+
+import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
+import useSWR from "swr";
+
+import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
 import TitleHeader from "@/components/ui/titleHeader";
 import User from "@/components/ui/user";
-import { ControlledUserNameInput } from "@/components/elements/ControlledUserNameInput";
 import { components } from "@/lib/openapi/schema";
 import { sleep } from "@/utils/time";
-import useSWR from "swr";
-import path from "path";
+
+
 
 const SearchPage = () => {
   const {

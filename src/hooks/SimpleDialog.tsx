@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -11,6 +10,7 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useRef } from "react";
 
 const useSimpleDialog = (
   onClose: () => any,

@@ -1,4 +1,5 @@
 import { Flex } from "@chakra-ui/react";
+
 import { components } from "@/lib/openapi/schema";
 import User from "@components/ui/user";
 

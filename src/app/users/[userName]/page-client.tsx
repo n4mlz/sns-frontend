@@ -1,9 +1,8 @@
 "use client";
 
 import path from "path";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import useSWR from "swr";
+
+import { CalendarIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Box,
@@ -17,18 +16,21 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { CalendarIcon } from "@chakra-ui/icons";
-// @ts-ignore
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
+import useSWR from "swr";
+// @ts-ignore
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
-import TransparentHeader from "@/components/ui/transparentHeader";
-import Posts from "@/components/ui/posts";
 import { CustomLinkify } from "@/components/elements/customLinkify";
+import PostButton from "@/components/elements/postButton";
+import Posts from "@/components/ui/posts";
+import TransparentHeader from "@/components/ui/transparentHeader";
+import domainConsts from "@/constants/domain";
+import useSetUpDialog from "@/hooks/setUpDialog";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
-import domainConsts from "@/constants/domain";
-import PostButton from "@/components/elements/postButton";
-import useSetUpDialog from "@/hooks/setUpDialog";
 
 const UserPage = ({ params }: { params: { userName: string } }) => {
   const router = useRouter();

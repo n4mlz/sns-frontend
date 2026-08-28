@@ -1,7 +1,7 @@
-import { MouseEvent, ReactNode } from "react";
+import { Text } from "@chakra-ui/react";
 import Linkify from "linkify-react";
 import Link from "next/link";
-import { Text } from "@chakra-ui/react";
+import { MouseEvent, ReactNode } from "react";
 
 const isSafeUrl = (href: string) => {
   try {

@@ -1,5 +1,6 @@
-import PageBackButton from "@/components/elements/pageBackButton";
 import { Box, Heading, ListItem, OrderedList, Text } from "@chakra-ui/react";
+
+import PageBackButton from "@/components/elements/pageBackButton";
 
 const TermsOfServicePage = () => {
   return (

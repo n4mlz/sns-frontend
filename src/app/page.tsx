@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { QuestionIcon } from "@chakra-ui/icons";
 import {
   Accordion,
   AccordionButton,
@@ -23,11 +24,11 @@ import {
   Spinner,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { QuestionIcon } from "@chakra-ui/icons";
 import { MdCheckCircle } from "react-icons/md";
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn } from "@/lib/firebase";
 import { logo, slides } from "@/utils/images";

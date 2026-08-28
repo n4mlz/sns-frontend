@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+
 import { signOut } from "@/lib/firebase";
 import useSimpleDialog from "@hooks/SimpleDialog";
 

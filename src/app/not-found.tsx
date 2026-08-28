@@ -1,9 +1,10 @@
 "use client";
 
 import { Button, Center, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { logoIcon } from "@/utils/images";
-import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { useRouter } from "next/navigation";
+
+import { useAuthContext } from "@/components/contexts/AuthProvider";
+import { logoIcon } from "@/utils/images";
 
 const NotFound = () => {
   const authContext = useAuthContext();

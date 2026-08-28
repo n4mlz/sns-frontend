@@ -1,10 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Flex, Heading } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { LuAtSign } from "react-icons/lu";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+
 import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
 

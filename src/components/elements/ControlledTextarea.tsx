@@ -1,6 +1,5 @@
 "use client";
 
-import { FieldErrors, Ref } from "react-hook-form";
 import {
   forwardRef,
   FormControl,
@@ -13,7 +12,9 @@ import {
   useToken,
   Box,
 } from "@chakra-ui/react";
+import { FieldErrors, Ref } from "react-hook-form";
 import { RichTextarea, RichTextareaProps, createRegexRenderer } from "rich-textarea";
+
 import styles from "@components/elements/richTextarea.module.css";
 
 export type ControlledTextareaProps = {

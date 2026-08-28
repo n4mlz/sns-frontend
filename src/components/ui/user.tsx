@@ -1,16 +1,18 @@
 "use client";
 
 import path from "path";
-import { useRouter } from "next/navigation";
-import { Flex, Text, Button, IconButton, useColorModeValue } from "@chakra-ui/react";
+
 import { CloseIcon } from "@chakra-ui/icons";
+import { Flex, Text, Button, IconButton, useColorModeValue } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+
+import domainConsts from "@/constants/domain";
+import useSetUpDialog from "@/hooks/setUpDialog";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
+import { adjustBio } from "@/utils/stringOperation";
 import { CustomLinkify } from "@components/elements/customLinkify";
 import UserIcon from "@components/ui/userIcon";
-import useSetUpDialog from "@/hooks/setUpDialog";
-import domainConsts from "@/constants/domain";
-import { adjustBio } from "@/utils/stringOperation";
 
 type Props = {
   user: components["schemas"]["user"];

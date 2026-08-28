@@ -1,7 +1,8 @@
 import { Flex, Box, Button, useColorModeValue } from "@chakra-ui/react";
-import { components } from "@/lib/openapi/schema";
-import useReplyModal from "@/hooks/reply/replyModal";
+
 import Reply from "@/app/posts/[postId]/_components/reply";
+import useReplyModal from "@/hooks/reply/replyModal";
+import { components } from "@/lib/openapi/schema";
 
 type Props = {
   commentId: string;

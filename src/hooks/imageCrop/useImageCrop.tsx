@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Cropper, { Area } from "react-easy-crop";
 import {
   Box,
   Button,
@@ -20,6 +18,9 @@ import {
   SliderTrack,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import Cropper, { Area } from "react-easy-crop";
+
 import getCroppedImgBlob from "@hooks/imageCrop/getCroppedImg";
 
 const useImageCrop = (width: number, height: number) => {

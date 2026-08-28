@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
-import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import React from "react";
+
 import AnnouncementDialog from "@/components/handle/announcementDialog";
 import NetworkErrorDialog from "@/components/handle/networkErrorDialog";
 

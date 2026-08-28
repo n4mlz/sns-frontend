@@ -1,7 +1,8 @@
 "use client";
 
-import useSWR from "swr";
 import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, useDisclosure } from "@chakra-ui/react";
+import useSWR from "swr";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { components } from "@/lib/openapi/schema";
 

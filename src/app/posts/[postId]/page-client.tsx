@@ -1,19 +1,21 @@
 "use client";
 
 import path from "path";
-import { useRouter } from "next/navigation";
-import useSWR from "swr";
+
 import { Box, Center, Flex, Skeleton, SkeletonText, Spinner, Text, Tooltip, useColorModeValue } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import useSWR from "swr";
+
+import Comments from "@/app/posts/[postId]/_components/comments";
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import { CustomLinkify } from "@/components/elements/customLinkify";
 import SetUpDialog from "@/components/handle/setUpDialog";
 import TitleHeader from "@/components/ui/titleHeader";
-import { CustomLinkify } from "@/components/elements/customLinkify";
 import UserIcon from "@/components/ui/userIcon";
 import client from "@/lib/openapi";
 import { components } from "@/lib/openapi/schema";
 import { getFormattedDate } from "@/utils/time";
-import Comments from "@/app/posts/[postId]/_components/comments";
 
 const PostPage = ({ params }: { params: { postId: string } }) => {
   const router = useRouter();

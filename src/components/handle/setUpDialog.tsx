@@ -2,9 +2,10 @@
 
 import { useEffect } from "react";
 import useSWR from "swr";
-import { components } from "@/lib/openapi/schema";
+
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import useSetUpDialog from "@/hooks/setUpDialog";
+import { components } from "@/lib/openapi/schema";
 
 const SetUpDialog = () => {
   const authContext = useAuthContext();
