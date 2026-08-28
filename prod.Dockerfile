@@ -47,4 +47,5 @@ COPY --from=build /app/public ./public
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/.next/standalone ./
 
+USER node
 CMD ["node", "server.js"]
