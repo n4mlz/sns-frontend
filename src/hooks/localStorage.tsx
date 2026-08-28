@@ -1,24 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 import { LocalStorage } from "@/lib/localStorage";
 
 const useLocalStorage = (key: string) => {
-  const [value, setValue] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const subscribe = (onStoreChange: () => void) => {
+    if (typeof window === "undefined") return () => undefined;
 
-  useEffect(() => {
-    setValue(LocalStorage.getItem(key) ?? null);
-    setIsLoading(false);
-  }, []);
+    const onStorageChange = (event: StorageEvent | Event) => {
+      if (!(event instanceof StorageEvent) || event.key === key) onStoreChange();
+    };
+
+    window.addEventListener("storage", onStorageChange);
+    window.addEventListener("local-storage-change", onStorageChange);
+    return () => {
+      window.removeEventListener("storage", onStorageChange);
+      window.removeEventListener("local-storage-change", onStorageChange);
+    };
+  };
+
+  const value = useSyncExternalStore(
+    subscribe,
+    () => LocalStorage.getItem(key),
+    () => undefined
+  );
 
   const setValueAndStorage = (newValue: string) => {
     LocalStorage.setItem(key, newValue);
-    setValue(newValue);
+    window.dispatchEvent(new Event("local-storage-change"));
   };
 
-  return { value, setValue: setValueAndStorage, isLoading };
+  return { value: value ?? null, setValue: setValueAndStorage, isLoading: value === undefined };
 };
 
 export default useLocalStorage;

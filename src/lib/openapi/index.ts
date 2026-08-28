@@ -6,14 +6,14 @@ import { firebaseApp } from "@lib/firebase";
 import type { paths } from "@lib/openapi/schema";
 
 const authInterceptor: Middleware = {
-  async onRequest(req) {
+  async onRequest({ request }) {
     const auth = getAuth(firebaseApp);
     const idToken = await auth.currentUser?.getIdToken();
     if (!idToken) {
-      return req;
+      return request;
     }
-    req.headers.set("Authorization", `Bearer ${idToken}`);
-    return req;
+    request.headers.set("Authorization", `Bearer ${idToken}`);
+    return request;
   },
 };
 

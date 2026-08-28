@@ -22,14 +22,12 @@ import {
   Spinner,
   useColorModeValue,
 } from "@chakra-ui/react";
-// @ts-ignore
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MdCheckCircle } from "react-icons/md";
 
 import { useAuthContext } from "@/components/contexts/AuthProvider";
+import ImageCarousel from "@/components/ui/imageCarousel";
 import { signIn } from "@/lib/firebase";
 import { logo, slides } from "@/utils/images";
 
@@ -38,19 +36,6 @@ const Welcome = () => {
   const router = useRouter();
   const slideBorder = useColorModeValue("0px", "1px");
   const [isChecked, setIsChecked] = useState(false);
-
-  const splideOptions = {
-    autoplay: true,
-    interval: 3000,
-    rewind: true,
-    pagination: false,
-    pauseOnHover: true,
-    perPage: 3,
-    perMove: 1,
-    gap: "10px",
-    padding: "20px",
-    arrows: false,
-  };
 
   useEffect(() => {
     if (authContext.currentUser) {
@@ -108,15 +93,7 @@ const Welcome = () => {
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
-          <Splide options={splideOptions}>
-            {slides.map((slide, index) => (
-              <SplideSlide key={index}>
-                <Box border={slideBorder} borderColor="gray.500" borderRadius="3px">
-                  <Image src={slide.src} alt="" borderRadius="2px" />
-                </Box>
-              </SplideSlide>
-            ))}
-          </Splide>
+          <ImageCarousel border={slideBorder} slides={slides} />
           <Flex direction="column" justifyContent="center" alignItems="center" gap="25px" paddingTop="25px">
             <Checkbox colorScheme="green" onChange={(e) => setIsChecked(e.target.checked)}>
               <Link href="/terms-of-service" color="primary.300" target="_blank" rel="noopener noreferrer">

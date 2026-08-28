@@ -22,7 +22,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
       initial="hidden"
       animate="enter"
       transition={{
-        type: "linear",
+        type: "tween",
+        ease: "linear",
         duration: 0.25,
       }}>
       <AnnouncementDialog />

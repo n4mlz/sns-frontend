@@ -2,11 +2,10 @@
 
 import { Box, Center, Flex, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
-// @ts-ignore
-import InfiniteScroll from "react-infinite-scroller";
 
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import SetUpDialog from "@/components/handle/setUpDialog";
+import InfiniteScroll from "@/components/ui/infiniteScroll";
 import TitleHeader from "@/components/ui/titleHeader";
 import domainConsts from "@/constants/domain";
 import client from "@/lib/openapi";
