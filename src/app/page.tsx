@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { QuestionIcon } from "@chakra-ui/icons";
 import {
   Accordion,
@@ -24,10 +22,12 @@ import {
   Spinner,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { MdCheckCircle } from "react-icons/md";
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { MdCheckCircle } from "react-icons/md";
 
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { signIn } from "@/lib/firebase";
@@ -36,6 +36,7 @@ import { logo, slides } from "@/utils/images";
 const Welcome = () => {
   const authContext = useAuthContext();
   const router = useRouter();
+  const slideBorder = useColorModeValue("0px", "1px");
   const [isChecked, setIsChecked] = useState(false);
 
   const splideOptions = {
@@ -93,7 +94,7 @@ const Welcome = () => {
                 <List spacing={3} paddingX="30px">
                   <ListItem>
                     <ListIcon as={MdCheckCircle} color="green.400" />
-                    ユーザーそれぞれがプライベートな"鍵垢"を持つことができる、全く新しいコンセプトの SNS です。
+                    ユーザーそれぞれがプライベートな「鍵垢」を持つことができる、全く新しいコンセプトの SNS です。
                   </ListItem>
                   <ListItem>
                     <ListIcon as={MdCheckCircle} color="green.400" />
@@ -110,7 +111,7 @@ const Welcome = () => {
           <Splide options={splideOptions}>
             {slides.map((slide, index) => (
               <SplideSlide key={index}>
-                <Box border={useColorModeValue("0px", "1px")} borderColor="gray.500" borderRadius="3px">
+                <Box border={slideBorder} borderColor="gray.500" borderRadius="3px">
                   <Image src={slide.src} alt="" borderRadius="2px" />
                 </Box>
               </SplideSlide>

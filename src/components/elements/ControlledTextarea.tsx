@@ -12,6 +12,7 @@ import {
   useToken,
   Box,
 } from "@chakra-ui/react";
+import type React from "react";
 import { FieldErrors, Ref } from "react-hook-form";
 import { RichTextarea, RichTextareaProps, createRegexRenderer } from "rich-textarea";
 
@@ -49,7 +50,7 @@ export const ControlledTextarea = forwardRef<ControlledTextareaProps, "input">(
     ref
   ) => {
     const [blue400] = useToken("colors", ["blue.400"]);
-    const renderer = createRegexRenderer([[/https?:\/\/[\w/:%#\$&\?\(\)~\.=\+\-]+/g, { color: blue400 }]]);
+    const renderer = createRegexRenderer([[/https?:\/\/[\w/:%#$&?()~.=+-]+/g, { color: blue400 }]]);
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
       if (event.key === "Enter" && (event.ctrlKey || event.metaKey) && submitCallback) {

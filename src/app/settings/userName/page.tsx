@@ -35,7 +35,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const userNameSettingsPage = () => {
+const UserNameSettingsPage = () => {
   const router = useRouter();
   const toast = useToast();
   const authContext = useAuthContext();
@@ -139,4 +139,4 @@ const userNameSettingsPage = () => {
   );
 };
 
-export default userNameSettingsPage;
+export default UserNameSettingsPage;

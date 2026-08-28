@@ -16,6 +16,8 @@ import { components } from "@/lib/openapi/schema";
 
 const Timeline = () => {
   const authContext = useAuthContext();
+  const loaderBorderColor = useColorModeValue("gray.200", "gray.700");
+  const postsBorderColor = useColorModeValue("gray.300", "gray.700");
 
   const [posts, setPosts] = useState<components["schemas"]["post"][]>([]);
   const [hasMore, setHasMore] = useState(true);
@@ -71,12 +73,12 @@ const Timeline = () => {
         loadMore={loadMore}
         hasMore={hasMore}
         loader={
-          <Center borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
+          <Center borderTop="1px" borderColor={loaderBorderColor}>
             <Spinner thickness="2px" color="gray.300" margin="40px" />
           </Center>
         }>
         {hasMore || posts.length > 0 ? (
-          <Box borderTop="1px" borderColor={useColorModeValue("gray.300", "gray.700")}>
+          <Box borderTop="1px" borderColor={postsBorderColor}>
             <Posts posts={posts} postsCallback={(posts) => setPosts(posts)} />
           </Box>
         ) : (

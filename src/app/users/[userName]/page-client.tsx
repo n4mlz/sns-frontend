@@ -34,6 +34,8 @@ import { components } from "@/lib/openapi/schema";
 
 const UserPage = ({ params }: { params: { userName: string } }) => {
   const router = useRouter();
+  const loaderBorderColor = useColorModeValue("gray.200", "gray.700");
+  const postsBorderColor = useColorModeValue("gray.300", "gray.700");
   const authContext = useAuthContext();
   const { onOpen, setUpDialog } = useSetUpDialog();
 
@@ -235,12 +237,12 @@ const UserPage = ({ params }: { params: { userName: string } }) => {
           loadMore={loadMore}
           hasMore={hasMore}
           loader={
-            <Center borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
+            <Center borderTop="1px" borderColor={loaderBorderColor}>
               <Spinner thickness="2px" color="gray.300" margin="40px" />
             </Center>
           }>
           {hasMore || posts.length > 0 ? (
-            <Box borderTop="1px" borderColor={useColorModeValue("gray.300", "gray.700")}>
+            <Box borderTop="1px" borderColor={postsBorderColor}>
               <Posts posts={posts} postsCallback={(posts) => setPosts(posts)} />
             </Box>
           ) : (

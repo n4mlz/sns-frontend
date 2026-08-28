@@ -16,6 +16,7 @@ import { sleep } from "@/utils/time";
 
 
 const SearchPage = () => {
+  const resultBorderColor = useColorModeValue("gray.200", "gray.700");
   const {
     register,
     getValues,
@@ -69,7 +70,7 @@ const SearchPage = () => {
           <Spinner thickness="2px" color="gray.300" margin="40px" />
         </Center>
       ) : data && data.userName ? (
-        <Box marginY={4} borderTop="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
+        <Box marginY={4} borderTop="1px" borderColor={resultBorderColor}>
           <User user={data} userCallback={(user) => mutate(user, false)} />
         </Box>
       ) : getValues("userName") && !isCheckStarted ? (

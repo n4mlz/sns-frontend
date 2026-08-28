@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import { SWRConfig } from "swr";
 
 import { publicEnv } from "@/constants/env";

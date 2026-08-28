@@ -1,15 +1,13 @@
 "use client";
 
-import { ArrowBackIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { Box, Flex } from "@chakra-ui/react";
-import { useRouter } from "next/navigation";
 
 import PageBackButton from "../elements/pageBackButton";
 
 import useMenuDrawer from "@/hooks/menuDrawer";
 
 const TransparentHeader = () => {
-  const router = useRouter();
   const { onOpen, menuDrawer } = useMenuDrawer();
 
   return (

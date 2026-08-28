@@ -19,6 +19,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import type React from "react";
 import Cropper, { Area } from "react-easy-crop";
 
 import getCroppedImgBlob from "@hooks/imageCrop/getCroppedImg";

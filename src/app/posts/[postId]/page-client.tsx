@@ -19,6 +19,7 @@ import { getFormattedDate } from "@/utils/time";
 
 const PostPage = ({ params }: { params: { postId: string } }) => {
   const router = useRouter();
+  const tooltipBackground = useColorModeValue("gray.500", "white");
   const authContext = useAuthContext();
 
   const { data, isLoading, mutate } = useSWR<components["schemas"]["postDetail"]>(
@@ -80,7 +81,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
               </Text>
               {data?.liked ? (
                 <Flex direction="row" gap="8px" alignItems="center">
-                  <Tooltip label="いいねを取り消す" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
+                  <Tooltip label="いいねを取り消す" bg={tooltipBackground} openDelay={1000}>
                     <Box cursor="pointer" color="red.500" onClick={unlike}>
                       <FaHeart />
                     </Box>
@@ -93,7 +94,7 @@ const PostPage = ({ params }: { params: { postId: string } }) => {
                 </Flex>
               ) : (
                 <Flex direction="row" gap="8px" alignItems="center">
-                  <Tooltip label="いいね !" bg={useColorModeValue("gray.500", "white")} openDelay={1000}>
+                  <Tooltip label="いいね !" bg={tooltipBackground} openDelay={1000}>
                     <Box cursor="pointer" color="gray.500" onClick={like}>
                       <FaRegHeart />
                     </Box>

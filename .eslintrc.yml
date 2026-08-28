@@ -16,6 +16,8 @@ plugins:
   - "@typescript-eslint"
   - "import"
 rules:
+  no-unused-vars: off
+  "@typescript-eslint/no-unused-vars": error
   import/order:
     - 2
     - newlines-between: always
@@ -24,6 +26,6 @@ rules:
         caseInsensitive: true
       warnOnUnassignedImports: true
 overrides:
-  - files: ["*.ts"]
+  - files: ["*.ts", "*.tsx"]
     parser: "@typescript-eslint/parser"
 ignorePatterns: ["*.config.js"]

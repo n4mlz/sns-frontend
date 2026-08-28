@@ -1,6 +1,7 @@
 "use client";
 
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import type React from "react";
 
 import chakraTheme from "@/lib/chakraTheme";
 

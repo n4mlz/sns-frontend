@@ -21,7 +21,7 @@ const Users = ({ users, usersCallback, enableReject }: Props) => {
   return (
     <Flex direction="column">
       {users.map((user, index) => (
-        <User user={user} userCallback={userCallback(index)} enableReject={enableReject} />
+        <User key={user.userName} user={user} userCallback={userCallback(index)} enableReject={enableReject} />
       ))}
     </Flex>
   );

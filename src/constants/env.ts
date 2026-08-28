@@ -1,5 +1,5 @@
 export const publicEnv = {
-  BASE_URL: process.env["NEXT_PUBLIC_BASE_URL"],
+  BASE_URL: process.env["NEXT_PUBLIC_BASE_URL"] || "https://snooze.invalid",
   API_URL: process.env["NEXT_PUBLIC_API_URL"],
   IMAGE_URL: process.env["NEXT_PUBLIC_IMAGE_URL"],
 

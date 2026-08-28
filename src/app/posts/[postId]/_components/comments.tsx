@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, Box, Button, Skeleton, Image, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Box, Button, useColorModeValue } from "@chakra-ui/react";
 import useSWR from "swr";
 
 import Comment from "@/app/posts/[postId]/_components/comment";
@@ -46,7 +46,7 @@ const Comments = ({ postId, comments, commentsCallback }: Props) => {
       <Box>
         <Flex direction="column">
           {comments.map((comment, index) => (
-            <Comment comment={comment} commentCallback={commentCallback(index)} />
+            <Comment key={comment.commentId} comment={comment} commentCallback={commentCallback(index)} />
           ))}
         </Flex>
         <Flex direction="row" alignItems="center" padding="12px">

@@ -43,6 +43,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-infinite-scroller": "^1.2.5",
     "eslint": "^8",
     "eslint-config-next": "15.5.15",
     "eslint-config-prettier": "9.1.2",
