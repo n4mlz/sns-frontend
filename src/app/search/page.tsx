@@ -13,8 +13,6 @@ import User from "@/components/ui/user";
 import { components } from "@/lib/openapi/schema";
 import { sleep } from "@/utils/time";
 
-
-
 const SearchPage = () => {
   const resultBorderColor = useColorModeValue("gray.200", "gray.700");
   const {

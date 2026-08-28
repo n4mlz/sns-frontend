@@ -22,8 +22,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import useSWR from "swr";
 import { z } from "zod";
 
-
-
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { ControlledTextarea } from "@/components/elements/ControlledTextarea";
 import UserIcon from "@/components/ui/userIcon";
