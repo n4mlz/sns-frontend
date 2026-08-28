@@ -7,7 +7,7 @@ FROM base as deps
 WORKDIR /app
 COPY package.json . 
 COPY pnpm-lock.yaml .
-RUN npm install -g pnpm
+RUN npm install -g pnpm@9.15.9
 RUN pnpm install --frozen-lockfile
 
 FROM base as build
@@ -36,7 +36,7 @@ ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL \
 COPY . .
 COPY package.json .
 COPY --from=deps /app/node_modules ./node_modules
-RUN npm install -g pnpm
+RUN npm install -g pnpm@9.15.9
 RUN pnpm build
 
 FROM base as prod
