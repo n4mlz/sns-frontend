@@ -35,7 +35,7 @@
     "react-infinite-scroller": "^1.2.6",
     "react-router-dom": "^6.24.1",
     "rich-textarea": "^0.26.0",
-    "sharp": "^0.33.4",
+    "sharp": "^0.35.0",
     "swr": "^2.2.5",
     "zod": "^3.23.4"
   },
