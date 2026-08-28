@@ -2,12 +2,11 @@
 
 import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
-// @ts-ignore
-import InfiniteScroll from "react-infinite-scroller";
 
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import PostButton from "@/components/elements/postButton";
 import SetUpDialog from "@/components/handle/setUpDialog";
+import InfiniteScroll from "@/components/ui/infiniteScroll";
 import LogoHeader from "@/components/ui/logoHeader";
 import Posts from "@/components/ui/posts";
 import domainConsts from "@/constants/domain";

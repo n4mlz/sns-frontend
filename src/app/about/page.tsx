@@ -13,29 +13,14 @@ import {
   ListItem,
   useColorModeValue,
 } from "@chakra-ui/react";
-// @ts-ignore
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 import { MdCheckCircle } from "react-icons/md";
 
 import PageBackButton from "@/components/elements/pageBackButton";
+import ImageCarousel from "@/components/ui/imageCarousel";
 import { logo, slides } from "@/utils/images";
 
 const AboutPage = () => {
   const slideBorder = useColorModeValue("0px", "1px");
-  const splideOptions = {
-    autoplay: true,
-    interval: 3000,
-    rewind: true,
-    pagination: false,
-    pauseOnHover: true,
-    perPage: 3,
-    perMove: 1,
-    gap: "10px",
-    padding: "20px",
-    arrows: false,
-  };
-
   return (
     <>
       <Box height="30px">
@@ -79,15 +64,7 @@ const AboutPage = () => {
             相互フォローになることでしかお互いのポストを閲覧できないようになっているので、人との繋がりをより深く感じられます。
           </ListItem>
         </List>
-        <Splide options={splideOptions}>
-          {slides.map((slide, index) => (
-            <SplideSlide key={index}>
-              <Box border={slideBorder} borderColor="gray.500" borderRadius="3px">
-                <Image src={slide.src} alt="" borderRadius="2px" />
-              </Box>
-            </SplideSlide>
-          ))}
-        </Splide>
+        <ImageCarousel border={slideBorder} slides={slides} />
         <Flex w="100%" direction="column" alignItems="center" gap="25px" paddingTop="10px" paddingBottom="30px">
           <Divider w="90%" />
           <Flex direction="column" gap="10px" justifyContent="center" alignItems="center">

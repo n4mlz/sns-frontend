@@ -18,13 +18,12 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import InfiniteScroll from "react-infinite-scroller";
 import useSWR from "swr";
-// @ts-ignore
 
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import { CustomLinkify } from "@/components/elements/customLinkify";
 import PostButton from "@/components/elements/postButton";
+import InfiniteScroll from "@/components/ui/infiniteScroll";
 import Posts from "@/components/ui/posts";
 import TransparentHeader from "@/components/ui/transparentHeader";
 import domainConsts from "@/constants/domain";
