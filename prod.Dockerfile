@@ -42,7 +42,10 @@ RUN pnpm build
 FROM base as prod
 
 WORKDIR /app
-ENV NODE_ENV production
+# Docker injects the container name into HOSTNAME. Next's standalone server
+# uses it as the bind address unless it is explicitly configured.
+ENV NODE_ENV=production \
+    HOSTNAME=0.0.0.0
 COPY --from=build /app/public ./public
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/.next/standalone ./
