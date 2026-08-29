@@ -12,7 +12,7 @@ const nextConfig = {
                     { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
                     {
                         key: 'Content-Security-Policy',
-                        value: "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: wss:;",
+                        value: "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: wss:; frame-src 'self' https://accounts.google.com https://*.firebaseapp.com;",
                     },
                 ],
             },
