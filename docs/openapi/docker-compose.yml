@@ -18,7 +18,7 @@ services:
       SWAGGER_JSON: /openapi.yaml
 
   swagger-api:
-    image: stoplight/prism:3
+    image: stoplight/prism:5
     container_name: "swagger-api"
     ports:
       - "8003:4010"
