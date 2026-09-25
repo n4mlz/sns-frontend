@@ -24,7 +24,7 @@
     "firebase": "^12.18.0",
     "linkify-react": "^4.3.3",
     "linkifyjs": "^4.3.3",
-    "motion": "^13.1.1",
+    "motion": "^13.4.3",
     "next": "16.3.6",
     "normalize.css": "^8.0.1",
     "openapi-fetch": "^0.17.0",
