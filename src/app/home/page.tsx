@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Button, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { useAuthContext } from "@/components/contexts/AuthProvider";
 import PostButton from "@/components/elements/postButton";
@@ -22,6 +22,7 @@ const Timeline = () => {
   const [hasMore, setHasMore] = useState(true);
   const [cursor, setCursor] = useState<string | undefined>();
   const [loadError, setLoadError] = useState(false);
+  const lastAuthUserId = useRef<string | null | undefined>(undefined);
 
   const resetPosts = useCallback(() => {
     setPosts([]);
@@ -30,12 +31,16 @@ const Timeline = () => {
     setLoadError(false);
   }, []);
 
-  useEffect(() => {
-    resetPosts();
-  }, [authContext.currentUser, resetPosts]);
-
   const loadMore = useCallback(async () => {
-    if (!hasMore || authContext.currentUser === undefined) {
+    const authUserId = authContext.currentUser?.uid;
+    const authStateChanged = lastAuthUserId.current !== authUserId;
+
+    if (authStateChanged) {
+      lastAuthUserId.current = authUserId;
+      resetPosts();
+    }
+
+    if ((!hasMore && !authStateChanged) || authContext.currentUser === undefined) {
       return;
     }
 
@@ -46,7 +51,12 @@ const Timeline = () => {
 
     try {
       const res = await client.GET("/api/posts/timeline", {
-        params: { query: { limit: domainConsts.CURSOR_PAGINATION_LIMIT, cursor: cursor } },
+        params: {
+          query: {
+            limit: domainConsts.CURSOR_PAGINATION_LIMIT,
+            cursor: authStateChanged ? undefined : cursor,
+          },
+        },
       });
       if (!res.response.ok || !res.data) {
         setLoadError(true);
@@ -69,7 +79,7 @@ const Timeline = () => {
       setLoadError(true);
       setHasMore(false);
     }
-  }, [authContext.currentUser, cursor, hasMore]);
+  }, [authContext.currentUser, cursor, hasMore, resetPosts]);
 
   const postSubmitCallback = (post: components["schemas"]["post"]) => {
     setPosts((currentPosts) => [post, ...currentPosts]);
