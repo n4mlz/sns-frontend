@@ -17,7 +17,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.9.1",
-    "@serwist/next": "9.5.12",
+    "@serwist/next": "9.5.13",
     "date-fns": "^4.4.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
@@ -40,7 +40,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@serwist/cli": "9.5.12",
+    "@serwist/cli": "9.5.13",
     "@types/node": "^24.0.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
@@ -51,7 +51,7 @@
     "eslint-plugin-import": "2.32.0",
     "openapi-typescript": "^7.13.0",
     "prettier": "^3.9.6",
-    "serwist": "9.5.12",
+    "serwist": "9.5.13",
     "typescript": "^5.9.3"
   }
 }
