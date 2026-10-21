@@ -99,55 +99,53 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
   const postModal = (
     <Modal isOpen={disclosure.isOpen} onClose={disclosure.onClose} size={{ base: "sm", md: "md", lg: "lg" }}>
       <ModalOverlay />
-      <ModalContent>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <ModalHeader margin={1}>
-            <Heading size="md">ポストする</Heading>
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Flex direction="row" gap="10px">
-              <UserIcon
-                user={data!}
-                size="35px"
-                isLoading={authContext.currentUser == undefined || isLoading}
-                disableClick
+      <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
+        <ModalHeader margin={1}>
+          <Heading size="md">ポストする</Heading>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Flex direction="row" gap="10px">
+            <UserIcon
+              user={data!}
+              size="35px"
+              isLoading={authContext.currentUser == undefined || isLoading}
+              disableClick
+            />
+            <Box flex={1}>
+              <ControlledTextarea
+                placeholder="いまどうしてる？"
+                isLoaded
+                isUnstyled
+                autoFocus
+                label=""
+                errors={errors}
+                submitCallback={handleSubmit(onSubmit)}
+                {...register("content")}
               />
-              <Box flex={1}>
-                <ControlledTextarea
-                  placeholder="いまどうしてる？"
-                  isLoaded
-                  isUnstyled
-                  autoFocus
-                  label=""
-                  errors={errors}
-                  submitCallback={handleSubmit(onSubmit)}
-                  {...register("content")}
-                />
-              </Box>
-            </Flex>
-          </ModalBody>
-          <ModalFooter>
-            <Flex direction="row" gap="10px" alignItems="center">
-              {progress < 95 ? (
-                <CircularProgress size="25px" thickness="15px" color="primary.300" value={progress} />
-              ) : progress < 100 ? (
-                <CircularProgress size="25px" thickness="15px" color="yellow.400" value={progress} />
-              ) : (
-                <CircularProgress size="25px" thickness="15px" color="red.400" value={progress} />
-              )}
-              <Button
-                type="submit"
-                color="white"
-                backgroundColor="primary.300"
-                borderRadius="full"
-                isDisabled={!isOk}
-                isLoading={isPosting}>
-                ポストする
-              </Button>
-            </Flex>
-          </ModalFooter>
-        </form>
+            </Box>
+          </Flex>
+        </ModalBody>
+        <ModalFooter>
+          <Flex direction="row" gap="10px" alignItems="center">
+            {progress < 95 ? (
+              <CircularProgress size="25px" thickness="15px" color="primary.300" value={progress} />
+            ) : progress < 100 ? (
+              <CircularProgress size="25px" thickness="15px" color="yellow.400" value={progress} />
+            ) : (
+              <CircularProgress size="25px" thickness="15px" color="red.400" value={progress} />
+            )}
+            <Button
+              type="submit"
+              color="white"
+              backgroundColor="primary.300"
+              borderRadius="full"
+              isDisabled={!isOk}
+              isLoading={isPosting}>
+              ポストする
+            </Button>
+          </Flex>
+        </ModalFooter>
       </ModalContent>
     </Modal>
   );
