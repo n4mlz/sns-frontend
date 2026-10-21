@@ -99,7 +99,7 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
   const postModal = (
     <Modal isOpen={disclosure.isOpen} onClose={disclosure.onClose} size={{ base: "sm", md: "md", lg: "lg" }}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
         <ModalHeader margin={1}>
           <Heading size="md">ポストする</Heading>
         </ModalHeader>
@@ -136,12 +136,12 @@ const usePostModal = (submitCallback?: (comment: components["schemas"]["post"]) 
               <CircularProgress size="25px" thickness="15px" color="red.400" value={progress} />
             )}
             <Button
+              type="submit"
               color="white"
               backgroundColor="primary.300"
               borderRadius="full"
               isDisabled={!isOk}
-              isLoading={isPosting}
-              onClick={handleSubmit(onSubmit)}>
+              isLoading={isPosting}>
               ポストする
             </Button>
           </Flex>
