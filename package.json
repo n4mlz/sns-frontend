@@ -16,7 +16,7 @@
     "@chakra-ui/theme-tools": "^2.2.6",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@hookform/resolvers": "^5.9.1",
+    "@hookform/resolvers": "^6.0.0",
     "@serwist/next": "9.5.13",
     "date-fns": "^4.4.0",
     "embla-carousel-autoplay": "^8.6.0",
