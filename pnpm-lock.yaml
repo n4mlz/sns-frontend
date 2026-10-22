@@ -84,8 +84,8 @@ importers:
         specifier: ^7.18.2
         version: 7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       rich-textarea:
-        specifier: ^0.27.1
-        version: 0.27.1(react@19.3.0)
+        specifier: ^0.28.0
+        version: 0.28.0(react@19.3.0)
       sharp:
         specifier: ^0.35.4
         version: 0.35.5(@types/node@24.19.2)
@@ -2950,8 +2950,8 @@ packages:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  rich-textarea@0.27.1:
-    resolution: {integrity: sha512-jZvbsrEf5cW8WdIBgxJhTM7g0jeHPh9F8Cpqle35xNVno/lgfQQ6X7BKwi/lY1ybTVSCYdDAmwKTpN0EJT/x+A==}
+  rich-textarea@0.28.0:
+    resolution: {integrity: sha512-CG5jY3etjev3V9xQcYi4LjvimtxU+pPjnq8mRYYaXFZeJqXFAgFpJIcrGSYX77onR6lRO1aP+Q1/HV7q2HSqrg==}
     peerDependencies:
       react: '>=16.14.0'
 
@@ -6373,7 +6373,7 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  rich-textarea@0.27.1(react@19.3.0):
+  rich-textarea@0.28.0(react@19.3.0):
     dependencies:
       react: 19.3.0
 
