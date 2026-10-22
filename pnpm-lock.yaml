@@ -13,28 +13,28 @@ importers:
     dependencies:
       '@chakra-ui/icons':
         specifier: ^2.2.4
-        version: 2.2.4(@chakra-ui/react@2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
+        version: 2.2.4(@chakra-ui/react@2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
       '@chakra-ui/react':
         specifier: ^2.10.10
-        version: 2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@chakra-ui/styled-system':
         specifier: ^2.12.0
-        version: 2.12.0(react@19.3.0)
+        version: 2.12.0(react@19.3.1)
       '@chakra-ui/theme-tools':
         specifier: ^2.2.6
-        version: 2.2.6(@chakra-ui/styled-system@2.12.0(react@19.3.0))(react@19.3.0)
+        version: 2.2.6(@chakra-ui/styled-system@2.12.0(react@19.3.1))(react@19.3.1)
       '@emotion/react':
         specifier: ^11.14.0
-        version: 11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2)
+        version: 11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2)
       '@emotion/styled':
         specifier: ^11.14.1
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2)
       '@hookform/resolvers':
         specifier: ^5.9.1
-        version: 5.9.2(react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.0))(zod@4.6.5)
+        version: 5.9.2(react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.5)
       '@serwist/next':
         specifier: 9.5.13
-        version: 9.5.13(@serwist/cli@9.5.13(@types/node@24.19.2)(browserslist@4.29.4)(typescript@5.9.3))(next@16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(typescript@5.9.3)
+        version: 9.5.13(@serwist/cli@9.5.13(@types/node@24.19.2)(browserslist@4.29.4)(typescript@5.9.3))(next@16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(typescript@5.9.3)
       date-fns:
         specifier: ^4.4.0
         version: 4.4.0
@@ -43,22 +43,22 @@ importers:
         version: 8.6.0(embla-carousel@8.6.0)
       embla-carousel-react:
         specifier: ^8.6.0
-        version: 8.6.0(react@19.3.0)
+        version: 8.6.0(react@19.3.1)
       firebase:
         specifier: ^12.18.0
         version: 12.19.0
       linkify-react:
         specifier: ^4.3.3
-        version: 4.3.3(linkifyjs@4.3.3)(react@19.3.0)
+        version: 4.3.3(linkifyjs@4.3.3)(react@19.3.1)
       linkifyjs:
         specifier: ^4.3.3
         version: 4.3.3
       motion:
         specifier: ^14.0.0
-        version: 14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       next:
         specifier: 16.4.2
-        version: 16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
@@ -67,31 +67,31 @@ importers:
         version: 0.17.0
       react:
         specifier: ^19.2.8
-        version: 19.3.0
+        version: 19.3.1
       react-dom:
         specifier: ^19.2.8
-        version: 19.3.0(react@19.3.0)
+        version: 19.3.1(react@19.3.1)
       react-easy-crop:
         specifier: ^6.2.3
-        version: 6.2.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 6.2.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react-hook-form:
         specifier: ^7.86.0
-        version: 7.90.0(@types/react@19.3.0)(react@19.3.0)
+        version: 7.90.0(@types/react@19.3.0)(react@19.3.1)
       react-icons:
         specifier: ^5.7.0
-        version: 5.7.0(react@19.3.0)
+        version: 5.7.0(react@19.3.1)
       react-router-dom:
         specifier: ^7.18.2
-        version: 7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 7.18.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       rich-textarea:
         specifier: ^0.27.1
-        version: 0.27.1(react@19.3.0)
+        version: 0.27.1(react@19.3.1)
       sharp:
         specifier: ^0.35.4
         version: 0.35.5(@types/node@24.19.2)
       swr:
         specifier: ^2.5.1
-        version: 2.5.1(react@19.3.0)
+        version: 2.5.1(react@19.3.1)
       zod:
         specifier: ^4.4.3
         version: 4.6.5
@@ -2805,10 +2805,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
-  react-dom@19.3.0:
-    resolution: {integrity: sha512-JDk8dgif51OjFoDE70+OT9ICyYr+69HlmihNwp1+Nsfbna3t5sIiCa9ZJktDmQ4/1b/rn26hIAR2uYXDMr5r0Q==}
+  react-dom@19.3.1:
+    resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
     peerDependencies:
-      react: ^19.3.0
+      react: ^19.3.1
 
   react-easy-crop@6.2.4:
     resolution: {integrity: sha512-OWdnFYctzUNlekjob+bQfloG9wyhIBkkmeISnM5XVE4Byqn0jmVxDF7oz85ovUF+EIPQyj0yAHbBEFtnxwGv4g==}
@@ -2893,8 +2893,8 @@ packages:
       '@types/react':
         optional: true
 
-  react@19.3.0:
-    resolution: {integrity: sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog==}
+  react@19.3.1:
+    resolution: {integrity: sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==}
     engines: {node: '>=0.10.0'}
 
   readdirp@5.1.1:
@@ -3491,91 +3491,91 @@ snapshots:
 
   '@chakra-ui/anatomy@2.3.6': {}
 
-  '@chakra-ui/hooks@2.4.6(react@19.3.0)':
+  '@chakra-ui/hooks@2.4.6(react@19.3.1)':
     dependencies:
-      '@chakra-ui/utils': 2.2.6(react@19.3.0)
+      '@chakra-ui/utils': 2.2.6(react@19.3.1)
       '@zag-js/element-size': 0.31.1
       copy-to-clipboard: 3.3.3
       framesync: 6.1.2
-      react: 19.3.0
+      react: 19.3.1
 
-  '@chakra-ui/icons@2.2.4(@chakra-ui/react@2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)':
+  '@chakra-ui/icons@2.2.4(@chakra-ui/react@2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)':
     dependencies:
-      '@chakra-ui/react': 2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      react: 19.3.0
+      '@chakra-ui/react': 2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react: 19.3.1
 
-  '@chakra-ui/react@2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@chakra-ui/react@2.10.10(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(framer-motion@14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
-      '@chakra-ui/hooks': 2.4.6(react@19.3.0)
-      '@chakra-ui/styled-system': 2.12.5(react@19.3.0)
-      '@chakra-ui/theme': 3.4.10(@chakra-ui/styled-system@2.12.5(react@19.3.0))(react@19.3.0)
-      '@chakra-ui/utils': 2.2.6(react@19.3.0)
-      '@emotion/react': 11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2)
-      '@emotion/styled': 11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2)
+      '@chakra-ui/hooks': 2.4.6(react@19.3.1)
+      '@chakra-ui/styled-system': 2.12.5(react@19.3.1)
+      '@chakra-ui/theme': 3.4.10(@chakra-ui/styled-system@2.12.5(react@19.3.1))(react@19.3.1)
+      '@chakra-ui/utils': 2.2.6(react@19.3.1)
+      '@emotion/react': 11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2)
+      '@emotion/styled': 11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2)
       '@popperjs/core': 2.11.8
       '@zag-js/focus-visible': 0.31.1
       aria-hidden: 1.2.6
-      framer-motion: 14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      framer-motion: 14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
       react-fast-compare: 3.2.2
-      react-focus-lock: 2.13.7(@types/react@19.3.0)(react@19.3.0)
-      react-remove-scroll: 2.7.2(@types/react@19.3.0)(react@19.3.0)
+      react-focus-lock: 2.13.7(@types/react@19.3.0)(react@19.3.1)
+      react-remove-scroll: 2.7.2(@types/react@19.3.0)(react@19.3.1)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@chakra-ui/styled-system@2.12.0(react@19.3.0)':
+  '@chakra-ui/styled-system@2.12.0(react@19.3.1)':
     dependencies:
-      '@chakra-ui/utils': 2.2.2(react@19.3.0)
+      '@chakra-ui/utils': 2.2.2(react@19.3.1)
       csstype: 3.2.3
     transitivePeerDependencies:
       - react
 
-  '@chakra-ui/styled-system@2.12.5(react@19.3.0)':
+  '@chakra-ui/styled-system@2.12.5(react@19.3.1)':
     dependencies:
-      '@chakra-ui/utils': 2.2.6(react@19.3.0)
+      '@chakra-ui/utils': 2.2.6(react@19.3.1)
       csstype: 3.2.3
     transitivePeerDependencies:
       - react
 
-  '@chakra-ui/theme-tools@2.2.10(@chakra-ui/styled-system@2.12.5(react@19.3.0))(react@19.3.0)':
+  '@chakra-ui/theme-tools@2.2.10(@chakra-ui/styled-system@2.12.5(react@19.3.1))(react@19.3.1)':
     dependencies:
       '@chakra-ui/anatomy': 2.3.6
-      '@chakra-ui/styled-system': 2.12.5(react@19.3.0)
-      '@chakra-ui/utils': 2.2.6(react@19.3.0)
+      '@chakra-ui/styled-system': 2.12.5(react@19.3.1)
+      '@chakra-ui/utils': 2.2.6(react@19.3.1)
       color2k: 2.0.4
     transitivePeerDependencies:
       - react
 
-  '@chakra-ui/theme-tools@2.2.6(@chakra-ui/styled-system@2.12.0(react@19.3.0))(react@19.3.0)':
+  '@chakra-ui/theme-tools@2.2.6(@chakra-ui/styled-system@2.12.0(react@19.3.1))(react@19.3.1)':
     dependencies:
       '@chakra-ui/anatomy': 2.3.4
-      '@chakra-ui/styled-system': 2.12.0(react@19.3.0)
-      '@chakra-ui/utils': 2.2.2(react@19.3.0)
+      '@chakra-ui/styled-system': 2.12.0(react@19.3.1)
+      '@chakra-ui/utils': 2.2.2(react@19.3.1)
       color2k: 2.0.4
     transitivePeerDependencies:
       - react
 
-  '@chakra-ui/theme@3.4.10(@chakra-ui/styled-system@2.12.5(react@19.3.0))(react@19.3.0)':
+  '@chakra-ui/theme@3.4.10(@chakra-ui/styled-system@2.12.5(react@19.3.1))(react@19.3.1)':
     dependencies:
       '@chakra-ui/anatomy': 2.3.6
-      '@chakra-ui/styled-system': 2.12.5(react@19.3.0)
-      '@chakra-ui/theme-tools': 2.2.10(@chakra-ui/styled-system@2.12.5(react@19.3.0))(react@19.3.0)
-      '@chakra-ui/utils': 2.2.6(react@19.3.0)
+      '@chakra-ui/styled-system': 2.12.5(react@19.3.1)
+      '@chakra-ui/theme-tools': 2.2.10(@chakra-ui/styled-system@2.12.5(react@19.3.1))(react@19.3.1)
+      '@chakra-ui/utils': 2.2.6(react@19.3.1)
     transitivePeerDependencies:
       - react
 
-  '@chakra-ui/utils@2.2.2(react@19.3.0)':
+  '@chakra-ui/utils@2.2.2(react@19.3.1)':
     dependencies:
       '@types/lodash.mergewith': 4.6.9
       lodash.mergewith: 4.6.2
-      react: 19.3.0
+      react: 19.3.1
 
-  '@chakra-ui/utils@2.2.6(react@19.3.0)':
+  '@chakra-ui/utils@2.2.6(react@19.3.1)':
     dependencies:
       '@types/lodash.mergewith': 4.6.9
       lodash.mergewith: 4.6.2
-      react: 19.3.0
+      react: 19.3.1
 
   '@emnapi/core@1.10.0':
     dependencies:
@@ -3630,17 +3630,17 @@ snapshots:
 
   '@emotion/memoize@0.9.0': {}
 
-  '@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2)':
+  '@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@emotion/babel-plugin': 11.13.5(supports-color@10.2.2)
       '@emotion/cache': 11.14.0
       '@emotion/serialize': 1.3.3
-      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.3.0)
+      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.3.1)
       '@emotion/utils': 1.4.2
       '@emotion/weak-memoize': 0.4.0
       hoist-non-react-statics: 3.3.2
-      react: 19.3.0
+      react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
     transitivePeerDependencies:
@@ -3656,16 +3656,16 @@ snapshots:
 
   '@emotion/sheet@1.4.0': {}
 
-  '@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2)':
+  '@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2))(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@emotion/babel-plugin': 11.13.5(supports-color@10.2.2)
       '@emotion/is-prop-valid': 1.4.0
-      '@emotion/react': 11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@10.2.2)
+      '@emotion/react': 11.14.0(@types/react@19.3.0)(react@19.3.1)(supports-color@10.2.2)
       '@emotion/serialize': 1.3.3
-      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.3.0)
+      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.3.1)
       '@emotion/utils': 1.4.2
-      react: 19.3.0
+      react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
     transitivePeerDependencies:
@@ -3673,9 +3673,9 @@ snapshots:
 
   '@emotion/unitless@0.10.0': {}
 
-  '@emotion/use-insertion-effect-with-fallbacks@1.2.0(react@19.3.0)':
+  '@emotion/use-insertion-effect-with-fallbacks@1.2.0(react@19.3.1)':
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
 
   '@emotion/utils@1.4.2': {}
 
@@ -4062,10 +4062,10 @@ snapshots:
       protobufjs: 7.6.6
       yargs: 17.7.3
 
-  '@hookform/resolvers@5.9.2(react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.0))(zod@4.6.5)':
+  '@hookform/resolvers@5.9.2(react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.5)':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.90.0(@types/react@19.3.0)(react@19.3.0)
+      react-hook-form: 7.90.0(@types/react@19.3.0)(react@19.3.1)
     optionalDependencies:
       zod: 4.6.5
 
@@ -4475,7 +4475,7 @@ snapshots:
       - browserslist
       - typescript
 
-  '@serwist/next@9.5.13(@serwist/cli@9.5.13(@types/node@24.19.2)(browserslist@4.29.4)(typescript@5.9.3))(next@16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(typescript@5.9.3)':
+  '@serwist/next@9.5.13(@serwist/cli@9.5.13(@types/node@24.19.2)(browserslist@4.29.4)(typescript@5.9.3))(next@16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(typescript@5.9.3)':
     dependencies:
       '@serwist/build': 9.5.13(browserslist@4.29.4)(typescript@5.9.3)
       '@serwist/utils': 9.5.13(browserslist@4.29.4)
@@ -4484,8 +4484,8 @@ snapshots:
       browserslist: 4.29.4
       glob: 13.0.6
       kolorist: 1.8.0
-      next: 16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      react: 19.3.0
+      next: 16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react: 19.3.1
       semver: 7.8.5
       serwist: 9.5.13(browserslist@4.29.4)(typescript@5.9.3)
       zod: 4.6.5
@@ -5084,11 +5084,11 @@ snapshots:
     dependencies:
       embla-carousel: 8.6.0
 
-  embla-carousel-react@8.6.0(react@19.3.0):
+  embla-carousel-react@8.6.0(react@19.3.1):
     dependencies:
       embla-carousel: 8.6.0
       embla-carousel-reactive-utils: 8.6.0(embla-carousel@8.6.0)
-      react: 19.3.0
+      react: 19.3.1
 
   embla-carousel-reactive-utils@8.6.0(embla-carousel@8.6.0):
     dependencies:
@@ -5529,14 +5529,14 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  framer-motion@14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  framer-motion@14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       motion-dom: 14.4.0
       motion-utils: 14.1.1
       tslib: 2.8.1
     optionalDependencies:
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
 
   framesync@6.1.2:
     dependencies:
@@ -5920,10 +5920,10 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  linkify-react@4.3.3(linkifyjs@4.3.3)(react@19.3.0):
+  linkify-react@4.3.3(linkifyjs@4.3.3)(react@19.3.1):
     dependencies:
       linkifyjs: 4.3.3
-      react: 19.3.0
+      react: 19.3.1
 
   linkifyjs@4.3.3: {}
 
@@ -5988,13 +5988,13 @@ snapshots:
 
   motion-utils@14.1.1: {}
 
-  motion@14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  motion@14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
-      framer-motion: 14.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      framer-motion: 14.4.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       tslib: 2.8.1
     optionalDependencies:
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
 
   ms@2.1.3: {}
 
@@ -6006,16 +6006,16 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  next@16.4.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       '@next/env': 16.4.2
       '@swc/helpers': 0.5.23
       baseline-browser-mapping: 2.11.25
       caniuse-lite: 1.0.30001812
       postcss: 8.5.23
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
-      styled-jsx: 5.1.6(@babel/core@7.29.7(supports-color@10.2.2))(babel-plugin-macros@3.1.0)(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+      styled-jsx: 5.1.6(@babel/core@7.29.7(supports-color@10.2.2))(babel-plugin-macros@3.1.0)(react@19.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.4.2
       '@next/swc-darwin-x64': 16.4.2
@@ -6230,90 +6230,90 @@ snapshots:
 
   re2js@2.8.6: {}
 
-  react-clientside-effect@1.2.8(react@19.3.0):
+  react-clientside-effect@1.2.8(react@19.3.1):
     dependencies:
       '@babel/runtime': 7.29.7
-      react: 19.3.0
+      react: 19.3.1
 
-  react-dom@19.3.0(react@19.3.0):
+  react-dom@19.3.1(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
       scheduler: 0.28.0
 
-  react-easy-crop@6.2.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  react-easy-crop@6.2.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       normalize-wheel: 1.0.1
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
 
   react-fast-compare@3.2.2: {}
 
-  react-focus-lock@2.13.7(@types/react@19.3.0)(react@19.3.0):
+  react-focus-lock@2.13.7(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       '@babel/runtime': 7.29.7
       focus-lock: 1.3.6
       prop-types: 15.8.1
-      react: 19.3.0
-      react-clientside-effect: 1.2.8(react@19.3.0)
-      use-callback-ref: 1.3.3(@types/react@19.3.0)(react@19.3.0)
-      use-sidecar: 1.1.3(@types/react@19.3.0)(react@19.3.0)
+      react: 19.3.1
+      react-clientside-effect: 1.2.8(react@19.3.1)
+      use-callback-ref: 1.3.3(@types/react@19.3.0)(react@19.3.1)
+      use-sidecar: 1.1.3(@types/react@19.3.0)(react@19.3.1)
     optionalDependencies:
       '@types/react': 19.3.0
 
-  react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.0):
+  react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
 
-  react-icons@5.7.0(react@19.3.0):
+  react-icons@5.7.0(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
 
   react-is@16.13.1: {}
 
-  react-remove-scroll-bar@2.3.8(@types/react@19.3.0)(react@19.3.0):
+  react-remove-scroll-bar@2.3.8(@types/react@19.3.0)(react@19.3.1):
     dependencies:
-      react: 19.3.0
-      react-style-singleton: 2.2.3(@types/react@19.3.0)(react@19.3.0)
+      react: 19.3.1
+      react-style-singleton: 2.2.3(@types/react@19.3.0)(react@19.3.1)
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.3.0
 
-  react-remove-scroll@2.7.2(@types/react@19.3.0)(react@19.3.0):
+  react-remove-scroll@2.7.2(@types/react@19.3.0)(react@19.3.1):
     dependencies:
-      react: 19.3.0
-      react-remove-scroll-bar: 2.3.8(@types/react@19.3.0)(react@19.3.0)
-      react-style-singleton: 2.2.3(@types/react@19.3.0)(react@19.3.0)
+      react: 19.3.1
+      react-remove-scroll-bar: 2.3.8(@types/react@19.3.0)(react@19.3.1)
+      react-style-singleton: 2.2.3(@types/react@19.3.0)(react@19.3.1)
       tslib: 2.8.1
-      use-callback-ref: 1.3.3(@types/react@19.3.0)(react@19.3.0)
-      use-sidecar: 1.1.3(@types/react@19.3.0)(react@19.3.0)
+      use-callback-ref: 1.3.3(@types/react@19.3.0)(react@19.3.1)
+      use-sidecar: 1.1.3(@types/react@19.3.0)(react@19.3.1)
     optionalDependencies:
       '@types/react': 19.3.0
 
-  react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  react-router-dom@7.18.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
-      react-router: 7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+      react-router: 7.18.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
 
-  react-router@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  react-router@7.18.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       cookie: 1.1.1
-      react: 19.3.0
+      react: 19.3.1
       set-cookie-parser: 2.7.2
     optionalDependencies:
-      react-dom: 19.3.0(react@19.3.0)
+      react-dom: 19.3.1(react@19.3.1)
 
-  react-style-singleton@2.2.3(@types/react@19.3.0)(react@19.3.0):
+  react-style-singleton@2.2.3(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       get-nonce: 1.0.1
-      react: 19.3.0
+      react: 19.3.1
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.3.0
 
-  react@19.3.0: {}
+  react@19.3.1: {}
 
   readdirp@5.1.1: {}
 
@@ -6373,9 +6373,9 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  rich-textarea@0.27.1(react@19.3.0):
+  rich-textarea@0.27.1(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
 
   run-parallel@1.2.0:
     dependencies:
@@ -6615,10 +6615,10 @@ snapshots:
 
   stubborn-utils@1.0.2: {}
 
-  styled-jsx@5.1.6(@babel/core@7.29.7(supports-color@10.2.2))(babel-plugin-macros@3.1.0)(react@19.3.0):
+  styled-jsx@5.1.6(@babel/core@7.29.7(supports-color@10.2.2))(babel-plugin-macros@3.1.0)(react@19.3.1):
     dependencies:
       client-only: 0.0.1
-      react: 19.3.0
+      react: 19.3.1
     optionalDependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       babel-plugin-macros: 3.1.0
@@ -6639,11 +6639,11 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swr@2.5.1(react@19.3.0):
+  swr@2.5.1(react@19.3.1):
     dependencies:
       dequal: 2.0.3
-      react: 19.3.0
-      use-sync-external-store: 1.6.0(react@19.3.0)
+      react: 19.3.1
+      use-sync-external-store: 1.6.0(react@19.3.1)
 
   tagged-tag@1.0.0: {}
 
@@ -6794,24 +6794,24 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-callback-ref@1.3.3(@types/react@19.3.0)(react@19.3.0):
+  use-callback-ref@1.3.3(@types/react@19.3.0)(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.3.0
 
-  use-sidecar@1.1.3(@types/react@19.3.0)(react@19.3.0):
+  use-sidecar@1.1.3(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       detect-node-es: 1.1.0
-      react: 19.3.0
+      react: 19.3.1
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.3.0
 
-  use-sync-external-store@1.6.0(react@19.3.0):
+  use-sync-external-store@1.6.0(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
 
   web-vitals@4.2.4: {}
 
