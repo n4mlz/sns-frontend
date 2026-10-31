@@ -3,4 +3,4 @@ allowBuilds:
   'protobufjs@7.6.6': true
   'unrs-resolver@1.12.2': true
 overrides:
-  '@redocly/openapi-core': 1.34.21
+  '@redocly/openapi-core': 1.34.22
